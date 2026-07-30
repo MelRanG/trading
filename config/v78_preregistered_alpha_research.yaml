@@ -1,0 +1,34 @@
+version: v78.0
+research_only: true
+live_execution_allowed: false
+data_end: '2026-07-03'
+initial_capital_krw: 10000000
+alpha_candidates:
+  - V78_A_RESIDUAL_MOMENTUM
+  - V78_B_CROSS_TS_ENSEMBLE
+  - V78_C_VOL_MANAGED
+fixed_parameters:
+  beta_window_days: 126
+  beta_min_periods: 63
+  residual_horizons: [21, 63, 126]
+  ensemble_horizons: [21, 63, 126]
+  trend_ma_days: 120
+  fixed_leader_weight: 0.80
+  volatility_window_days: 63
+  target_annual_volatility: 0.18
+  continuous_weight_floor: 0.20
+  continuous_weight_cap: 1.00
+  feedback_window_days: 20
+  feedback_excess_trigger: -0.05
+  authority_reduction_per_signal: 0.20
+periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  observed_only: ['2025-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']
+promotion:
+  validation_bootstrap_probability: 0.90
+  familywise_probability: 0.90
+  mdd_tolerance_pp: 3.0
+  must_beat_kodex200_full_and_recent_1y: true
+  must_beat_semiconductor_full_and_recent_1y: true

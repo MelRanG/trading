@@ -1,0 +1,4 @@
+module,input_rows,date_start,date_end,risk_days,authority,critical_limitation
+PainSupply,4172,2018-01-02,2026-07-03,131,DIAGNOSTIC_ACTIVE; ENTRY_BLOCK_CANDIDATE_BACKTESTED,KOSPI aggregate only; no sector/ticker flow
+DisclosureFundamental,484,2020-05,2026-06,283,DIAGNOSTIC_ACTIVE; HARD_VETO_CANDIDATE_BACKTESTED,three mapped constituents per theme; static mapping
+News,0,,,0,CONTRACT_ONLY; LIVE_BLOCKED,no historical point-in-time news/event archive in release

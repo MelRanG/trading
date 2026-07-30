@@ -1,0 +1,142 @@
+{
+  "status": "v85_complete_paper_ready_live_blocked",
+  "gates": {
+    "dual_accounts_present": true,
+    "sqlite_integrity": true,
+    "backup_restore_passed": true,
+    "idempotent_logical_state": true,
+    "all_operational_stages_present": true,
+    "point_in_time_universe_written": true,
+    "risk_allowed_both": true,
+    "live_blocked": true
+  },
+  "operating_day": {
+    "run_id": "V85-2026-07-03",
+    "session": "2026-07-03",
+    "stages": {
+      "DATA_SYNC": {
+        "v84_status": "v84_dual_paper_execution_parity_complete_live_blocked"
+      },
+      "DATA_VALIDATE": {
+        "rows": 25,
+        "unique_tickers": 25,
+        "duplicates": 0,
+        "adjusted_only": true
+      },
+      "UNIVERSE_RESOLVE": {
+        "eligible_count": 26,
+        "point_in_time_proxy": true
+      },
+      "PLAN": {
+        "v69_fixed80_daily_control": {
+          "069500": 0.2,
+          "395160": 0.8
+        },
+        "v79_core70_generic_trend30": {
+          "069500": 0.13999999999999996,
+          "395160": 0.86
+        }
+      },
+      "RISK_GATE": {
+        "strategies": [
+          {
+            "strategy_id": "v69_fixed80_daily_control",
+            "allowed": true,
+            "blockers": [],
+            "warnings": [],
+            "mode": "PAPER"
+          },
+          {
+            "strategy_id": "v79_core70_generic_trend30",
+            "allowed": true,
+            "blockers": [],
+            "warnings": [],
+            "mode": "PAPER"
+          }
+        ]
+      },
+      "EXECUTE": {
+        "v69_fixed80_daily_control": {
+          "nav": 76797465.61576533,
+          "cash": 108105.61576533847,
+          "holdings": {
+            "069500": 116,
+            "091180": 0,
+            "091160": 0,
+            "305540": 0,
+            "157490": 0,
+            "305720": 0,
+            "261220": 0,
+            "117700": 0,
+            "091170": 0,
+            "228800": 0,
+            "130680": 0,
+            "228790": 0,
+            "381180": 0,
+            "396500": 0,
+            "143860": 0,
+            "102970": 0,
+            "395160": 1155
+          },
+          "fills": 2
+        },
+        "v79_core70_generic_trend30": {
+          "nav": 85075342.0114402,
+          "cash": 144672.01144020155,
+          "holdings": {
+            "069500": 83,
+            "117700": 0,
+            "091180": 0,
+            "102970": 0,
+            "091160": 0,
+            "305540": 0,
+            "157490": 0,
+            "305720": 0,
+            "227540": 0,
+            "244580": 0,
+            "261220": 0,
+            "091170": 0,
+            "228800": 0,
+            "130680": 0,
+            "228790": 0,
+            "381180": 0,
+            "396500": 0,
+            "143860": 0,
+            "367770": 0,
+            "395160": 1391
+          },
+          "fills": 0
+        }
+      },
+      "RECONCILE": {
+        "integrity": "ok",
+        "account_count": 2,
+        "session_count": 4166,
+        "passed": true
+      },
+      "FEEDBACK": {
+        "v69": "SELF_RESEARCH_LEDGER_ONLY_NO_MUTATION",
+        "v79": "SELF_RESEARCH_LEDGER_ONLY_NO_MUTATION",
+        "cross_strategy_feedback": false
+      },
+      "BACKUP": {
+        "backup": {
+          "path": "data/runtime/backups/<generated-at-runtime>.db",
+          "sha256": "4632121b63b3a9942b109281e1edfceab76520b934db03d7fc9b5ceeb3ead8cf",
+          "size": 1581056,
+          "retained_in_release": false
+        },
+        "restore": {
+          "integrity": "ok",
+          "accounts": 2,
+          "sessions": 4166,
+          "passed": true
+        }
+      }
+    },
+    "status": "v85_operational_hardening_complete_live_blocked",
+    "live_execution_allowed": false
+  },
+  "rerun_status": "v85_operational_hardening_complete_live_blocked",
+  "artifact_retention": "COMPACT_SUMMARY_ONLY_RUNTIME_STATE_REMOVED"
+}

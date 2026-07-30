@@ -1,0 +1,40 @@
+{
+  "version": "v83.0",
+  "data_end": "2026-07-03",
+  "reference_scenarios": {
+    "V69_PARENT": {
+      "return_pct": 668.2180261001724,
+      "sharpe": 0.9731111643786682,
+      "mdd_pct": -35.63353528929743,
+      "order_count": 528,
+      "ending_nav_krw": 76821802.61001724
+    },
+    "V79_PARENT": {
+      "return_pct": 750.753420114402,
+      "sharpe": 1.029113350422085,
+      "mdd_pct": -35.001322090579315,
+      "order_count": 430,
+      "ending_nav_krw": 85075342.0114402
+    },
+    "V83_V69_INDEPENDENT_SELF_RESEARCH": {
+      "return_pct": 668.2180261001724,
+      "sharpe": 0.9731111643786682,
+      "mdd_pct": -35.63353528929743,
+      "order_count": 528,
+      "ending_nav_krw": 76821802.61001724
+    },
+    "V83_V79_INDEPENDENT_SELF_RESEARCH": {
+      "return_pct": 750.753420114402,
+      "sharpe": 1.029113350422085,
+      "mdd_pct": -35.001322090579315,
+      "order_count": 430,
+      "ending_nav_krw": 85075342.0114402
+    }
+  },
+  "tolerances": {
+    "cumulative_return_delta_pp_max": 5.0,
+    "order_count_delta_ratio_max": 0.15,
+    "target_weight_daily_agreement_min": 0.9
+  },
+  "interpretation": "A failure means data/vendor/calendar/adjustment differences must be investigated before performance conclusions."
+}

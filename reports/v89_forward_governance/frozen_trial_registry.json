@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "trial_id": "FROZEN-20260719T125634Z",
+  "created_at": "2026-07-19T12:56:34.270126+00:00",
+  "start_session": null,
+  "status": "READY_NOT_STARTED",
+  "hashes": {
+    "strategy_registry_sha256": "48b77e6e8ec2ee66da3714a38db7d9769a5ff52163b10717ba4a404a9b34d9c5",
+    "execution_config_sha256": "22a8ca2cfa21bff8cc7a18082c02139d1202b23a4b454382f00b437696acf00a",
+    "data_contract_sha256": "bc7cd3e23efe490dd02edff4c049380c7a1933ca394ef74582f2a422796eebcf"
+  },
+  "strategies": [
+    {
+      "strategy_id": "v69_fixed80_daily_control",
+      "status": "PAPER_CHAMPION",
+      "paper_account_id": "PAPER-V69",
+      "parameters": {
+        "leader_weight": 0.8,
+        "rebalance_band": 0.0,
+        "price_policy": "ADJUSTED_OHLC_ONLY",
+        "universe_policy": "STRICT_PIT_CORRECTNESS",
+        "market_regime_policy": "D1_MA120_EXPLICIT",
+        "candidate_selection_policy": "TOP_SCORE_SECTOR_DEDUP",
+        "sector_representation_policy": "STATIC_TOP_SCORE_EXPLICIT",
+        "strategy_policy": "FIXED_PARENT_ALLOCATIONS",
+        "risk_execution_policy": "PARENT_EXECUTION_CONTRACT",
+        "market_evidence_policy": "MARKET_EVIDENCE_DIAGNOSTIC_ONLY",
+        "review_feedback_policy": "FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL"
+      }
+    },
+    {
+      "strategy_id": "v79_core70_generic_trend30",
+      "status": "PAPER_CHALLENGER",
+      "paper_account_id": "PAPER-V79",
+      "parameters": {
+        "base_share": 0.7,
+        "sleeve_share": 0.3,
+        "rebalance_band": 0.05,
+        "price_policy": "ADJUSTED_OHLC_ONLY",
+        "universe_policy": "STRICT_PIT_CORRECTNESS",
+        "market_regime_policy": "D1_MA120_EXPLICIT",
+        "candidate_selection_policy": "TOP_SCORE_SECTOR_DEDUP",
+        "sector_representation_policy": "STATIC_TOP_SCORE_EXPLICIT",
+        "strategy_policy": "FIXED_PARENT_ALLOCATIONS",
+        "risk_execution_policy": "PARENT_EXECUTION_CONTRACT",
+        "market_evidence_policy": "MARKET_EVIDENCE_DIAGNOSTIC_ONLY",
+        "review_feedback_policy": "FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL"
+      }
+    }
+  ],
+  "minimum_sessions": 60,
+  "recommended_sessions": 120,
+  "mutation_allowed": false,
+  "live_execution_allowed": false
+}

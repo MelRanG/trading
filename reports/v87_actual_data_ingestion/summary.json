@@ -1,0 +1,41 @@
+{
+  "status": "v87_actual_data_contract_ready_live_blocked",
+  "gates": {
+    "raw_response_archived": true,
+    "adjusted_source_only": true,
+    "revision_gate_passed": true,
+    "canonical_written": true,
+    "live_blocked": true
+  },
+  "ingestion": {
+    "status": "v87_actual_data_ingestion_passed",
+    "run_id": "V87-FIXTURE-CONTRACT",
+    "provider": "CSV_FIXTURE_TOSS_V19C",
+    "symbols": 26,
+    "rows": 48133,
+    "start": "2018-01-02",
+    "end": "2026-07-03",
+    "canonical_path": "data/canonical/v87_market_bars.csv",
+    "canonical_sha256": "7a5e74d80ed96511336b28528d3c05732e3bc6e1d8805fa4797a278d5da29ae6",
+    "revision_audit": {
+      "reference_available": true,
+      "passed": true,
+      "checks": {
+        "overlap_coverage": true,
+        "median_abs_close_diff_bps": true,
+        "p99_abs_close_diff_bps": true,
+        "changed_row_ratio": true
+      },
+      "overlap_rows": 45972,
+      "reference_rows": 45972,
+      "overlap_coverage": 1.0,
+      "median_abs_close_diff_bps": 0.0,
+      "p99_abs_close_diff_bps": 0.0,
+      "changed_row_ratio": 0.0
+    },
+    "live_execution_allowed": false,
+    "raw_archive_count": 26,
+    "raw_archives_retained_in_release": false
+  },
+  "artifact_retention": "COMPACT_SUMMARY_ONLY_RAW_ARCHIVES_REMOVED"
+}

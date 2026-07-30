@@ -1,0 +1,3 @@
+strategy_id,sessions,minimum_met,recommended_met,target_failures,drift_failures,data_failures,reconciliation_failures,critical_alerts_unresolved,paper_gate_passed
+v69_fixed80_daily_control,0,False,False,0,0,0,0,0,False
+v79_core70_generic_trend30,0,False,False,0,0,0,0,0,False

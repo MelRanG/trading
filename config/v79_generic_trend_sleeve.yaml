@@ -1,0 +1,38 @@
+version: v79.0
+research_only: true
+live_execution_allowed: false
+paper_auto_promotion_allowed: false
+data_end: '2026-07-03'
+initial_capital_krw: 10000000
+strategy_design:
+  description: generic persistent cross-sectional trend sleeve blended with the existing corrected V69 control
+  strategy_must_not_reference_specific_theme_or_ticker: true
+  universe_rule: all point-in-time eligible non-broad-equity ETFs receive identical rules
+  candidate_base_shares: [0.70, 0.80]
+  fixed_existing_alpha_leader_weight: 0.80
+trend_sleeve:
+  horizons_days: [63, 126, 252]
+  horizon_weights: [0.25, 0.35, 0.40]
+  trend_ma_days: 200
+  minimum_history_days: 252
+  minimum_median_value_20d_krw: 100000000
+  review_cadence: weekly
+  minimum_hold_sessions: 20
+  challenger_score_margin: 0.10
+  challenger_confirmation_reviews: 2
+  one_representative_per_semantic_sector: true
+execution:
+  rebalance_band: 0.05
+periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  observed_only: ['2025-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']
+promotion:
+  validation_bootstrap_probability: 0.90
+  familywise_probability: 0.90
+  mdd_tolerance_pp: 3.0
+  stress_validation_must_not_trail_control: true
+  user_goal_must_beat_kodex200_full_and_recent_1y: true
+  user_goal_must_beat_best_sector_benchmark_full_and_recent_1y: true
+  minimum_unseen_forward_sessions_after_research: 60

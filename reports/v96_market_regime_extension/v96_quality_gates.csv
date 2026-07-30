@@ -1,0 +1,8 @@
+gate,passed,detail
+V95_ACTIVE_PARENT_PARITY,True,"nav_errors={'V69': 0.0, 'V79': 0.0} exposure_error=0.0"
+D1_ONLY_REGIME_EVIDENCE,True,same-day close is prohibited
+FUTURE_MUTATION_INVARIANT,True,policy=D1_MA120_EXPLICIT cutoff=2024-12-31 compared_rows=1719; policy=MA120_CONTINUOUS_RISK_SCORE cutoff=2024-12-31 compared_rows=1719; policy=MA120_CRASH_GUARD cutoff=2024-12-31 compared_rows=1719
+ONLY_TWO_PREREGISTERED_CANDIDATES,True,"('D1_MA120_EXPLICIT', 'MA120_CONTINUOUS_RISK_SCORE', 'MA120_CRASH_GUARD')"
+CANDIDATES_CHANGE_ONLY_MARKET_EXPOSURE,True,"universe, alpha, selection, V79 sleeve and execution are shared"
+AUTOMATIC_LIVE_AUTHORITY_BLOCKED,True,research-only
+OPTIONAL_RESEARCH_PROMOTION,False,promoted=[]; forward_shadow=[]; failure preserves parent

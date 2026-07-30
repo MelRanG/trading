@@ -1,0 +1,4 @@
+candidate,passed,development_delta_pp,validation_delta_pp,validation_sharpe_delta,validation_mdd_delta_pp,validation_stress_return_pct,raw_bootstrap_probability,familywise_probability,beats_kodex200_full,beats_kodex200_recent_1y,beats_semiconductor_full,beats_semiconductor_recent_1y
+V78_A_RESIDUAL_MOMENTUM,False,-24.765469052918075,-3.332934990090152,-0.05012667558889583,-2.1854587861802948,25.807962840610866,0.1428,0.0,False,False,False,False
+V78_B_CROSS_TS_ENSEMBLE,False,10.415519235261584,0.9771897010756767,-0.022108885077059992,-2.8212937169348145,29.504051471584347,0.579,0.0,True,False,True,False
+V78_C_VOL_MANAGED,False,-1.2034411602184427,-6.179962223622091,0.017089537909760644,4.316719426023731,24.671963107986517,0.4056,0.0,True,False,True,False

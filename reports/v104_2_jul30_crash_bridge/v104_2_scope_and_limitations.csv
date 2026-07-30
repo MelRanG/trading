@@ -1,0 +1,5 @@
+gate,status,reason
+FULL_UNIVERSE_DYNAMIC_RESELECTION,BLOCKED,Complete PIT OHLCV through 2026-07-30 was not available for all 25 candidate ETFs; no interpolation or fabricated bars used.
+FROZEN_HOLDINGS_FORWARD_BRIDGE,PASS,Exact V104 2026-07-03 holdings and verified closes for every held asset are available through 2026-07-30.
+EXECUTION_AFTER_2026_07_03,NOT_MODELED,"Bridge assumes no post-freeze trades; therefore it is a mark-to-market stress replay, not a dynamic execution rerun."
+395160_2026_07_29_OHLCV,CLOSE_ONLY,Only verified close was used; no order execution is modeled on this row.

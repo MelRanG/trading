@@ -1,0 +1,50 @@
+schema_version: 1
+status: UNVERIFIED_EXTERNAL
+live_authority: false
+flow_contract:
+  required_source: OFFICIAL_OR_LICENSED_MARKET_DATA
+  fields:
+    - as_of_date
+    - market
+    - foreign_net_buy_100m_krw
+    - institution_net_buy_100m_krw
+    - source_id
+    - downloaded_at
+    - provenance_hash
+  required_checks:
+    - KOSPI_TRADING_SESSION_COVERAGE
+    - NO_FORWARD_FILL_ACROSS_MISSING_SESSION
+    - REVISION_AND_DOWNLOAD_TIMESTAMP_RECORDED
+fundamental_contract:
+  required_source: OPENDART_AND_OPTIONAL_KIND
+  availability_timestamp: received_at
+  fields:
+    - ticker
+    - corp_code
+    - business_year
+    - fiscal_quarter
+    - rcept_no
+    - received_at
+    - statement_scope
+    - quarterly_net_income
+    - total_assets
+  required_checks:
+    - CORRECTION_FILING_REPLACES_PRIOR_PERIOD_VERSION_AS_OF_D1
+    - CFS_OFS_SCOPE_RECORDED
+    - ETF_TO_CONSTITUENT_MAPPING_EFFECTIVE_DATE_REQUIRED
+news_contract:
+  required_sources:
+    - OPENDART
+    - KIND
+    - KRX_MARKET_NOTICE
+    - COMPANY_IR
+    - LICENSED_MEDIA_OPTIONAL
+  capital_authority_rule: ONLY_OFFICIAL_CRITICAL_EVENT_CAN_HARD_VETO
+  general_sentiment_rule: DIAGNOSTIC_ONLY
+  required_checks:
+    - PUBLISHED_AT_AND_FIRST_SEEN_AT
+    - SOURCE_TIER_AND_DOCUMENT_ID
+    - CORRECTION_CHAIN
+    - CANONICAL_EVENT_DEDUPLICATION
+    - ENTITY_MAPPING
+    - D1_CUTOFF

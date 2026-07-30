@@ -1,0 +1,20 @@
+schema_version: 1
+release: V103_REVIEW_FEEDBACK_AGENT
+purpose: Candidate-specific isolated forward-shadow runtime contract.
+default_adapter_status: UNIMPLEMENTED
+required_per_candidate:
+  - deterministic_candidate_target_adapter
+  - immutable_candidate_fingerprint
+  - isolated_paper_account_or_virtual_ledger
+  - parent_and_candidate_same_session_inputs
+  - order_fill_cost_reconciliation
+  - daily_nav_and_decision_hash
+  - no_capital_authority
+candidates: {}
+block_rules:
+  - adapter_status_not_IMPLEMENTED_AND_TESTED
+  - candidate_fingerprint_mismatch
+  - parent_candidate_data_hash_mismatch
+  - missing_fill_or_cost_reconciliation
+  - automatic_parent_mutation_enabled
+live_execution_allowed: false

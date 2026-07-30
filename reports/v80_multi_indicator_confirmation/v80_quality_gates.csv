@@ -1,0 +1,11 @@
+gate,passed,detail
+NO_THEME_OR_TICKER_SPECIFIC_RULE,True,"{""passed"": true, ""forbidden_literal_hits"": []}"
+FIVE_PREREGISTERED_CANDIDATES_ONLY,True,"V80_TREND_CONFIRMATION,V80_MOMENTUM_CONFIRMATION,V80_VOLUME_CONFIRMATION,V80_FOUR_MARKET_ELEMENTS,V80_MULTI_PANEL_CONFIRMATION"
+ALL_FOUR_INDICATOR_FAMILIES_IMPLEMENTED,True,"trend,momentum,volume,volatility plus low-weight seasonality diagnostic"
+STRICT_D1_INFORMATION_CUTOFF,True,all raw indicator frames shifted one session
+TARGET_WEIGHTS_SUM_TO_ONE,True,target_ledgers=5
+CORRECTED_EXECUTION_AND_ORACLE,True,"actual quantity drives notional, impact and participation"
+NO_NEGATIVE_CASH,True,base and stress
+SEASONALITY_PRIOR_COMPLETED_YEARS_ONLY,True,minimum_prior_years=3
+NO_AUTOMATIC_CHAMPION_MUTATION,True,V69 champion and V79 challenger registry unchanged
+LIVE_EXECUTION_BLOCKED,True,research comparison only

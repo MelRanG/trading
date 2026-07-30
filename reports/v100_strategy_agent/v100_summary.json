@@ -1,0 +1,10 @@
+{
+  "status": "strategy_agent_research_completed_parent_unchanged",
+  "active_policy": "FIXED_PARENT_ALLOCATIONS",
+  "candidate_count": 3,
+  "backtest_passed_count": 0,
+  "promoted_count": 0,
+  "v79_same_ticker_overlap_days": 203,
+  "v79_same_sector_overlap_days": 456,
+  "live_execution_allowed": false
+}

@@ -1,0 +1,8 @@
+gate,passed,detail
+PARENT_NAV_PARITY_UNDER_1KRW,True,"[{'strategy': 'V69', 'expected_nav_krw': 76797465.62, 'actual_nav_krw': 76797465.61576533, 'abs_error_krw': 0.004234671592712402}, {'strategy': 'V79', 'expected_nav_krw': 85075342.01, 'actual_nav_krw': 85075342.0114402, 'abs_error_krw': 0.001440197229385376}]"
+FLOW_D1_ONLY,True,risk_days=131
+DART_RECEIVED_AT_D1_AND_CORRECTIONS,True,received_at availability; latest correction per ticker/fiscal period
+NEWS_NO_FAKE_BACKTEST,True,DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS
+GENERAL_NEWS_SENTIMENT_HAS_NO_CAPITAL_AUTHORITY,True,diagnostic only
+NO_CANDIDATE_AUTO_PROMOTION,True,human approval and forward evidence required
+LIVE_BLOCKED,True,market evidence contract unverified external

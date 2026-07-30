@@ -1,0 +1,8 @@
+priority,blocker,why_internal_development_cannot_finish_it,required_input,release_gate
+P0,Actual Toss API authentication,Credentials and account-specific access are unavailable,Client ID secret account ID,Read-only connection health passes
+P0,Actual endpoint and field mapping,Provider contract can change and must be verified against real responses,Official docs plus sample responses,V87 schema and adjusted price gate pass
+P0,New forward sessions,Future observations do not exist yet,60 minimum and 120 recommended sessions,V89 paper gate passes
+P1,Complete PIT universe and corporate actions,Current bundle lacks delisted and action history,KRX or vendor history,Survivorship audit passes
+P1,Official calendar and market status,Local price rows are only a proxy,Official session halt and price-limit feed,Session cross-check passes
+P1,Real broker reconciliation,Simulator cannot prove production response semantics,Read-only real account plus dry-run order responses,V88 real-adapter contract passes
+P2,Canary capital approval,Capital authorization must remain a human decision,Approved loss budget and account allocation,Manual signed approval

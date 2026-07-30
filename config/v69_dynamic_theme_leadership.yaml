@@ -1,0 +1,46 @@
+version: v69.0
+research_only: true
+paid_deployment_allowed: false
+live_execution_allowed: false
+initial_capital_krw: 10000000
+monthly_contribution_krw: 300000
+end_date: '2026-07-07'
+transaction_costs:
+  buy_bps: 1.5
+  sell_bps: 21.5
+universe:
+  source: data/toss_v19c_daily/universe.csv
+  core_ticker: 069500
+  benchmark_ticker: KS11
+  minimum_history_days: 252
+  minimum_median_value_20d_krw: 100000000
+  exclude_sectors:
+  - broad_equity
+leadership:
+  review_cadence: monthly
+  emergency_review_cadence: weekly
+  relative_momentum_short_days: 21
+  relative_momentum_medium_days: 63
+  relative_momentum_long_days: 126
+  trend_ma_days: 120
+  leader_weight: 0.8
+  score_formula: rel63 + 0.5 * (rel21 - rel63)
+  absolute_filter_days: 126
+  challenger_confirmation_reviews: 1
+  score_margin: 0.0
+  weekly_exit_if_ineligible: true
+  weekly_exit_if_score_below: 0.0
+anti_hindsight:
+  sector_names_are_metadata_only: true
+  strategy_must_not_reference_specific_theme_or_ticker: true
+  decision_feature_lag_days: 1
+  selection_is_cross_sectional: true
+  no_parameter_grid_after_holdout: true
+quality_gates:
+  no_lookahead_violations: 0
+  minimum_distinct_selected_sectors: 4
+  dynamic_lump_must_beat_core_hold: true
+  dynamic_dca_must_beat_core_dca: true
+  dynamic_must_beat_static_single_theme_overlay: true
+  cost_3x_must_remain_above_core_hold: true
+  bootstrap_positive_probability_min: 0.9

@@ -1,0 +1,27 @@
+version: v96.0
+research_only: true
+live_execution_allowed: false
+active_policy: D1_MA120_EXPLICIT
+shared_parameters:
+  trend_ma_days: 120
+  volatility_window: 20
+research_candidates:
+  - policy_id: MA120_CONTINUOUS_RISK_SCORE
+    continuous_full_distance: 0.05
+    continuous_low_volatility: 0.20
+    continuous_high_volatility: 0.40
+    continuous_min_exposure: 0.25
+  - policy_id: MA120_CRASH_GUARD
+    crash_return_5d_floor: -0.06
+    crash_volatility_floor: 0.30
+promotion:
+  full_return_tolerance_pp: 0.0
+  development_return_tolerance_pp: 0.0
+  validation_return_tolerance_pp: 0.0
+  recent_1y_return_tolerance_pp: 0.0
+  mdd_tolerance_pp: 1.5
+  stress_return_tolerance_pp: 0.0
+  order_count_ratio_max: 1.25
+  minimum_changed_exposure_days: 5
+  minimum_changed_exposure_days_validation: 5
+  minimum_one_parent_full_improvement_pp: 1.0

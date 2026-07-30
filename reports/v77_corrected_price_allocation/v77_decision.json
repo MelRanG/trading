@@ -1,0 +1,157 @@
+{
+  "status": "v77_corrected_price_allocation_research_complete_live_blocked",
+  "selection_status": "SHADOW_SELECTED_FROM_DEV_VALIDATION_ONLY",
+  "shadow_challenger": "FIXED_100__EVENT_ONLY",
+  "shadow_allocation_policy": "FIXED_100",
+  "shadow_rebalancing_policy": "EVENT_ONLY",
+  "allocation_promotion_passed": false,
+  "operational_control": "FIXED_80__DAILY_EXACT",
+  "meaning_of_80_20": "80% selected leader ETF and 20% KODEX 200 core while a leader is active",
+  "fixed_80_is_unquestioned_constant": false,
+  "historical_v73_headline_return_valid": false,
+  "delisting_universe_repair_deferred_by_user": true,
+  "paper_runtime_changed": false,
+  "live_allowed": false,
+  "selected_metrics": {
+    "allocation_policy": "FIXED_100",
+    "rebalancing_policy": "EVENT_ONLY",
+    "return_pct": 857.1234933577733,
+    "cagr_pct": 30.44614074017087,
+    "sharpe": 1.004154513285669,
+    "mdd_pct": -36.20165999782987,
+    "ending_nav_krw": 95712349.33577733,
+    "development_return_pct": 55.94820990408047,
+    "validation_return_pct": 33.87677040225068,
+    "observed_return_pct": 358.439843368431,
+    "order_count": 182,
+    "turnover_notional_krw": 2541923850.697943,
+    "max_oracle_nav_error_krw": 0.0,
+    "max_oracle_cash_error_krw": 0.0,
+    "missing_open_rejections": 0,
+    "participation_limited_orders": 57,
+    "negative_cash_days": 0,
+    "pending_days": 96,
+    "validation_delta_vs_fixed80_daily_pp": 2.8685156644193697,
+    "eligible_on_dev_validation": true
+  },
+  "stress_metrics": {
+    "return_pct": 779.7333825235323,
+    "cagr_pct": 29.15835244520306,
+    "sharpe": 0.9762199122032934,
+    "mdd_pct": -36.312765008392276,
+    "ending_nav_krw": 87973338.25235324
+  },
+  "bootstrap_vs_fixed80_control": {
+    "positive_probability": 0.8792,
+    "median_relative_return": 0.2224673766466022
+  },
+  "bootstrap_vs_core": {
+    "positive_probability": 0.8986666666666666,
+    "median_relative_return": 1.046087066168676
+  },
+  "bootstrap_vs_semiconductor": {
+    "positive_probability": 0.718,
+    "median_relative_return": 0.5096181238877017
+  },
+  "gates": [
+    {
+      "gate": "ADJUSTED_OHLC_SINGLE_SCALE",
+      "passed": true,
+      "detail": "all tradable ETF OHLC loaded from toss_openapi_1d_adjusted; no raw/adjusted mixing"
+    },
+    {
+      "gate": "NO_OPEN_TO_CLOSE_FALLBACK",
+      "passed": true,
+      "detail": "missing executable open raises instead of substituting close"
+    },
+    {
+      "gate": "INDEPENDENT_NAV_RECONSTRUCTION",
+      "passed": true,
+      "detail": "max_error=0.0000000000"
+    },
+    {
+      "gate": "OBSERVED_2025_2026_EXCLUDED_FROM_SELECTION",
+      "passed": true,
+      "detail": "selected candidate uses development and validation columns only"
+    },
+    {
+      "gate": "STRESS_EXECUTION_POSITIVE",
+      "passed": true,
+      "detail": "stress_return_pct=779.73"
+    },
+    {
+      "gate": "SHADOW_BEATS_FIXED80_BOOTSTRAP_90PCT",
+      "passed": false,
+      "detail": "p=0.8792"
+    },
+    {
+      "gate": "ALLOCATION_PROMOTION",
+      "passed": false,
+      "detail": "requires validation non-inferiority, stress outperformance, and >=90% block probability vs fixed80"
+    },
+    {
+      "gate": "LIVE_AND_AUTO_PROMOTION_BLOCKED",
+      "passed": true,
+      "detail": "V77 is research-only; V72 runtime remains unchanged"
+    }
+  ],
+  "config": {
+    "start_date": "2018-01-02",
+    "end_date": "2026-07-03",
+    "initial_capital_krw": 10000000.0,
+    "core_ticker": "069500",
+    "benchmark_ticker": "KS11",
+    "semiconductor_benchmark_ticker": "091160",
+    "etf_source": "data/toss_v19c_daily",
+    "required_source_tag": "toss_openapi_1d_adjusted",
+    "allocation_candidates": [
+      "FIXED_20",
+      "FIXED_40",
+      "FIXED_60",
+      "FIXED_80",
+      "FIXED_100",
+      "SCORE_CONFIDENCE_40_80",
+      "INVERSE_VOL_20_80",
+      "RISK_CONFIDENCE_BLEND_20_80"
+    ],
+    "rebalancing_candidates": [
+      "DAILY_EXACT",
+      "MONTHLY_OR_CHANGE",
+      "BAND_5PP",
+      "BAND_10PP",
+      "EVENT_ONLY"
+    ],
+    "base_execution": {
+      "buy_fee_bps": 1.5,
+      "sell_fee_bps": 21.5,
+      "half_spread_bps": 5.0,
+      "impact_bps_at_1pct_adv": 10.0,
+      "max_impact_bps": 50.0,
+      "max_participation_of_d1_adv": 0.01,
+      "minimum_order_notional_krw": 100000.0
+    },
+    "stress_execution": {
+      "buy_fee_bps": 1.5,
+      "sell_fee_bps": 21.5,
+      "half_spread_bps": 10.0,
+      "impact_bps_at_1pct_adv": 20.0,
+      "max_impact_bps": 100.0,
+      "max_participation_of_d1_adv": 0.005,
+      "minimum_order_notional_krw": 100000.0
+    },
+    "development": [
+      "2018-01-01",
+      "2022-12-31"
+    ],
+    "validation": [
+      "2023-01-01",
+      "2024-12-31"
+    ],
+    "observed_only": [
+      "2025-01-01",
+      "2026-07-03"
+    ],
+    "validation_floor_pp": 0.0,
+    "mdd_tolerance_pp": 1.0
+  }
+}

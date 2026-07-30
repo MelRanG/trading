@@ -1,0 +1,25 @@
+schema_version: 1
+active_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+backtest_end: '2026-07-03'
+flow:
+  persistence_days: 5
+  z_window_sessions: 252
+  minimum_z_history_sessions: 60
+  risk_z_threshold: -1.5
+fundamental:
+  minimum_constituent_coverage: 2
+  persistent_loss_constituents: 2
+  maximum_filing_age_days: 220
+news:
+  historical_pit_dataset_status: MISSING
+  capital_authority: OFFICIAL_CRITICAL_EVENTS_ONLY
+  general_sentiment_authority: false
+promotion:
+  development_tolerance_pp: 1.0
+  validation_improvement_min_pp: 0.5
+  purged_validation_improvement_min_pp: 0.25
+  recent_1y_tolerance_pp: 1.0
+  mdd_tolerance_pp: 1.0
+  minimum_validation_changed_days: 5
+  bootstrap_samples: 500
+  familywise_probability_min: 0.90

@@ -1,0 +1,6 @@
+schema_version: 3
+registry: config/strategy_registry_v84.yaml
+active_strategy_id: v69_fixed80_daily_control
+runtime_mode: PAPER
+live_execution_allowed: false
+legacy_p2_p3_status: ARCHIVED_REFERENCE_NOT_RUNTIME_IMPLEMENTED

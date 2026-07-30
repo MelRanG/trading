@@ -1,0 +1,27 @@
+ticker,name,sector,asset_type
+069500,KODEX 200,broad_equity,etf
+091160,KODEX Semiconductors,semiconductor,etf
+091170,KODEX Banks,financials,etf
+091180,KODEX Autos,battery_ev,etf
+102970,KODEX Securities,financials,etf
+117700,KODEX Construction,construction,etf
+130680,TIGER Crude Oil Futures Enhanced(H),energy,etf
+139280,TIGER Consumer Staples,consumer,etf
+139290,TIGER 200 Construction,construction,etf
+143860,TIGER Healthcare,bio_healthcare,etf
+157490,TIGER Software,software_cloud,etf
+227540,TIGER 200 Healthcare,bio_healthcare,etf
+227560,TIGER 200 Industrials,aerospace_defense,etf
+228790,TIGER Media Contents,robotics_ai,etf
+228800,TIGER Travel & Leisure,consumer,etf
+244580,KODEX Bio,bio_healthcare,etf
+261220,KODEX WTI Crude Oil Futures(H),energy,etf
+305540,TIGER Secondary Battery Theme,battery_ev,etf
+305720,KODEX Secondary Battery Industry,battery_ev,etf
+364980,TIGER KRX BBIG K-New Deal,software_cloud,etf
+367770,KBSTAR Fn Hydrogen Economy Theme,energy,etf
+381180,TIGER US Philadelphia Semiconductor NASDAQ,semiconductor,etf
+395150,KODEX Fn Webtoon & Drama,robotics_ai,etf
+395160,KODEX Fn System Semiconductor,semiconductor,etf
+396500,TIGER Fn Semiconductor TOP10,semiconductor,etf
+401170,TIGER Global Lithium & 2nd Battery SOLACTIVE,battery_ev,etf

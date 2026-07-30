@@ -1,0 +1,6 @@
+gate,passed,detail
+ONLY_PARENT_SELF_TRADES_USED,True,"{""V69"": ""V69_PARENT"", ""V79"": ""V79_PARENT""}"
+PURGED_EVIDENCE_PRECEDES_TEST,True,purge_sessions=60
+ONE_COMPONENT_PER_HYPOTHESIS,True,fixed hypothesis catalog
+PROPOSAL_BUDGET_ENFORCED,True,maximum one proposal per family and fold
+NO_CROSS_FAMILY_CANDIDATE,True,V69 and V79 remain independent

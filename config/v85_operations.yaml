@@ -1,0 +1,20 @@
+version: v85.0
+mode: PAPER
+live_execution_allowed: false
+initial_capital_krw: 10000000
+risk:
+  kill_switch: false
+  max_single_symbol_weight: 0.90
+  max_daily_loss_pct: 0.08
+  max_rolling_drawdown_pct: 0.25
+  max_open_gap_pct: 0.15
+  max_participation_of_d1_adv: 0.01
+  minimum_cash_krw: 0
+operations:
+  dual_paper_db: data/runtime/v85_dual_paper.db
+  orchestrator_db: data/runtime/v85_orchestrator.db
+  alert_log: data/runtime/v85_alerts.jsonl
+  backup_dir: data/runtime/backups
+  canonical_market: data/canonical/v84_market_bars.csv
+  pit_universe: data/canonical/v85_point_in_time_universe.csv
+  run_manifest_dir: reports/v85_operational_hardening/runs

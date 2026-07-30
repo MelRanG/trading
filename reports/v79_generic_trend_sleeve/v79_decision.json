@@ -1,0 +1,66 @@
+{
+  "status": "v79_generic_persistent_trend_sleeve_research_complete_live_blocked",
+  "data_end": "2026-07-03",
+  "operational_control": "V69_FIXED80_DAILY_CORRECTED",
+  "research_selection_passes": [],
+  "shadow_challenger": null,
+  "generic_strategy_rule": true,
+  "specific_theme_or_ticker_rule_used": false,
+  "distinct_selected_sectors": 7,
+  "user_goal_passes": [],
+  "minimum_new_unseen_forward_sessions": 60,
+  "live_allowed": false,
+  "paper_auto_promotion_allowed": false,
+  "quality_gates": [
+    {
+      "gate": "NO_THEME_OR_TICKER_SPECIFIC_STRATEGY_RULE",
+      "passed": true,
+      "detail": "{\"passed\": true, \"forbidden_hits\": []}"
+    },
+    {
+      "gate": "EXACTLY_TWO_PREREGISTERED_BLEND_CANDIDATES",
+      "passed": true,
+      "detail": "V79_GENERIC_TREND_BASE70_SLEEVE30,V79_GENERIC_TREND_BASE80_SLEEVE20"
+    },
+    {
+      "gate": "STRICT_D1_INFORMATION_CUTOFF",
+      "passed": true,
+      "detail": "generic sleeve decisions use D-1 information"
+    },
+    {
+      "gate": "PERSISTENCE_AND_HYSTERESIS_ENABLED",
+      "passed": true,
+      "detail": "min_hold=20, margin=0.1, confirmations=2"
+    },
+    {
+      "gate": "MULTI_SECTOR_BEHAVIOUR_OBSERVED",
+      "passed": true,
+      "detail": "distinct_selected_sectors=7"
+    },
+    {
+      "gate": "TARGET_WEIGHTS_SUM_TO_ONE",
+      "passed": true,
+      "detail": "all daily target maps sum to 1"
+    },
+    {
+      "gate": "CORRECTED_ORDER_MATH",
+      "passed": true,
+      "detail": "scenarios=3"
+    },
+    {
+      "gate": "OBSERVED_PERIOD_EXCLUDED_FROM_RESEARCH_SELECTION",
+      "passed": true,
+      "detail": "selection gates use development and validation only"
+    },
+    {
+      "gate": "RESEARCH_SELECTION",
+      "passed": false,
+      "detail": "none"
+    },
+    {
+      "gate": "LIVE_AND_PAPER_AUTO_PROMOTION_BLOCKED",
+      "passed": true,
+      "detail": "requires at least 60 new unseen forward sessions"
+    }
+  ]
+}

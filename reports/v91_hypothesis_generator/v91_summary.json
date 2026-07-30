@@ -1,0 +1,6 @@
+{
+  "hypotheses": 4,
+  "folds": 12,
+  "quality_gates_passed": true,
+  "live_allowed": false
+}

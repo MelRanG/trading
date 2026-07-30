@@ -1,0 +1,1 @@
+hypothesis_id,created_at_utc,parent_strategy_id,agent_scope,issue,changed_component,statement,parameter_json,evidence_start,evidence_cutoff,test_start,test_end,purge_sessions,source_data_hash,code_hash,candidate_fingerprint,author,approved_for_backtest

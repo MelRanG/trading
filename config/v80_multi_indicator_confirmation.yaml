@@ -1,0 +1,50 @@
+version: v80.0
+research_only: true
+live_execution_allowed: false
+data_end: '2026-07-03'
+portfolio:
+  base_core_share: 0.70
+  maximum_indicator_sleeve_weight: 0.30
+  rebalance_band: 0.05
+candidate_order:
+  - V80_TREND_CONFIRMATION
+  - V80_MOMENTUM_CONFIRMATION
+  - V80_VOLUME_CONFIRMATION
+  - V80_FOUR_MARKET_ELEMENTS
+  - V80_MULTI_PANEL_CONFIRMATION
+indicator_parameters:
+  ma_days: 200
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+  dmi_days: 14
+  adx_minimum: 20
+  rsi_days: 14
+  rsi_lower: 50
+  rsi_upper: 75
+  cci_days: 20
+  cci_lower: 0
+  cci_upper: 200
+  stochastic_days: 14
+  stochastic_signal_days: 3
+  stochastic_lower: 50
+  stochastic_upper: 85
+  volume_slope_days: 20
+  volume_osc_fast: 5
+  volume_osc_slow: 20
+  atr_days: 14
+  bollinger_days: 20
+  bollinger_std: 2.0
+  volatility_quantile_window: 252
+  volatility_quantile_min_periods: 126
+  volatility_extreme_quantile: 0.90
+  seasonality_minimum_prior_years: 3
+periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  confirmation: ['2025-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']
+evaluation:
+  bootstrap_samples: 5000
+  bootstrap_block_months: 3
+  mdd_tolerance_pp: 3.0

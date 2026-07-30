@@ -1,0 +1,17 @@
+﻿capability,passed,evidence
+V69 historical parity,True,0 KRW final NAV error
+V79 historical parity,True,0 KRW final NAV error
+Canonical adjusted OHLC,True,unique date/ticker + source tag
+Independent Paper accounts,True,2 accounts
+Transactional fill ledger,True,"4,166 strategy-session rows"
+Idempotent rerun,True,logical DB digest unchanged
+Risk gate,True,kill/concentration/gap/daily loss/drawdown/data
+Alerts,True,JSONL fail alerts
+Backup and restore,True,SQLite integrity ok
+Hourly scheduler,True,minimum interval 3600s
+Live order submission,False,hard blocked
+Complete delisted ETF PIT,False,observed-bar proxy only
+Independent corporate-action ledger,False,not available
+Frozen new-data forward evidence,False,60-120 sessions required
+Dual account web UI,False,not implemented
+Docker image build in this environment,False,runtime unavailable

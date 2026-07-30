@@ -1,0 +1,26 @@
+version: v95.0
+research_only: true
+live_execution_allowed: false
+active_policy: D1_MA120_EXPLICIT
+shared_parameters:
+  trend_ma_days: 120
+research_candidates:
+  - policy_id: MA120_HYSTERESIS_1PCT
+    hysteresis_band: 0.01
+  - policy_id: MA120_BREADTH_CONFIRM_40PCT
+    breadth_floor: 0.40
+    breadth_minimum_tickers: 5
+  - policy_id: MA120_VOLATILITY_GUARD_35PCT
+    volatility_window: 20
+    volatility_cap_annualized: 0.35
+promotion:
+  require_both_parents: true
+  full_return_tolerance_pp: 0.0
+  validation_return_tolerance_pp: 0.0
+  recent_1y_return_tolerance_pp: 0.0
+  mdd_tolerance_pp: 1.5
+  stress_return_tolerance_pp: 0.0
+  order_count_ratio_max: 1.25
+  minimum_changed_regime_days: 5
+  minimum_changed_regime_days_validation: 5
+  minimum_one_parent_full_improvement_pp: 1.0

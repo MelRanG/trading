@@ -1,0 +1,51 @@
+{
+  "version": "V102",
+  "agent": "MarketEvidenceAgent",
+  "active_policy": "MARKET_EVIDENCE_DIAGNOSTIC_ONLY",
+  "merged_modules": [
+    "PainSupply",
+    "DisclosureFundamental",
+    "News"
+  ],
+  "active_agent_contract_count": 7,
+  "live_authority": false,
+  "automatic_parent_mutation": false,
+  "news_status": "DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS",
+  "research_candidates": [
+    {
+      "strategy": "V69",
+      "policy": "FLOW_ENTRY_BLOCK_PERSISTENT_5D",
+      "status": "BACKTEST_REJECTED"
+    },
+    {
+      "strategy": "V79",
+      "policy": "FLOW_ENTRY_BLOCK_PERSISTENT_5D",
+      "status": "BACKTEST_REJECTED"
+    },
+    {
+      "strategy": "V69",
+      "policy": "DART_HARD_VETO_PERSISTENT_LOSS",
+      "status": "BACKTEST_REJECTED"
+    },
+    {
+      "strategy": "V79",
+      "policy": "DART_HARD_VETO_PERSISTENT_LOSS",
+      "status": "BACKTEST_REJECTED"
+    },
+    {
+      "strategy": "V69",
+      "policy": "FLOW_DART_CONSENSUS_HARD_VETO",
+      "status": "BACKTEST_REJECTED"
+    },
+    {
+      "strategy": "V79",
+      "policy": "FLOW_DART_CONSENSUS_HARD_VETO",
+      "status": "BACKTEST_REJECTED"
+    },
+    {
+      "strategy": "ALL",
+      "policy": "NEWS_OFFICIAL_SEVERE_EVENT_VETO",
+      "status": "DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS"
+    }
+  ]
+}

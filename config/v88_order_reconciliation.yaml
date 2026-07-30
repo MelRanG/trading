@@ -1,0 +1,17 @@
+version: v88.0
+mode: PAPER
+live_execution_allowed: false
+order_policy:
+  persist_before_submit: true
+  require_client_order_id: true
+  reconcile_after_transport_error: true
+  duplicate_submit_forbidden: true
+  dry_run_required: true
+reconciliation:
+  quantity_tolerance: 0
+  cash_tolerance_krw: 1
+  mismatch_mode: HOLD_ONLY
+  auto_reorder_on_mismatch: false
+paths:
+  journal_db: data/runtime/v88_order_journal.db
+  report_dir: reports/v88_order_reconciliation

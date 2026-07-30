@@ -1,0 +1,18 @@
+version: v94.0
+research_only: true
+live_execution_allowed: false
+active_policy: STRICT_PIT_CORRECTNESS
+strict_policy:
+  minimum_observation_coverage_20d: 0.95
+  minimum_observation_coverage_60d: 0.95
+  require_actual_d1_bar: true
+  count_actual_bars_only: true
+research_candidate:
+  policy_id: STABLE_LIQUIDITY_Q25
+  lower_quartile_value_20d_floor_krw: 100000000
+promotion:
+  strict_parent_nav_abs_error_krw_max: 1.0
+  stable_shared_policy_requires_both_parents_full_noninferior: true
+  stable_shared_policy_requires_both_parents_validation_noninferior: true
+  mdd_tolerance_pp: 2.0
+  cost_stress_required: true

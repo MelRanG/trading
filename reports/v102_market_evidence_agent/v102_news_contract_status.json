@@ -1,0 +1,9 @@
+{
+  "historical_pit_news_available": false,
+  "performance_backtest_run": false,
+  "status": "DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS",
+  "capital_authority": "OFFICIAL_CRITICAL_EVENTS_ONLY_AFTER_FORWARD_VALIDATION",
+  "general_sentiment_capital_authority": false,
+  "required_template": "data/contracts/v102_news_evidence_template.csv",
+  "required_contract": "config/v102_market_evidence_contract.yaml"
+}

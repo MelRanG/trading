@@ -1,0 +1,1 @@
+event_id,entity_ticker,entity_name,published_at,first_seen_at,source_tier,source_domain,source_document_id,event_type,severity,sentiment,title,url,corrected_event_id,ingestion_hash

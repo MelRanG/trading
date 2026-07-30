@@ -1,0 +1,8 @@
+agent,causal_role,mutation,parent_candidate,mutated_candidate,target_hash_changed_days,order_signature_changed_days,ending_nav_delta_krw,capital_path_changed,governance_output_changed,passed
+UniverseAgent,CAPITAL_CAUSAL,force all theme gates false,V69_PARENT,V69_FORCE_CORE_ONLY_MUTATION,1014,291,-29741421.773899034,True,False,True
+MarketRegimeAgent,CAPITAL_CAUSAL,replace D1 MA120 with volatility guard,V69_PARENT,V69_VOL_GUARD,87,81,8704665.319010198,True,False,True
+CandidateSelectionAgent,CAPITAL_CAUSAL,remove 63-session sleeve component,V79_PARENT,V79_NO63,308,214,15646816.520329162,True,False,True
+StrategyAgent,CAPITAL_CAUSAL,change fixed 80/20 to full leader,V69_PARENT,V69_FULL_LEADER_100,1014,276,7746385.572706148,True,False,True
+RiskExecutionAgent,CAPITAL_CAUSAL,change rebalance band only,V69_PARENT,V69_BAND_2PP,0,260,28818.004946619272,True,False,True
+MarketEvidenceAgent,CAPITAL_CAUSAL_CANDIDATE_DIAGNOSTIC_ACTIVE,apply DART persistent-loss veto,V79_PARENT,V79_DART_VETO,100,25,-2937589.0277278423,True,False,True
+ReviewFeedbackAgent,GOVERNANCE_CAUSAL_NO_CAPITAL,change maximum parallel shadow slots from 3 to 1,V79_NO63+V69_VOL_GUARD+V79_NO63_VOL_GUARD,V79_NO63,0,0,0.0,False,True,True

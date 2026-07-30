@@ -1,0 +1,30 @@
+{
+  "release": "V104_END_TO_END_CAUSAL_CHALLENGER_AUDIT",
+  "status": "explicit_parent_dispatch_and_challenger_adapters_implemented_forward_not_started",
+  "parent_parity": [
+    {
+      "strategy": "V69",
+      "legacy_nav_krw": 76797465.61576533,
+      "explicit_v104_nav_krw": 76797465.61576533,
+      "abs_error_krw": 0.0
+    },
+    {
+      "strategy": "V79",
+      "legacy_nav_krw": 85075342.0114402,
+      "explicit_v104_nav_krw": 85075342.0114402,
+      "abs_error_krw": 0.0
+    }
+  ],
+  "enabled_forward_candidates": [
+    "V79_NO63",
+    "V69_VOL_GUARD",
+    "V79_NO63_VOL_GUARD"
+  ],
+  "historical_positive_candidates": 13,
+  "capital_causal_agents": 6,
+  "governance_causal_agents": 1,
+  "quality_passed": true,
+  "automatic_promotion": false,
+  "new_forward_observations": 0,
+  "live_execution_allowed": false
+}

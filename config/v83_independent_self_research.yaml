@@ -1,0 +1,48 @@
+version: v83.0
+research_only: true
+live_execution_allowed: false
+data_end: '2026-07-03'
+feedback:
+  outcome_horizon: 60
+  rolling_evidence_sessions: 504
+  purge_sessions: 60
+  minimum_matured_events: 8
+  issue_minimum_rate: 0.20
+  issue_minimum_severity: 0.015
+  proposal_limit_per_fold: 1
+walk_forward:
+  first_test_year: 2021
+  promotion_return_delta_pp: 1.0
+  promotion_mdd_tolerance_pp: 3.0
+  promotion_stress_return_delta_pp: 0.0
+  test_years: [2021, 2022, 2023, 2024, 2025, 2026]
+execution:
+  v69_rebalance_policy: DAILY_EXACT
+  v79_rebalance_band: 0.05
+robustness:
+  scale_return_tolerance_pp: 0.50
+  future_mutation_target_tolerance: 0.0
+  small_noise_bps: 1.0
+  small_noise_target_agreement_min: 0.90
+  small_noise_return_tolerance_pp: 8.0
+families:
+  V69:
+    parent: V69_PARENT
+    candidates:
+      late_entry: V69_FAST_ALPHA
+      broad_rally_undercapture: V69_FAST_ALPHA
+      selection_error: V69_VOL_ADJUSTED_ALPHA
+      volatility_pain: V69_VOL_ADJUSTED_ALPHA
+      early_exit: V69_EXIT_CONFIRM_2
+  V79:
+    parent: V79_PARENT
+    candidates:
+      late_entry: V79_FAST_ROTATION
+      selection_error: V79_VOL_ADJUSTED_TREND
+      volatility_pain: V79_VOL_ADJUSTED_TREND
+      early_exit: V79_EXIT_CONFIRM_2
+      broad_rally_undercapture: V79_SIGNAL_STRENGTH_WEIGHT
+periods:
+  development: ['2018-01-01', '2020-12-31']
+  walk_forward: ['2021-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']

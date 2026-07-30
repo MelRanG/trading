@@ -1,0 +1,253 @@
+{
+  "schema_version": 2,
+  "release": "V104_2_CODEX_CLEAN_RELEASE",
+  "release_date": "2026-07-30",
+  "authoritative_docs": [
+    "README.md",
+    "AGENTS.md",
+    "docs/ARCHITECTURE.md",
+    "docs/CONTRACTS.md",
+    "docs/VALIDATION.md",
+    "docs/OPERATIONS.md",
+    "RELEASE_STATE.json"
+  ],
+  "runtime_path": [
+    "V87",
+    "V94",
+    "V95",
+    "V99",
+    "V100",
+    "V102",
+    "V101",
+    "V104_ADAPTER",
+    "V84",
+    "V85",
+    "V86",
+    "V88",
+    "V104_FEEDBACK_ROUTING",
+    "V89"
+  ],
+  "active_agent_contracts": [
+    {
+      "agent": "UniverseAgent",
+      "role": "CAPITAL_CAUSAL",
+      "version": "V94"
+    },
+    {
+      "agent": "MarketRegimeAgent",
+      "role": "CAPITAL_CAUSAL",
+      "version": "V95"
+    },
+    {
+      "agent": "CandidateSelectionAgent",
+      "role": "CAPITAL_CAUSAL",
+      "version": "V99"
+    },
+    {
+      "agent": "StrategyAgent",
+      "role": "CAPITAL_CAUSAL",
+      "version": "V100"
+    },
+    {
+      "agent": "MarketEvidenceAgent",
+      "role": "CAPITAL_CAUSAL_CANDIDATE_DIAGNOSTIC_ACTIVE",
+      "version": "V102"
+    },
+    {
+      "agent": "RiskExecutionAgent",
+      "role": "CAPITAL_CAUSAL",
+      "version": "V101"
+    },
+    {
+      "agent": "ReviewFeedbackAgent",
+      "role": "GOVERNANCE_CAUSAL_NO_CAPITAL",
+      "version": "V104"
+    }
+  ],
+  "critical_defect": {
+    "id": "V84_REGISTRY_METADATA_NOT_RUNTIME_DISPATCH",
+    "status": "CONFIRMED_AND_FIXED",
+    "description": "V84 embedded baseline functions ignored registry policy changes for Universe/Regime/Selection; V104 registry entries now dispatch executable candidate adapters.",
+    "legacy_path_preserved_for_parity": true
+  },
+  "strategies": [
+    {
+      "strategy_id": "v69_fixed80_daily_control",
+      "runtime_candidate_id": "V69_PARENT",
+      "role": "CHAMPION",
+      "status": "FROZEN_PAPER",
+      "live_authority": false
+    },
+    {
+      "strategy_id": "v79_core70_generic_trend30",
+      "runtime_candidate_id": "V79_PARENT",
+      "role": "EXISTING_CHALLENGER",
+      "status": "FROZEN_PAPER",
+      "live_authority": false
+    }
+  ],
+  "paper_research_challengers": [
+    {
+      "candidate_id": "V79_NO63",
+      "paper_account_id": "PAPER-V104-V79_NO63",
+      "status": "IMPLEMENTED_AND_TESTED_FORWARD_NOT_STARTED"
+    },
+    {
+      "candidate_id": "V69_VOL_GUARD",
+      "paper_account_id": "PAPER-V104-V69_VOL_GUARD",
+      "status": "IMPLEMENTED_AND_TESTED_FORWARD_NOT_STARTED"
+    },
+    {
+      "candidate_id": "V79_NO63_VOL_GUARD",
+      "paper_account_id": "PAPER-V104-V79_NO63_VOL_GUARD",
+      "status": "IMPLEMENTED_AND_TESTED_FORWARD_NOT_STARTED"
+    }
+  ],
+  "historical_screening": {
+    "historical_data_end": "2026-07-03",
+    "positive_candidate_rows_remembered": 13,
+    "candidate_count_rerun": 19,
+    "best_single_component": {
+      "candidate_id": "V79_NO63",
+      "return_pct": 907.221585,
+      "parent_delta_pp": 156.468165,
+      "validation_delta_pp": 12.891389,
+      "purged_validation_delta_pp": 10.159384
+    },
+    "best_preregistered_composite": {
+      "candidate_id": "V79_NO63_VOL_GUARD",
+      "return_pct": 990.469585,
+      "parent_delta_pp": 239.716165,
+      "validation_delta_pp": 12.891389,
+      "purged_validation_delta_pp": 10.159384
+    },
+    "usage": "RETROSPECTIVE_SCREENING_ONLY_NO_PROMOTION"
+  },
+  "causal_audit": {
+    "capital_agents_passed": 6,
+    "governance_agents_passed": 1,
+    "parent_nav_parity_abs_error_krw": {
+      "V69": 0.0,
+      "V79": 0.0
+    },
+    "future_mutation_candidates_passed": 5
+  },
+  "forward_trial": {
+    "status": "READY_NOT_STARTED",
+    "new_forward_observations": 0,
+    "minimum_sessions": 60,
+    "recommended_sessions": 120,
+    "runtime_adapters_implemented": 3,
+    "human_approval_required": true
+  },
+  "input_integrity": {
+    "candidate_input_hash_binds": [
+      "configs",
+      "universe",
+      "all_daily_price_csvs",
+      "market_investor_flow",
+      "opendart_pit"
+    ],
+    "current_input_hash": "c71d1dc5e7b0f2a4fcf978c67a7f3e5311be630403adfd1ab8bb4519fca92a90"
+  },
+  "execution": {
+    "active_policy": "PARENT_EXECUTION_CONTRACT",
+    "broker_contract_status": "UNVERIFIED_EXTERNAL",
+    "live_build_capability": false,
+    "live_authority_policy": "STRUCTURAL_FAIL_CLOSED_ENVIRONMENT_CANNOT_ENABLE",
+    "live_execution_allowed": false
+  },
+  "promotion": {
+    "automatic_parent_mutation": false,
+    "automatic_champion_promotion": false,
+    "automatic_live_promotion": false,
+    "human_approval_required": true
+  },
+  "release_validation": {
+    "collected_pytest_total": 124,
+    "direct_grouped_pytest_passed": 120,
+    "direct_grouped_pytest_failed": 0,
+    "v100_long_research_tests_not_reexecuted": 4,
+    "v100_unchanged_source_config_test_report_sha_files": 22,
+    "v100_runtime_dispatch_test_passed": true,
+    "compileall_passed": true,
+    "v104_quality_gates_passed": 14,
+    "clean_key_pytest_passed": 30,
+    "clean_forward_fail_closed_passed": true,
+    "clean_v89_frozen_hash_passed": true,
+    "clean_runtime_artifacts": true,
+    "clean_sha256_files_verified": 535,
+    "v104_1_docs_remaining": 9,
+    "v104_1_superseded_docs_removed": 31,
+    "v104_1_core_pytest_passed": 30,
+    "v104_1_compileall_passed": true,
+    "v104_1_forward_fail_closed_passed": true,
+    "v104_1_runtime_logic_hash_changes": 0,
+    "v104_1_inventory_files": 502,
+    "v104_1_sha256_files_verified": 504,
+    "v104_2_selected_regression_passed": 20,
+    "v104_2_bridge_tests_passed": 3,
+    "v104_2_bridge_reproduction_passed": true,
+    "v104_2_compileall_passed": true,
+    "v104_2_dynamic_rerun_blocked": true
+  },
+  "next_external_steps": [
+    "Append actual market data after 2026-07-03 and run scripts/run_v104_forward_session.py",
+    "Collect parent/candidate targets, orders, fills, costs, NAV and reconciliation for at least 60 sessions",
+    "Use 120 sessions and at least 10 changed decisions before Champion review",
+    "Keep live execution blocked until broker contract and capacity are verified"
+  ],
+  "runtime_release": "V104_END_TO_END_CAUSAL_CHALLENGER_AUDIT",
+  "packaging_revision": {
+    "revision": "V104.2-CODEX-CLEAN",
+    "logic_changed": false,
+    "purpose": "Codex handoff documentation audit and consolidation only; V104.2 runtime and evidence unchanged",
+    "legacy_machine_evidence_retained": true
+  },
+  "documentation_policy": {
+    "authoritative_docs": [
+      "README.md",
+      "AGENTS.md",
+      "docs/ARCHITECTURE.md",
+      "docs/CONTRACTS.md",
+      "docs/VALIDATION.md",
+      "docs/OPERATIONS.md",
+      "RELEASE_STATE.json"
+    ],
+    "compatibility_docs": [
+      "docs/REAL_DATA_EXECUTION_CHECKLIST.md"
+    ],
+    "legacy_reports_are_machine_dependencies": true,
+    "legacy_reports_must_not_override_v104_state": true,
+    "removed_documents_external_backup": "removed_documents_backup.zip"
+  },
+  "jul30_crash_audit": {
+    "pre_crash_cutoff": "2026-07-27",
+    "crash_inclusive_cutoff": "2026-07-30",
+    "verified_forward_bridge": true,
+    "full_universe_dynamic_rerun": false,
+    "full_universe_dynamic_rerun_status": "BLOCKED_INCOMPLETE_PIT_OHLCV",
+    "no_interpolation_or_fabrication": true,
+    "best_jul30_nav_candidate": "V79_NO63_VOL_GUARD",
+    "lowest_crash_loss_pct_candidate": "V69_VOL_GUARD"
+  },
+  "codex_clean_release_validation": {
+    "status": "PASSED",
+    "markdown_links_checked": 27,
+    "markdown_links_passed": true,
+    "deleted_reference_scan_passed": true,
+    "release_state_validated": true,
+    "core_pytest_passed": 49,
+    "core_pytest_failed": 0,
+    "compileall_passed": true,
+    "v104_2_bridge_reproduction_passed": true,
+    "forward_fail_closed_status": "NO_NEW_SESSION_AFTER_V104_FREEZE",
+    "forward_rows_appended": 0,
+    "protected_file_count": 212,
+    "protected_hash_changes": 0,
+    "protected_aggregate_sha256": "3b03a4cbaf78b8c24f312dda1f27d5e2f8ab594a535c8dde280dedfaa8655de2",
+    "live_execution_blocked": true,
+    "v88_non_dry_run_submit_blocked": true,
+    "toss_live_order_submit_blocked": true
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "version": "V86",
+  "mode": "PAPER",
+  "live_execution_allowed": false,
+  "architecture": {
+    "ui_instances": 1,
+    "ui_model": "STRATEGY_AGNOSTIC_CONTROL_PLANE",
+    "paper_account_model": "ONE_ISOLATED_ACCOUNT_PER_RUNTIME_STRATEGY",
+    "feedback_candidate_model": "DYNAMIC_REGISTRY_SHADOW_FIRST",
+    "final_convergence": "DEFAULT_VIEW_FOLLOWS_CHAMPION_WITH_HISTORY_RETAINED"
+  },
+  "default_strategy_id": "v69_fixed80_daily_control",
+  "selected_strategy_id": "v69_fixed80_daily_control",
+  "strategies": [
+    {
+      "strategy_id": "v69_fixed80_daily_control",
+      "label": "V69 corrected fixed-80 daily champion",
+      "role": "CHAMPION",
+      "status": "PAPER_CHAMPION",
+      "parent_strategy_id": null,
+      "created_by": "ResearchHarness",
+      "source": "config/strategy_registry_v84.yaml",
+      "account_id": "PAPER-V69",
+      "runtime_compatible": true,
+      "parameters": {
+        "leader_weight": 0.8,
+        "rebalance_band": 0.0,
+        "price_policy": "ADJUSTED_OHLC_ONLY"
+      },
+      "scenario": null,
+      "account_available": false,
+      "account_summary": null
+    },
+    {
+      "strategy_id": "v79_core70_generic_trend30",
+      "label": "V79 generic trend 70/30 challenger",
+      "role": "CHALLENGER",
+      "status": "PAPER_CHALLENGER",
+      "parent_strategy_id": null,
+      "created_by": "ResearchHarness",
+      "source": "config/strategy_registry_v84.yaml",
+      "account_id": "PAPER-V79",
+      "runtime_compatible": true,
+      "parameters": {
+        "base_share": 0.7,
+        "sleeve_share": 0.3,
+        "rebalance_band": 0.05,
+        "price_policy": "ADJUSTED_OHLC_ONLY"
+      },
+      "scenario": null,
+      "account_available": false,
+      "account_summary": null
+    },
+    {
+      "strategy_id": "feedback_v69_exit_confirm_2",
+      "label": "V69 Exit Confirm 2",
+      "role": "SHADOW",
+      "status": "BACKTEST_REJECTED",
+      "parent_strategy_id": "v69_fixed80_daily_control",
+      "created_by": "FeedbackAgent",
+      "source": "reports/v92_automated_research/v92_candidate_summary.csv",
+      "account_id": null,
+      "runtime_compatible": false,
+      "parameters": {
+        "issues": [
+          "early_exit"
+        ],
+        "changed_components": [
+          "exit_confirmation"
+        ]
+      },
+      "scenario": "V69_EXIT_CONFIRM_2",
+      "backtest_metrics": {
+        "median_return_delta_pp": 0.0,
+        "median_stress_delta_pp": 0.0,
+        "passed_folds": 0,
+        "evaluated_folds": 1
+      },
+      "account_available": false,
+      "account_summary": null
+    },
+    {
+      "strategy_id": "feedback_v69_vol_adjusted_alpha",
+      "label": "V69 Vol Adjusted Alpha",
+      "role": "SHADOW",
+      "status": "BACKTEST_REJECTED",
+      "parent_strategy_id": "v69_fixed80_daily_control",
+      "created_by": "FeedbackAgent",
+      "source": "reports/v92_automated_research/v92_candidate_summary.csv",
+      "account_id": null,
+      "runtime_compatible": false,
+      "parameters": {
+        "issues": [
+          "volatility_pain"
+        ],
+        "changed_components": [
+          "alpha_scoring"
+        ]
+      },
+      "scenario": "V69_VOL_ADJUSTED_ALPHA",
+      "backtest_metrics": {
+        "median_return_delta_pp": -9.0329276515522,
+        "median_stress_delta_pp": -8.913069311828707,
+        "passed_folds": 0,
+        "evaluated_folds": 1
+      },
+      "account_available": false,
+      "account_summary": null
+    },
+    {
+      "strategy_id": "feedback_v79_exit_confirm_2",
+      "label": "V79 Exit Confirm 2",
+      "role": "SHADOW",
+      "status": "BACKTEST_REJECTED",
+      "parent_strategy_id": "v79_core70_generic_trend30",
+      "created_by": "FeedbackAgent",
+      "source": "reports/v92_automated_research/v92_candidate_summary.csv",
+      "account_id": null,
+      "runtime_compatible": false,
+      "parameters": {
+        "issues": [
+          "early_exit"
+        ],
+        "changed_components": [
+          "sleeve_exit_confirmation"
+        ]
+      },
+      "scenario": "V79_EXIT_CONFIRM_2",
+      "backtest_metrics": {
+        "median_return_delta_pp": 0.0,
+        "median_stress_delta_pp": 0.0,
+        "passed_folds": 0,
+        "evaluated_folds": 1
+      },
+      "account_available": false,
+      "account_summary": null
+    },
+    {
+      "strategy_id": "feedback_v79_vol_adjusted_trend",
+      "label": "V79 Vol Adjusted Trend",
+      "role": "SHADOW",
+      "status": "BACKTEST_REJECTED",
+      "parent_strategy_id": "v79_core70_generic_trend30",
+      "created_by": "FeedbackAgent",
+      "source": "reports/v92_automated_research/v92_candidate_summary.csv",
+      "account_id": null,
+      "runtime_compatible": false,
+      "parameters": {
+        "issues": [
+          "volatility_pain"
+        ],
+        "changed_components": [
+          "sleeve_alpha_scoring"
+        ]
+      },
+      "scenario": "V79_VOL_ADJUSTED_TREND",
+      "backtest_metrics": {
+        "median_return_delta_pp": 0.0,
+        "median_stress_delta_pp": 0.0,
+        "passed_folds": 0,
+        "evaluated_folds": 1
+      },
+      "account_available": false,
+      "account_summary": null
+    }
+  ],
+  "selected": {
+    "strategy": {
+      "strategy_id": "v69_fixed80_daily_control",
+      "label": "V69 corrected fixed-80 daily champion",
+      "role": "CHAMPION",
+      "status": "PAPER_CHAMPION",
+      "parent_strategy_id": null,
+      "created_by": "ResearchHarness",
+      "source": "config/strategy_registry_v84.yaml",
+      "account_id": "PAPER-V69",
+      "runtime_compatible": true,
+      "parameters": {
+        "leader_weight": 0.8,
+        "rebalance_band": 0.0,
+        "price_policy": "ADJUSTED_OHLC_ONLY"
+      },
+      "scenario": null,
+      "account_available": false,
+      "account_summary": null
+    },
+    "account": null,
+    "equity_curve": [],
+    "fills": [],
+    "holdings": [],
+    "research_only": true
+  },
+  "operations": {
+    "latest_manifest": {},
+    "stages": {},
+    "status": "NOT_RUN"
+  },
+  "data_health": {
+    "available": true,
+    "path": "data/canonical/v84_market_bars.csv",
+    "rows": 45972,
+    "ticker_count": 25,
+    "start": "2018-01-02",
+    "end": "2026-07-03",
+    "duplicates": 0,
+    "price_scales": [
+      "ADJUSTED_OHLC"
+    ],
+    "sources": [
+      "toss_openapi_1d_adjusted"
+    ]
+  },
+  "alerts": [],
+  "readiness": {
+    "actual_data": {
+      "available": true,
+      "status": "v87_actual_data_contract_ready_live_blocked",
+      "gates_passed": true
+    },
+    "order_reconciliation": {
+      "available": true,
+      "status": "v88_order_lifecycle_reconciliation_ready_live_blocked",
+      "gates_passed": true
+    },
+    "forward_governance": {
+      "available": true,
+      "status": "v89_frozen_forward_governance_ready_not_started_live_blocked",
+      "gates_passed": true,
+      "canary_eligible": false,
+      "next_stage": "READ_ONLY",
+      "strategy_progress": [
+        {
+          "strategy_id": "v69_fixed80_daily_control",
+          "sessions": 0,
+          "minimum_met": false,
+          "recommended_met": false,
+          "target_failures": 0,
+          "drift_failures": 0,
+          "data_failures": 0,
+          "reconciliation_failures": 0,
+          "critical_alerts_unresolved": 0,
+          "paper_gate_passed": false
+        },
+        {
+          "strategy_id": "v79_core70_generic_trend30",
+          "sessions": 0,
+          "minimum_met": false,
+          "recommended_met": false,
+          "target_failures": 0,
+          "drift_failures": 0,
+          "data_failures": 0,
+          "reconciliation_failures": 0,
+          "critical_alerts_unresolved": 0,
+          "paper_gate_passed": false
+        }
+      ]
+    }
+  },
+  "governance": {
+    "automatic_live_promotion": false,
+    "manual_live_orders": false,
+    "feedback_may_register_shadow_candidate": true,
+    "feedback_may_mutate_champion_in_place": false
+  }
+}

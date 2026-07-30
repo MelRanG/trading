@@ -1,0 +1,11 @@
+gate,passed,detail
+NO_THEME_OR_TICKER_SPECIFIC_STRATEGY_RULE,True,"{""passed"": true, ""forbidden_hits"": []}"
+EXACTLY_TWO_PREREGISTERED_BLEND_CANDIDATES,True,"V79_GENERIC_TREND_BASE70_SLEEVE30,V79_GENERIC_TREND_BASE80_SLEEVE20"
+STRICT_D1_INFORMATION_CUTOFF,True,generic sleeve decisions use D-1 information
+PERSISTENCE_AND_HYSTERESIS_ENABLED,True,"min_hold=20, margin=0.1, confirmations=2"
+MULTI_SECTOR_BEHAVIOUR_OBSERVED,True,distinct_selected_sectors=7
+TARGET_WEIGHTS_SUM_TO_ONE,True,all daily target maps sum to 1
+CORRECTED_ORDER_MATH,True,scenarios=3
+OBSERVED_PERIOD_EXCLUDED_FROM_RESEARCH_SELECTION,True,selection gates use development and validation only
+RESEARCH_SELECTION,False,none
+LIVE_AND_PAPER_AUTO_PROMOTION_BLOCKED,True,requires at least 60 new unseen forward sessions

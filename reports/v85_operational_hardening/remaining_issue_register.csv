@@ -1,0 +1,15 @@
+﻿priority,area,status,detail
+P0,Execution parity,RESOLVED_V84,V69 and V79 official historical engines match the common execution model with KRW 0 final NAV error.
+P0,Dual Paper accounts,RESOLVED_V85_MINIMUM,"Independent V69/V79 cash, holdings, fills and session ledgers are stored transactionally and idempotently."
+P0,Price/data contract,RESOLVED_V84_MINIMUM,"Canonical adjusted-OHLC long table, source tag, uniqueness and per-file SHA-256 manifest are generated."
+P0,Configuration lineage,RESOLVED,V69 leader weight conflict removed; runtime registry contains exactly V69 champion and V79 challenger.
+P1,Operating-day orchestration,RESOLVED_V85_MINIMUM,"Ten-stage idempotent workflow, hourly scheduler, run manifests and fail-closed stage state are implemented."
+P1,Risk controls,RESOLVED_V85_MINIMUM,"Kill switch, concentration, open gap, daily loss, rolling drawdown, price and ADV gates are implemented."
+P1,Backup/recovery,RESOLVED,"SQLite online backup, SHA-256 and restore integrity/account/session checks pass."
+P1,Point-in-time universe,PARTIAL,Observed first/last bar availability proxy exists; complete delisted/liquidated ETF and historical taxonomy data remain unavailable.
+P1,Corporate actions,OPEN,"Adjusted OHLC source is enforced, but distributions, splits and mergers are not independently reconciled to an event ledger."
+P1,Frozen forward evidence,OPEN,A 60-120 session frozen dual-Paper period on newly arriving data is still required.
+P2,Dual-account dashboard,OPEN,Existing V72 dashboard is single-account; V85 produces reports/DB but no dedicated dual-account UI.
+P2,Official exchange calendar,OPEN,The orchestrator uses the canonical data index; an independently verified KRX holiday/session feed is not yet integrated.
+P2,Intraday microstructure,OPEN,"Daily adjusted OHLC and ADV impact are modeled; real order book, halts, price limits and intraday slicing remain unverified."
+P2,Container build,UNVERIFIED_ENVIRONMENT,"Docker/Compose definitions were updated, but no Docker or Podman executable was available in the audit environment."

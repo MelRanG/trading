@@ -1,0 +1,48 @@
+version: v103.0
+active_policy: FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL
+research_only: true
+live_execution_allowed: false
+automatic_parent_mutation: false
+automatic_candidate_promotion: false
+automatic_capital_authority: false
+historical_data_end: '2026-07-03'
+research_freeze_date: '2026-07-19'
+research_epoch: HISTORICAL_REUSED_SCREENING_ONLY
+legacy_pipeline:
+  run_if_missing: true
+  required_quality_reports:
+    - reports/v90_trade_attribution/v90_quality_gates.csv
+    - reports/v91_hypothesis_generator/v91_quality_gates.csv
+    - reports/v92_automated_research/v92_quality_gates.csv
+    - reports/v93_shadow_promotion/v93_quality_gates.csv
+experiment_governance:
+  one_component_per_hypothesis: true
+  maximum_new_hypotheses_per_strategy_cycle: 1
+  maximum_parallel_forward_candidates_per_strategy: 3
+  queue_order: PREREGISTRATION_RELEASE_THEN_SOURCE_ROW
+  performance_ranking_for_queue_forbidden: true
+  duplicate_fingerprint_forbidden: true
+  same_historical_data_retuning_forbidden: true
+  promotion_from_historical_backtest_forbidden: true
+  nominal_alpha: 0.10
+  multiple_testing_method: HOLM_BONFERRONI_FORWARD_FAMILY
+forward:
+  minimum_sessions_for_evaluation: 60
+  recommended_sessions_for_promotion_review: 120
+  minimum_changed_decisions_for_evaluation: 5
+  minimum_changed_decisions_for_promotion_review: 10
+  minimum_matured_20d_events: 5
+  minimum_matured_60d_events: 5
+  minimum_cost_adjusted_excess_return_pp: 0.0
+  mdd_tolerance_pp: 0.0
+  bootstrap_probability_min: 0.90
+  reconciliation_failures_allowed: 0
+  data_failures_allowed: 0
+  human_approval_required: true
+paths:
+  attempt_ledger: reports/v103_review_feedback_agent/v103_research_attempt_ledger.csv
+  lifecycle: reports/v103_review_feedback_agent/v103_candidate_lifecycle.csv
+  multiple_testing: reports/v103_review_feedback_agent/v103_multiple_testing_audit.csv
+  shadow_registry: reports/v103_review_feedback_agent/v103_forward_shadow_registry.json
+  memory: reports/v103_review_feedback_agent/v103_research_memory.json
+  forward_observations: runtime/v103_review_feedback/forward_observations.csv

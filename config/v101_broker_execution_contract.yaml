@@ -1,0 +1,24 @@
+version: v101.0
+status: UNVERIFIED_EXTERNAL
+live_execution_allowed: false
+broker_name: UNMAPPED
+fields_to_confirm:
+  session_calendar: null
+  order_entry_windows: null
+  supported_order_types: []
+  tick_size_table: null
+  daily_price_limit_rules: null
+  minimum_order_quantity: null
+  minimum_order_notional_krw: null
+  buy_fee_schedule_effective_dated: null
+  sell_fee_and_tax_schedule_effective_dated: null
+  buying_power_and_settlement_rules: null
+  partial_fill_status_mapping: null
+  reject_code_dictionary: null
+  cancel_replace_semantics: null
+  market_order_price_protection: null
+  client_order_id_supported: null
+  order_query_retention_window: null
+  quote_timestamp_timezone: Asia/Seoul
+  broker_timestamp_timezone: null
+block_live_when_unconfirmed: true

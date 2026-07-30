@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quant Harness · Strategy Control Plane</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">QUANT HARNESS V86</p>
+      <h1>Strategy Control Plane</h1>
+      <p class="subtitle">하나의 화면에서 챔피언·챌린저·Feedback Shadow 전략과 독립 Paper 계좌를 관리합니다.</p>
+    </div>
+    <div class="mode"><span class="pulse"></span><strong>PAPER</strong><small>읽기 전용 · 실주문 차단</small></div>
+  </header>
+
+  <main>
+    <section class="system-strip" id="system-strip"></section>
+
+    <section class="panel strategy-panel">
+      <div class="panel-head responsive-head">
+        <div><p class="eyebrow">STRATEGY LIFECYCLE</p><h2>전략 포트폴리오</h2></div>
+        <div class="selector-wrap">
+          <label for="strategy-select">상세 전략</label>
+          <select id="strategy-select"></select>
+          <button id="refresh">새로고침</button>
+        </div>
+      </div>
+      <div id="strategy-cards" class="strategy-cards loading">전략 Registry를 불러오는 중입니다.</div>
+      <p class="notice">전략마다 별도 UI를 만들지 않습니다. 운영 중인 전략은 계좌만 격리하고, FeedbackAgent 후보는 Registry에 추가되어 이 화면에 자동으로 나타납니다.</p>
+    </section>
+
+    <section class="grid two">
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">SELECTED STRATEGY</p><h2 id="selected-title">전략 상세</h2></div><span id="selected-role" class="role-badge"></span></div>
+        <div id="selected-metrics" class="mini-metrics"></div>
+        <div id="selected-meta" class="meta-list"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">EQUITY CURVE</p><h2>Paper NAV</h2></div></div>
+        <div id="equity-chart" class="chart"></div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="panel"><div class="panel-head"><div><p class="eyebrow">POSITIONS</p><h2>독립 계좌 보유</h2></div></div><div id="holdings" class="table-wrap"></div></article>
+      <article class="panel"><div class="panel-head"><div><p class="eyebrow">FILLS</p><h2>최근 체결</h2></div></div><div id="fills" class="table-wrap"></div></article>
+    </section>
+
+    <section class="grid two">
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">OPERATIONS</p><h2>운영 단계</h2></div><span id="operation-status" class="status-pill"></span></div>
+        <div id="stages" class="stage-grid"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">DATA CONTRACT</p><h2>데이터 상태</h2></div></div>
+        <div id="data-health" class="health-grid"></div>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">FEEDBACK GOVERNANCE</p><h2>후보 생성·승격 정책</h2></div></div>
+        <div id="governance" class="governance"></div>
+      </article>
+      <article class="panel">
+        <div class="panel-head"><div><p class="eyebrow">ALERTS</p><h2>최근 경보</h2></div></div>
+        <div id="alerts" class="alert-list"></div>
+      </article>
+    </section>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>

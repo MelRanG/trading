@@ -1,0 +1,58 @@
+version: v77.0
+research_only: true
+live_execution_allowed: false
+paper_runtime_auto_promotion_allowed: false
+start_date: '2018-01-02'
+end_date: '2026-07-03'
+initial_capital_krw: 10000000
+core_ticker: '069500'
+benchmark_ticker: 'KS11'
+semiconductor_benchmark_ticker: '091160'
+price_policy:
+  etf_source: data/toss_v19c_daily
+  required_source_tag: toss_openapi_1d_adjusted
+  allow_open_fallback: false
+  allow_forward_fill_tradable_prices: false
+allocation_candidates:
+  - FIXED_20
+  - FIXED_40
+  - FIXED_60
+  - FIXED_80
+  - FIXED_100
+  - SCORE_CONFIDENCE_40_80
+  - INVERSE_VOL_20_80
+  - RISK_CONFIDENCE_BLEND_20_80
+rebalancing_candidates:
+  - DAILY_EXACT
+  - MONTHLY_OR_CHANGE
+  - BAND_5PP
+  - BAND_10PP
+  - EVENT_ONLY
+execution:
+  base:
+    buy_fee_bps: 1.5
+    sell_fee_bps: 21.5
+    half_spread_bps: 5.0
+    impact_bps_at_1pct_adv: 10.0
+    max_impact_bps: 50.0
+    max_participation_of_d1_adv: 0.01
+    minimum_order_notional_krw: 100000
+  stress:
+    buy_fee_bps: 1.5
+    sell_fee_bps: 21.5
+    half_spread_bps: 10.0
+    impact_bps_at_1pct_adv: 20.0
+    max_impact_bps: 100.0
+    max_participation_of_d1_adv: 0.005
+    minimum_order_notional_krw: 100000
+selection_periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  observed_only: ['2025-01-01', '2026-07-03']
+promotion_gates:
+  validation_return_not_below_fixed80_daily_pct_points: 0.0
+  sharpe_not_below_fixed80_daily: true
+  mdd_not_worse_pct_points: 1.0
+  stress_return_positive: true
+  independent_nav_max_abs_error_krw: 0.01
+  live_remains_blocked: true

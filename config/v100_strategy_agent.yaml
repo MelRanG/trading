@@ -1,0 +1,34 @@
+version: v100.0
+research_only: true
+live_execution_allowed: false
+active_policy: FIXED_PARENT_ALLOCATIONS
+purge_sessions: 60
+parallel_workers: 1
+research_candidates:
+  - policy_id: FULL_LEADER_100
+    description: prior V77 preregistered unresolved candidate; deploy 100 percent to selected leader and core only as fallback
+  - policy_id: UNCERTAINTY_BUDGET_60_80
+    description: scale theme allocation from 60 to 80 percent using D-1 top-runner gap relative to candidate score IQR
+  - policy_id: V79_SEMANTIC_SECTOR_CAP_70
+    description: cap aggregate V79 non-core exposure to one semantic sector at 70 percent and redirect excess to core
+uncertainty_budget:
+  minimum_base_leader_weight: 0.60
+  maximum_base_leader_weight: 0.80
+  full_confidence_normalized_gap: 1.0
+  minimum_sleeve_deployment_fraction: 0.50
+sector_concentration:
+  maximum_v79_semantic_sector_weight: 0.70
+promotion:
+  development_tolerance_pp: 3.0
+  validation_improvement_min_pp: 1.0
+  purged_validation_improvement_min_pp: 1.0
+  recent1y_tolerance_pp: 3.0
+  stress_tolerance_pp: 3.0
+  mdd_tolerance_pp: 2.0
+  order_count_ratio_max: 1.25
+  minimum_changed_target_days_validation: 5
+  validation_bootstrap_probability_min: 0.90
+  familywise_probability_min: 0.90
+  maximum_noncore_ticker_weight: 0.86
+  bootstrap_samples: 2000
+  automatic_parent_mutation: false

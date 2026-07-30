@@ -1,0 +1,32 @@
+version: v98.0
+research_only: true
+live_execution_allowed: false
+active_policy: TOP_SCORE_SECTOR_DEDUP
+sector_representation:
+  policy: STATIC_TOP_SCORE_EXPLICIT
+  taxonomy_source: data/toss_v19c_daily/universe.csv
+  taxonomy_static_proxy: true
+research_candidates:
+  - policy_id: CROSS_HORIZON_CONSENSUS
+    consensus_min_rank: 0.60
+    consensus_required_horizons: 2
+    dispersion_penalty: 0.20
+  - policy_id: UNCERTAINTY_AWARE_ROTATION
+    iqr_multiplier: 0.25
+periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  observed_only: ['2025-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']
+promotion:
+  development_return_tolerance_pp: 3.0
+  validation_improvement_min_pp: 1.0
+  recent_1y_return_tolerance_pp: 3.0
+  stress_return_tolerance_pp: 3.0
+  mdd_tolerance_pp: 2.0
+  order_count_ratio_max: 1.25
+  minimum_changed_reviews_validation: 5
+  selection_edge_20d_tolerance_pp: 1.0
+  selection_edge_60d_tolerance_pp: 1.0
+  require_both_v69_v79: false
+  automatic_parent_mutation: false

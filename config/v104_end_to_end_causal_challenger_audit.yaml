@@ -1,0 +1,225 @@
+version: v104.0
+research_only: true
+live_execution_allowed: false
+historical_data_usage: RETROSPECTIVE_SCREENING_ONLY
+historical_data_end: '2026-07-03'
+active_parent_runtime: EXPLICIT_SEVEN_AGENT_DISPATCH
+initial_capital_krw: 10000000
+purge_sessions: 60
+parallel_workers: 4
+strategy_parameters:
+  minimum_base_leader_weight: 0.60
+  maximum_base_leader_weight: 0.80
+  full_confidence_normalized_gap: 1.0
+  minimum_sleeve_deployment_fraction: 0.50
+  maximum_v79_semantic_sector_weight: 0.70
+candidates:
+  - candidate_id: V69_PARENT
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: explicit parent through all seven agent contracts
+  - candidate_id: V69_VOL_GUARD
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: MA120_VOLATILITY_GUARD_35PCT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: historical positive MarketRegime candidate
+  - candidate_id: V69_UNCERTAINTY
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: UNCERTAINTY_AWARE_ROTATION
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: historical positive CandidateSelection candidate
+  - candidate_id: V69_BAND_2PP
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: V69_REBALANCE_BAND_2PP
+    purpose: historical positive execution-efficiency candidate
+  - candidate_id: V69_DYNAMIC_MIN_ORDER
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: DYNAMIC_MIN_ORDER_50BPS_NAV
+    purpose: historical small positive execution candidate
+  - candidate_id: V69_ALPHA_FIRST_BUY
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: V69_ALPHA_FIRST_BUY_PRIORITY
+    purpose: historical small positive buy-priority candidate
+  - candidate_id: V69_FLOW_ENTRY_BLOCK
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: FLOW_ENTRY_BLOCK_PERSISTENT_5D
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: historical positive but development-failed MarketEvidence candidate
+  - candidate_id: V69_FULL_LEADER_100
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FULL_LEADER_100
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: high-return concentration negative control
+  - candidate_id: V69_COMPOSITE_ORTHOGONAL
+    strategy: V69
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: MA120_VOLATILITY_GUARD_35PCT
+    base_selection_policy: UNCERTAINTY_AWARE_ROTATION
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: V69_REBALANCE_BAND_2PP
+    purpose: preregistered orthogonal regime-selection-execution composite
+  - candidate_id: V69_FORCE_CORE_ONLY_MUTATION
+    strategy: V69
+    universe_policy: FORCE_ALL_THEME_INELIGIBLE_MUTATION
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    audit_only: true
+    purpose: UniverseAgent causal mutation
+  - candidate_id: V79_PARENT
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: explicit parent through all seven agent contracts
+  - candidate_id: V79_NO63
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: ABLATE_V79_63_COMPONENT
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: strongest historical CandidateSelection candidate
+  - candidate_id: V79_VOL_GUARD
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: MA120_VOLATILITY_GUARD_35PCT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: historical positive MarketRegime candidate
+  - candidate_id: V79_UNCERTAINTY
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: UNCERTAINTY_AWARE_ROTATION
+    sleeve_selection_policy: UNCERTAINTY_AWARE_ROTATION
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: historical positive CandidateSelection candidate
+  - candidate_id: V79_DYNAMIC_MIN_ORDER
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: DYNAMIC_MIN_ORDER_50BPS_NAV
+    purpose: historical positive but development-failed execution candidate
+  - candidate_id: V79_FULL_LEADER_100
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FULL_LEADER_100
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: high-return concentration negative control
+  - candidate_id: V79_DART_VETO
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: D1_MA120_EXPLICIT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: DART_HARD_VETO_PERSISTENT_LOSS
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    audit_only: true
+    purpose: MarketEvidence capital-path mutation
+  - candidate_id: V79_NO63_VOL_GUARD
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: MA120_VOLATILITY_GUARD_35PCT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: ABLATE_V79_63_COMPONENT
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: preregistered orthogonal regime-selection composite
+  - candidate_id: V79_UNCERTAINTY_VOL_GUARD
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: MA120_VOLATILITY_GUARD_35PCT
+    base_selection_policy: UNCERTAINTY_AWARE_ROTATION
+    sleeve_selection_policy: UNCERTAINTY_AWARE_ROTATION
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    purpose: preregistered regime-selection composite
+forward_adapter_priority:
+  - V79_NO63
+  - V69_VOL_GUARD
+  - V79_NO63_VOL_GUARD
+maximum_parallel_forward_candidates: 3
+paper_entry_gates:
+  require_adapter_implemented_and_tested: true
+  require_target_change: true
+  require_order_or_nav_change: true
+  require_no_negative_cash: true
+  require_future_mutation_invariant: true
+  require_same_input_hash_as_parent: true
+  historical_return_improvement_required: false
+promotion:
+  automatic_parent_mutation: false
+  automatic_champion_promotion: false
+  human_approval_required: true

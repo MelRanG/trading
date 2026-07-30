@@ -1,0 +1,3 @@
+strategy,unique_historical_trials,rejected_trials,data_blocked_trials,forward_candidates,forward_contract_slots,forward_runtime_ready,forward_runtime_blocked,forward_queued,nominal_alpha,bonferroni_alpha_if_same_family_reused,historical_promotion_allowed,method_for_new_forward_family
+V69,21,16,1,4,3,0,3,1,0.1,0.004761904761904762,False,HOLM_BONFERRONI_FORWARD_FAMILY
+V79,21,17,1,3,3,0,3,0,0.1,0.004761904761904762,False,HOLM_BONFERRONI_FORWARD_FAMILY

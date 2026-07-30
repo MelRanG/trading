@@ -1,0 +1,13 @@
+family,test_year,parent,candidate,issue,changed_component,statement,effective_events,evidence_cutoff,proposal_created,one_component_only,issue_rate,issue_severity
+V69,2021,V69_PARENT,V69_PARENT,NO_DOMINANT_SELF_ERROR,NONE,No strategy change proposed.,10,2020-10-05,False,True,,
+V69,2022,V69_PARENT,V69_PARENT,NO_DOMINANT_SELF_ERROR,NONE,No strategy change proposed.,13,2021-10-06,False,True,,
+V69,2023,V69_PARENT,V69_EXIT_CONFIRM_2,early_exit,exit_confirmation,Require two weekly deterioration confirmations before V69 exits.,8,2022-10-05,True,True,0.5,0.09959057259270801
+V69,2024,V69_PARENT,V69_PARENT,NO_DOMINANT_SELF_ERROR,NONE,No strategy change proposed.,6,2023-09-27,False,True,,
+V69,2025,V69_PARENT,V69_VOL_ADJUSTED_ALPHA,volatility_pain,alpha_scoring,Penalize high-volatility leaders inside V69 scoring.,11,2024-10-02,True,True,0.2727272727272727,0.22066025576966838
+V69,2026,V69_PARENT,V69_PARENT,NO_DOMINANT_SELF_ERROR,NONE,No strategy change proposed.,8,2025-09-29,False,True,,
+V79,2021,V79_PARENT,V79_PARENT,NO_DOMINANT_SELF_ERROR,NONE,No strategy change proposed.,8,2020-10-05,False,True,,
+V79,2022,V79_PARENT,V79_VOL_ADJUSTED_TREND,volatility_pain,sleeve_alpha_scoring,Penalize unstable high-volatility trend leaders in the V79 sleeve.,7,2021-10-06,True,True,0.5714285714285714,0.14334708304871052
+V79,2023,V79_PARENT,V79_PARENT,INSUFFICIENT_EFFECTIVE_SELF_TRADES,NONE,No strategy change proposed.,5,2022-10-05,False,True,,
+V79,2024,V79_PARENT,V79_PARENT,INSUFFICIENT_EFFECTIVE_SELF_TRADES,NONE,No strategy change proposed.,4,2023-09-27,False,True,,
+V79,2025,V79_PARENT,V79_PARENT,INSUFFICIENT_EFFECTIVE_SELF_TRADES,NONE,No strategy change proposed.,5,2024-10-02,False,True,,
+V79,2026,V79_PARENT,V79_EXIT_CONFIRM_2,early_exit,sleeve_exit_confirmation,Require two hard-trend exit confirmations in the V79 sleeve.,6,2025-09-29,True,True,0.5,0.12512627974228407

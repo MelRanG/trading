@@ -1,0 +1,27 @@
+version: v87.0
+mode: PAPER
+live_execution_allowed: false
+provider_contract:
+  required_source_tag: toss_openapi_1d_adjusted
+  require_adjusted_ohlc_verified: true
+  timezone: Asia/Seoul
+  canonical_price_scale: ADJUSTED_OHLC
+  required_columns: [date, ticker, open, high, low, close, volume, value_approx, source, price_scale]
+revision_gate:
+  overlap_coverage_min: 0.99
+  same_provider_median_abs_close_diff_bps_max: 2.0
+  same_provider_p99_abs_close_diff_bps_max: 20.0
+  changed_row_ratio_max: 0.01
+  changed_row_threshold_bps: 5.0
+quality:
+  allow_duplicate_date_ticker: false
+  allow_nonpositive_prices: false
+  allow_negative_volume: false
+  allow_ohlc_geometry_violation: false
+paths:
+  universe: data/toss_v19c_daily/universe.csv
+  fixture_dir: data/toss_v19c_daily
+  reference_canonical: data/canonical/v84_market_bars.csv
+  output_canonical: data/canonical/v87_market_bars.csv
+  raw_archive_dir: data/raw/v87
+  report_dir: reports/v87_actual_data_ingestion

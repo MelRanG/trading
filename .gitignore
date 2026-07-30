@@ -1,0 +1,12 @@
+.env
+*.db-wal
+*.db-shm
+__pycache__/
+.pytest_cache/
+reports/v72_integration_ready/toss_contract_discovery.md
+*.db
+data/runtime/*
+!data/runtime/.gitkeep
+data/raw/*
+!data/raw/.gitkeep
+data/canonical/v87_market_bars.csv

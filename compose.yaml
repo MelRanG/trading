@@ -1,0 +1,36 @@
+services:
+  quant-control-plane:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8788:8788"
+    volumes:
+      - quant_runtime:/app/data/runtime
+      - quant_reports:/app/reports
+      - quant_raw:/app/data/raw
+    environment:
+      QUANT_HARNESS_MODE: PAPER
+      TOSS_ALLOW_LIVE_ORDERS: "false"
+      V85_RUN_ON_START: "false"
+      V89_GOVERNANCE_CHECK_ON_START: "true"
+      V86_ALLOW_REMOTE_CONTROL_PLANE: "true"
+    restart: unless-stopped
+  quant-orchestrator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    entrypoint: ["python", "scripts/run_v85_scheduler.py"]
+    volumes:
+      - quant_runtime:/app/data/runtime
+      - quant_reports:/app/reports
+      - quant_raw:/app/data/raw
+    environment:
+      QUANT_HARNESS_MODE: PAPER
+      TOSS_ALLOW_LIVE_ORDERS: "false"
+      V85_SCHEDULER_INTERVAL_SECONDS: "3600"
+    restart: unless-stopped
+volumes:
+  quant_runtime:
+  quant_reports:
+  quant_raw:

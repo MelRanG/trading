@@ -1,0 +1,28 @@
+{
+  "status": "v84_dual_paper_execution_parity_complete_live_blocked",
+  "gates": {
+    "v69_weight_single_source": true,
+    "canonical_unique": true,
+    "canonical_adjusted_only": true,
+    "v69_parity_under_1krw": true,
+    "v79_parity_under_1krw": true,
+    "live_blocked": true
+  },
+  "parity": [
+    {
+      "strategy_id": "v69_fixed80_daily_control",
+      "official_final_nav": 76797465.61576533,
+      "common_final_nav": 76797465.61576533,
+      "abs_error_krw": 0.0
+    },
+    {
+      "strategy_id": "v79_core70_generic_trend30",
+      "official_final_nav": 85075342.0114402,
+      "common_final_nav": 85075342.0114402,
+      "abs_error_krw": 0.0
+    }
+  ],
+  "canonical_market": "data/canonical/v84_market_bars.csv",
+  "canonical_manifest": "data/canonical/v84_market_manifest.csv",
+  "live_execution_allowed": false
+}

@@ -1,0 +1,7 @@
+area,required_real_data,block_condition,status
+REAL_FILL_ATTRIBUTION,broker order/fill lifecycle joined to strategy decision hash,fill or correction cannot be joined deterministically,UNVERIFIED_EXTERNAL
+FORWARD_CANDIDATE_RUNTIME,"daily parent/candidate target, order, fill, NAV and cost ledgers",candidate runtime path or isolated account is unavailable,READY_CONTRACT_ONLY
+RESEARCH_MEMORY_PERSISTENCE,durable append-only experiment registry across releases,attempt count can be reset or edited without audit,RELEASE_SNAPSHOT_ONLY
+MULTIPLE_TESTING,all attempted hypotheses including failed and abandoned runs,unreported trial count or family membership,HISTORICAL_LEDGER_RECONSTRUCTED
+FORWARD_MATURITY,minimum 60 sessions; promotion review at 120 sessions and 10 changed decisions,insufficient mature 20d/60d outcomes,READY_NOT_STARTED
+HUMAN_GOVERNANCE,signed promotion decision and immutable candidate hash,automatic parent mutation or capital authority,MANDATORY

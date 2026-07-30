@@ -1,0 +1,5 @@
+gate,passed,detail
+ALL_CANDIDATES_HAVE_NO_CAPITAL_AUTHORITY,True,candidates=4
+NO_PARENT_IN_PLACE_MUTATION,True,new scenario only
+NO_AUTOMATIC_CHAMPION_CHANGE,True,human governance required
+ONLY_BACKTEST_PASSED_CAN_BE_SHADOW_ELIGIBLE,True,fold gate

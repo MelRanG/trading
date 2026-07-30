@@ -1,0 +1,194 @@
+schema_version: 2
+active_strategy_id: v69_fixed80_daily_control
+live_execution_allowed: false
+strategies:
+- strategy_id: v69_fixed80_daily_control
+  label: V69 corrected fixed-80 daily champion
+  engine: quant_harness.v104_end_to_end_causal_challenger_audit.adapter
+  status: PAPER_CHAMPION
+  runtime_compatible: true
+  paper_account_id: PAPER-V69
+  parameters:
+    leader_weight: 0.8
+    rebalance_band: 0.0
+    price_policy: ADJUSTED_OHLC_ONLY
+    universe_policy: STRICT_PIT_CORRECTNESS
+    market_regime_policy: D1_MA120_EXPLICIT
+    candidate_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sector_representation_policy: STATIC_TOP_SCORE_EXPLICIT
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    risk_execution_policy: PARENT_EXECUTION_CONTRACT
+    market_evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    review_feedback_policy: FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL
+  runtime_candidate_id: V69_PARENT
+  runtime_dispatch: REGISTRY_EXECUTABLE_V104
+- strategy_id: v79_core70_generic_trend30
+  label: V79 generic trend 70/30 challenger
+  engine: quant_harness.v104_end_to_end_causal_challenger_audit.adapter
+  status: PAPER_CHALLENGER
+  runtime_compatible: true
+  paper_account_id: PAPER-V79
+  parameters:
+    base_share: 0.7
+    sleeve_share: 0.3
+    rebalance_band: 0.05
+    price_policy: ADJUSTED_OHLC_ONLY
+    universe_policy: STRICT_PIT_CORRECTNESS
+    market_regime_policy: D1_MA120_EXPLICIT
+    candidate_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sector_representation_policy: STATIC_TOP_SCORE_EXPLICIT
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    risk_execution_policy: PARENT_EXECUTION_CONTRACT
+    market_evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    review_feedback_policy: FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL
+  runtime_candidate_id: V79_PARENT
+  runtime_dispatch: REGISTRY_EXECUTABLE_V104
+universe_agent:
+  version: V94
+  active_policy: STRICT_PIT_CORRECTNESS
+  stable_liquidity_candidate_promoted: false
+  point_in_time_source: OBSERVED_FIRST_BAR_PROXY
+  live_authority: false
+market_regime_agent:
+  version: V95
+  active_policy: D1_MA120_EXPLICIT
+  active_policy_parent_parity: true
+  automatic_parent_mutation: false
+  live_authority: false
+  research_candidates:
+  - policy_id: MA120_HYSTERESIS_1PCT
+    status: BACKTEST_REJECTED
+  - policy_id: MA120_BREADTH_CONFIRM_40PCT
+    status: BACKTEST_REJECTED
+  - policy_id: MA120_VOLATILITY_GUARD_35PCT
+    status: FORWARD_SHADOW_ONLY
+candidate_selection_agent:
+  version: V99
+  active_policy: TOP_SCORE_SECTOR_DEDUP
+  sector_representation_policy: STATIC_TOP_SCORE_EXPLICIT
+  sector_theme_agent_merged: true
+  taxonomy_source: data/toss_v19c_daily/universe.csv
+  taxonomy_static_proxy: true
+  taxonomy_hash: 283192153b8bf348dc0058a501fd4abcdee9eb1b61bd3ab84254018accabc59a
+  automatic_parent_mutation: false
+  live_authority: false
+  research_candidates:
+  - policy_id: CROSS_HORIZON_CONSENSUS
+    status: BACKTEST_REJECTED
+  - policy_id: UNCERTAINTY_AWARE_ROTATION
+    status: FORWARD_SHADOW_ONLY
+  - policy_id: TREND_QUALITY_SCORE
+    status: BACKTEST_REJECTED
+  - policy_id: SECTOR_RESIDUAL_MOMENTUM
+    status: BACKTEST_REJECTED
+  - policy_id: EXPECTED_VALUE_ROTATION
+    status: BACKTEST_REJECTED
+  - policy_id: ABLATE_V79_63_COMPONENT
+    status: FORWARD_SHADOW_ONLY_MULTIPLE_TESTING_NOT_CLEARED
+  error_taxonomy_report: reports/v99_candidate_selection_deep_research/v99_error_taxonomy_summary.csv
+  ablation_report: reports/v99_candidate_selection_deep_research/v99_alpha_ablation.csv
+strategy_agent:
+  version: V100
+  active_policy: FIXED_PARENT_ALLOCATIONS
+  v69_active_allocation: LEADER_80_CORE_20
+  v79_active_allocation: BASE_70_TREND_SLEEVE_30
+  target_ledger_contract: DAILY_D1_TARGET_MAP_WITH_REASON_AND_HASH
+  automatic_parent_mutation: false
+  live_authority: false
+  research_candidates:
+  - policy_id: FULL_LEADER_100
+    status: V69:BACKTEST_REJECTED;V79:BACKTEST_REJECTED
+  - policy_id: UNCERTAINTY_BUDGET_60_80
+    status: V69:BACKTEST_REJECTED;V79:BACKTEST_REJECTED
+  - policy_id: V79_SEMANTIC_SECTOR_CAP_70
+    status: V69:NOT_APPLICABLE_PARENT_PARITY;V79:BACKTEST_REJECTED
+  diagnostic_report: reports/v100_strategy_agent/v100_target_diagnostics.csv
+  operational_gap_register: reports/v100_strategy_agent/v100_operational_gap_register.csv
+risk_execution_agent:
+  version: V101
+  active_policy: PARENT_EXECUTION_CONTRACT
+  parent_execution_parity: true
+  broker_contract: config/v101_broker_execution_contract.yaml
+  broker_contract_status: UNVERIFIED_EXTERNAL
+  order_intent_contract: REQUEST_CAP_CASH_FINAL_WITH_REASON
+  capacity_report: reports/v101_risk_execution_agent/v101_capacity_diagnostics.csv
+  automatic_parent_mutation: false
+  live_authority: false
+  research_candidates:
+  - policy_id: V69_REBALANCE_BAND_2PP
+    status: V69:FORWARD_SHADOW_ONLY_BOOTSTRAP_NOT_CLEARED;V79:NOT_APPLICABLE_PARENT_PARITY
+  - policy_id: DYNAMIC_MIN_ORDER_50BPS_NAV
+    status: V69:FORWARD_SHADOW_ONLY_BOOTSTRAP_NOT_CLEARED;V79:BACKTEST_REJECTED
+  - policy_id: V69_ALPHA_FIRST_BUY_PRIORITY
+    status: V69:BACKTEST_REJECTED;V79:NOT_APPLICABLE_PARENT_PARITY
+market_evidence_agent:
+  version: V102
+  active_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+  merged_modules:
+  - PainSupply
+  - DisclosureFundamental
+  - News
+  active_agent_contract_count: 7
+  flow_source: data/historical_investor_flow/market_investor_flow_daily.csv
+  fundamental_source: data/opendart_quarterly_pit.csv
+  news_contract: config/v102_market_evidence_contract.yaml
+  news_history_status: DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS
+  automatic_parent_mutation: false
+  live_authority: false
+  research_candidates:
+  - policy_id: FLOW_ENTRY_BLOCK_PERSISTENT_5D
+    status: BACKTEST_REJECTED
+  - policy_id: DART_HARD_VETO_PERSISTENT_LOSS
+    status: BACKTEST_REJECTED
+  - policy_id: FLOW_DART_CONSENSUS_HARD_VETO
+    status: BACKTEST_REJECTED
+  - policy_id: NEWS_OFFICIAL_SEVERE_EVENT_VETO
+    status: DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS
+  diagnostic_report: reports/v102_market_evidence_agent/v102_module_diagnostics.csv
+  operational_gap_register: reports/v102_market_evidence_agent/v102_operational_gap_register.csv
+review_feedback_agent:
+  version: V104
+  active_policy: FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL
+  active_agent_contract_count: 7
+  legacy_components_merged:
+  - V90_TradeAttribution
+  - V91_HypothesisGenerator
+  - V92_AutomatedResearch
+  - V93_ShadowPromotion
+  historical_data_end: '2026-07-03'
+  historical_results_usage: SCREENING_ONLY_NO_PROMOTION
+  research_attempt_ledger: reports/v103_review_feedback_agent/v103_research_attempt_ledger.csv
+  candidate_lifecycle: reports/v103_review_feedback_agent/v103_candidate_lifecycle.csv
+  shadow_registry: reports/v103_review_feedback_agent/v103_forward_shadow_registry.json
+  runtime_contract: config/v104_challenger_runtime_contract.yaml
+  automatic_parent_mutation: false
+  automatic_candidate_promotion: false
+  automatic_capital_authority: false
+  live_authority: false
+  candidate_runtime_adapters_implemented: 3
+  forward_observations: 0
+end_to_end_causal_challenger_audit:
+  version: V104
+  active_parent_runtime: EXPLICIT_SEVEN_AGENT_REGISTRY_DISPATCH
+  legacy_registry_dynamic_dispatch_defect: CONFIRMED_AND_FIXED
+  parent_parity_under_1krw: true
+  historical_results_usage: RETROSPECTIVE_SCREENING_ONLY_NO_PROMOTION
+  automatic_parent_mutation: false
+  automatic_champion_promotion: false
+  live_authority: false
+  runtime_contract: config/v104_challenger_runtime_contract.yaml
+  causal_audit: reports/v104_end_to_end_causal_challenger_audit/v104_agent_causal_audit.csv
+  candidate_metrics: reports/v104_end_to_end_causal_challenger_audit/v104_candidate_metrics.csv
+  paper_challengers:
+  - candidate_id: V79_NO63
+    strategy: V79
+    paper_account_id: PAPER-V104-V79_NO63
+    status: PAPER_RESEARCH_CHALLENGER_FORWARD_NOT_STARTED
+  - candidate_id: V69_VOL_GUARD
+    strategy: V69
+    paper_account_id: PAPER-V104-V69_VOL_GUARD
+    status: PAPER_RESEARCH_CHALLENGER_FORWARD_NOT_STARTED
+  - candidate_id: V79_NO63_VOL_GUARD
+    strategy: V79
+    paper_account_id: PAPER-V104-V79_NO63_VOL_GUARD
+    status: PAPER_RESEARCH_CHALLENGER_FORWARD_NOT_STARTED

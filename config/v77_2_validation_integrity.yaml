@@ -1,0 +1,22 @@
+version: v77.2
+research_only: true
+live_execution_allowed: false
+baseline_scenario: FIXED_80__DAILY_EXACT
+selection_weights:
+  development_return: 0.35
+  validation_return: 0.65
+  development_sharpe: 5.0
+  validation_sharpe: 10.0
+  order_penalty: 0.02
+multiple_testing:
+  family_size: 40
+  raw_probability_gate: 0.90
+  familywise_probability_gate: 0.90
+bootstrap:
+  samples: 5000
+  block_months: 3
+periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  observed_only: ['2025-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']

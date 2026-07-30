@@ -1,0 +1,4 @@
+candidate,positive_probability,median_relative_return,months,familywise_positive_probability
+V78_A_RESIDUAL_MOMENTUM,0.1428,-0.025567455122910532,23,0.0
+V78_B_CROSS_TS_ENSEMBLE,0.579,0.03954356995110997,23,0.0
+V78_C_VOL_MANAGED,0.4056,-0.028641936399160628,23,0.0

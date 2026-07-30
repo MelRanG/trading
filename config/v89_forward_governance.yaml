@@ -1,0 +1,35 @@
+version: v89.0
+mode: PAPER
+live_execution_allowed: false
+trial:
+  minimum_sessions: 60
+  recommended_sessions: 120
+  maximum_target_mismatch_ratio: 0.01
+  maximum_execution_nav_drift_pct: 2.0
+  maximum_data_failure_sessions: 0
+  require_both_v69_v79: true
+  strategy_mutation_during_trial_allowed: false
+  feedback_candidate_shadow_allowed: true
+promotion:
+  automatic_live_promotion_allowed: false
+  first_live_stage: CANARY_1_PERCENT
+  human_approval_required: true
+  require_order_reconciliation_pass: true
+  require_backup_restore_pass: true
+  require_zero_unresolved_critical_alerts: true
+canary_stages:
+  - READ_ONLY
+  - ORDER_DRY_RUN
+  - CANARY_1_PERCENT
+  - CANARY_5_PERCENT
+  - LIMITED_20_PERCENT
+  - NORMAL
+paths:
+  registry: reports/v89_forward_governance/frozen_trial_registry.json
+  observations: reports/v89_forward_governance/forward_observations.csv
+  report_dir: reports/v89_forward_governance
+  strategy_registry: config/strategy_registry_v84.yaml
+  execution_config: config/v77_corrected_price_allocation.yaml
+  data_contract: config/v87_actual_data_ingestion.yaml
+  v88_summary: reports/v88_order_reconciliation/summary.json
+  v85_summary: reports/v85_operational_hardening/summary.json

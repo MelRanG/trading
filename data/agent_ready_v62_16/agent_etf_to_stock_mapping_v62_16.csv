@@ -1,0 +1,127 @@
+etf_symbol,etf_name,market,theme,theme_family,stock_symbol,stock_name,mapping_quality
+227560,TIGER 200 Industrials,KR,industrials,aerospace_defense,012450,Hanwha Aerospace,theme_family_representative_2_to_3_names
+227560,TIGER 200 Industrials,KR,industrials,aerospace_defense,047810,Korea Aerospace Industries,theme_family_representative_2_to_3_names
+227560,TIGER 200 Industrials,KR,industrials,aerospace_defense,064350,Hyundai Rotem,theme_family_representative_2_to_3_names
+091180,KODEX Autos,KR,auto,battery_ev,373220,LG Energy Solution,theme_family_representative_2_to_3_names
+091180,KODEX Autos,KR,auto,battery_ev,006400,Samsung SDI,theme_family_representative_2_to_3_names
+091180,KODEX Autos,KR,auto,battery_ev,247540,Ecopro BM,theme_family_representative_2_to_3_names
+305540,TIGER Secondary Battery Theme,KR,battery_ev,battery_ev,373220,LG Energy Solution,theme_family_representative_2_to_3_names
+305540,TIGER Secondary Battery Theme,KR,battery_ev,battery_ev,006400,Samsung SDI,theme_family_representative_2_to_3_names
+305540,TIGER Secondary Battery Theme,KR,battery_ev,battery_ev,247540,Ecopro BM,theme_family_representative_2_to_3_names
+305720,KODEX Secondary Battery Industry,KR,battery_ev,battery_ev,373220,LG Energy Solution,theme_family_representative_2_to_3_names
+305720,KODEX Secondary Battery Industry,KR,battery_ev,battery_ev,006400,Samsung SDI,theme_family_representative_2_to_3_names
+305720,KODEX Secondary Battery Industry,KR,battery_ev,battery_ev,247540,Ecopro BM,theme_family_representative_2_to_3_names
+371460,TIGER China Electric Vehicle SOLACTIVE,KR,battery_ev,battery_ev,373220,LG Energy Solution,theme_family_representative_2_to_3_names
+371460,TIGER China Electric Vehicle SOLACTIVE,KR,battery_ev,battery_ev,006400,Samsung SDI,theme_family_representative_2_to_3_names
+371460,TIGER China Electric Vehicle SOLACTIVE,KR,battery_ev,battery_ev,247540,Ecopro BM,theme_family_representative_2_to_3_names
+401170,TIGER Global Lithium & 2nd Battery SOLACTIVE,KR,battery_ev,battery_ev,373220,LG Energy Solution,theme_family_representative_2_to_3_names
+401170,TIGER Global Lithium & 2nd Battery SOLACTIVE,KR,battery_ev,battery_ev,006400,Samsung SDI,theme_family_representative_2_to_3_names
+401170,TIGER Global Lithium & 2nd Battery SOLACTIVE,KR,battery_ev,battery_ev,247540,Ecopro BM,theme_family_representative_2_to_3_names
+143860,TIGER Healthcare,KR,bio_healthcare,bio_healthcare,207940,Samsung Biologics,theme_family_representative_2_to_3_names
+143860,TIGER Healthcare,KR,bio_healthcare,bio_healthcare,068270,Celltrion,theme_family_representative_2_to_3_names
+143860,TIGER Healthcare,KR,bio_healthcare,bio_healthcare,196170,Alteogen,theme_family_representative_2_to_3_names
+227540,TIGER 200 Healthcare,KR,bio_healthcare,bio_healthcare,207940,Samsung Biologics,theme_family_representative_2_to_3_names
+227540,TIGER 200 Healthcare,KR,bio_healthcare,bio_healthcare,068270,Celltrion,theme_family_representative_2_to_3_names
+227540,TIGER 200 Healthcare,KR,bio_healthcare,bio_healthcare,196170,Alteogen,theme_family_representative_2_to_3_names
+244580,KODEX Bio,KR,bio_healthcare,bio_healthcare,207940,Samsung Biologics,theme_family_representative_2_to_3_names
+244580,KODEX Bio,KR,bio_healthcare,bio_healthcare,068270,Celltrion,theme_family_representative_2_to_3_names
+244580,KODEX Bio,KR,bio_healthcare,bio_healthcare,196170,Alteogen,theme_family_representative_2_to_3_names
+069500,KODEX 200,KR,korea_large_cap,broad_equity,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+069500,KODEX 200,KR,korea_large_cap,broad_equity,000660,SK hynix,theme_family_representative_2_to_3_names
+069500,KODEX 200,KR,korea_large_cap,broad_equity,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+102110,TIGER 200,KR,korea_large_cap,broad_equity,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+102110,TIGER 200,KR,korea_large_cap,broad_equity,000660,SK hynix,theme_family_representative_2_to_3_names
+102110,TIGER 200,KR,korea_large_cap,broad_equity,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+195930,TIGER Euro Stoxx 50 Synthetic(H),KR,global_equity,broad_equity,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+195930,TIGER Euro Stoxx 50 Synthetic(H),KR,global_equity,broad_equity,000660,SK hynix,theme_family_representative_2_to_3_names
+195930,TIGER Euro Stoxx 50 Synthetic(H),KR,global_equity,broad_equity,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+269540,ARIRANG US S&P500(H),KR,us_sp500_kr_listed,broad_equity,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+269540,ARIRANG US S&P500(H),KR,us_sp500_kr_listed,broad_equity,000660,SK hynix,theme_family_representative_2_to_3_names
+269540,ARIRANG US S&P500(H),KR,us_sp500_kr_listed,broad_equity,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+360750,TIGER US S&P500,KR,us_sp500_kr_listed,broad_equity,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+360750,TIGER US S&P500,KR,us_sp500_kr_listed,broad_equity,000660,SK hynix,theme_family_representative_2_to_3_names
+360750,TIGER US S&P500,KR,us_sp500_kr_listed,broad_equity,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+379800,KODEX US S&P500,KR,us_sp500_kr_listed,broad_equity,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+379800,KODEX US S&P500,KR,us_sp500_kr_listed,broad_equity,000660,SK hynix,theme_family_representative_2_to_3_names
+379800,KODEX US S&P500,KR,us_sp500_kr_listed,broad_equity,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+132030,KODEX Gold Futures(H),KR,gold,commodities,005490,POSCO Holdings,theme_family_representative_2_to_3_names
+132030,KODEX Gold Futures(H),KR,gold,commodities,010130,Korea Zinc,theme_family_representative_2_to_3_names
+132030,KODEX Gold Futures(H),KR,gold,commodities,096770,SK Innovation,theme_family_representative_2_to_3_names
+144600,KODEX Silver Futures(H),KR,silver,commodities,005490,POSCO Holdings,theme_family_representative_2_to_3_names
+144600,KODEX Silver Futures(H),KR,silver,commodities,010130,Korea Zinc,theme_family_representative_2_to_3_names
+144600,KODEX Silver Futures(H),KR,silver,commodities,096770,SK Innovation,theme_family_representative_2_to_3_names
+117700,KODEX Construction,KR,construction,construction,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+117700,KODEX Construction,KR,construction,construction,000660,SK hynix,theme_family_representative_2_to_3_names
+117700,KODEX Construction,KR,construction,construction,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+139290,TIGER 200 Construction,KR,construction,construction,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+139290,TIGER 200 Construction,KR,construction,construction,000660,SK hynix,theme_family_representative_2_to_3_names
+139290,TIGER 200 Construction,KR,construction,construction,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+139280,TIGER Consumer Staples,KR,consumer_staples,consumer,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+139280,TIGER Consumer Staples,KR,consumer_staples,consumer,035420,NAVER,theme_family_representative_2_to_3_names
+139280,TIGER Consumer Staples,KR,consumer_staples,consumer,259960,Krafton,theme_family_representative_2_to_3_names
+228800,TIGER Travel & Leisure,KR,consumer,consumer,005380,Hyundai Motor,theme_family_representative_2_to_3_names
+228800,TIGER Travel & Leisure,KR,consumer,consumer,035420,NAVER,theme_family_representative_2_to_3_names
+228800,TIGER Travel & Leisure,KR,consumer,consumer,259960,Krafton,theme_family_representative_2_to_3_names
+114260,KODEX Treasury Bond 3Y,KR,bonds,defensive_fixed_income,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+114260,KODEX Treasury Bond 3Y,KR,bonds,defensive_fixed_income,055550,Shinhan Financial Group,theme_family_representative_2_to_3_names
+114260,KODEX Treasury Bond 3Y,KR,bonds,defensive_fixed_income,207940,Samsung Biologics,theme_family_representative_2_to_3_names
+148070,KOSEF Treasury Bond 10Y,KR,duration_bonds,defensive_fixed_income,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+148070,KOSEF Treasury Bond 10Y,KR,duration_bonds,defensive_fixed_income,055550,Shinhan Financial Group,theme_family_representative_2_to_3_names
+148070,KOSEF Treasury Bond 10Y,KR,duration_bonds,defensive_fixed_income,207940,Samsung Biologics,theme_family_representative_2_to_3_names
+153130,KODEX Short-Term Bond,KR,short_bonds,defensive_fixed_income,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+153130,KODEX Short-Term Bond,KR,short_bonds,defensive_fixed_income,055550,Shinhan Financial Group,theme_family_representative_2_to_3_names
+153130,KODEX Short-Term Bond,KR,short_bonds,defensive_fixed_income,207940,Samsung Biologics,theme_family_representative_2_to_3_names
+130680,TIGER Crude Oil Futures Enhanced(H),KR,oil,energy,096770,SK Innovation,theme_family_representative_2_to_3_names
+130680,TIGER Crude Oil Futures Enhanced(H),KR,oil,energy,034020,Doosan Enerbility,theme_family_representative_2_to_3_names
+130680,TIGER Crude Oil Futures Enhanced(H),KR,oil,energy,267260,HD Hyundai Electric,theme_family_representative_2_to_3_names
+261220,KODEX WTI Crude Oil Futures(H),KR,oil,energy,096770,SK Innovation,theme_family_representative_2_to_3_names
+261220,KODEX WTI Crude Oil Futures(H),KR,oil,energy,034020,Doosan Enerbility,theme_family_representative_2_to_3_names
+261220,KODEX WTI Crude Oil Futures(H),KR,oil,energy,267260,HD Hyundai Electric,theme_family_representative_2_to_3_names
+367770,KBSTAR Fn Hydrogen Economy Theme,KR,energy,energy,096770,SK Innovation,theme_family_representative_2_to_3_names
+367770,KBSTAR Fn Hydrogen Economy Theme,KR,energy,energy,034020,Doosan Enerbility,theme_family_representative_2_to_3_names
+367770,KBSTAR Fn Hydrogen Economy Theme,KR,energy,energy,267260,HD Hyundai Electric,theme_family_representative_2_to_3_names
+091170,KODEX Banks,KR,financials,financials,055550,Shinhan Financial Group,theme_family_representative_2_to_3_names
+091170,KODEX Banks,KR,financials,financials,105560,KB Financial Group,theme_family_representative_2_to_3_names
+091170,KODEX Banks,KR,financials,financials,086790,Hana Financial Group,theme_family_representative_2_to_3_names
+102970,KODEX Securities,KR,financials,financials,055550,Shinhan Financial Group,theme_family_representative_2_to_3_names
+102970,KODEX Securities,KR,financials,financials,105560,KB Financial Group,theme_family_representative_2_to_3_names
+102970,KODEX Securities,KR,financials,financials,086790,Hana Financial Group,theme_family_representative_2_to_3_names
+136340,KBSTAR Mid-Term Corporate Bond,KR,credit_ig,financials,055550,Shinhan Financial Group,theme_family_representative_2_to_3_names
+136340,KBSTAR Mid-Term Corporate Bond,KR,credit_ig,financials,105560,KB Financial Group,theme_family_representative_2_to_3_names
+136340,KBSTAR Mid-Term Corporate Bond,KR,credit_ig,financials,086790,Hana Financial Group,theme_family_representative_2_to_3_names
+228790,TIGER Media Contents,KR,media_entertainment,robotics_ai,012450,Hanwha Aerospace,theme_family_representative_2_to_3_names
+228790,TIGER Media Contents,KR,media_entertainment,robotics_ai,064350,Hyundai Rotem,theme_family_representative_2_to_3_names
+228790,TIGER Media Contents,KR,media_entertainment,robotics_ai,034020,Doosan Enerbility,theme_family_representative_2_to_3_names
+395150,KODEX Fn Webtoon & Drama,KR,media_entertainment,robotics_ai,012450,Hanwha Aerospace,theme_family_representative_2_to_3_names
+395150,KODEX Fn Webtoon & Drama,KR,media_entertainment,robotics_ai,064350,Hyundai Rotem,theme_family_representative_2_to_3_names
+395150,KODEX Fn Webtoon & Drama,KR,media_entertainment,robotics_ai,034020,Doosan Enerbility,theme_family_representative_2_to_3_names
+091160,KODEX Semiconductors,KR,semiconductor,semiconductor,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+091160,KODEX Semiconductors,KR,semiconductor,semiconductor,000660,SK hynix,theme_family_representative_2_to_3_names
+091160,KODEX Semiconductors,KR,semiconductor,semiconductor,042700,Hanmi Semiconductor,theme_family_representative_2_to_3_names
+381180,TIGER US Philadelphia Semiconductor NASDAQ,KR,us_semiconductor_kr_listed,semiconductor,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+381180,TIGER US Philadelphia Semiconductor NASDAQ,KR,us_semiconductor_kr_listed,semiconductor,000660,SK hynix,theme_family_representative_2_to_3_names
+381180,TIGER US Philadelphia Semiconductor NASDAQ,KR,us_semiconductor_kr_listed,semiconductor,042700,Hanmi Semiconductor,theme_family_representative_2_to_3_names
+395160,KODEX Fn System Semiconductor,KR,semiconductor,semiconductor,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+395160,KODEX Fn System Semiconductor,KR,semiconductor,semiconductor,000660,SK hynix,theme_family_representative_2_to_3_names
+395160,KODEX Fn System Semiconductor,KR,semiconductor,semiconductor,042700,Hanmi Semiconductor,theme_family_representative_2_to_3_names
+396500,TIGER Fn Semiconductor TOP10,KR,semiconductor,semiconductor,005930,Samsung Electronics,theme_family_representative_2_to_3_names
+396500,TIGER Fn Semiconductor TOP10,KR,semiconductor,semiconductor,000660,SK hynix,theme_family_representative_2_to_3_names
+396500,TIGER Fn Semiconductor TOP10,KR,semiconductor,semiconductor,042700,Hanmi Semiconductor,theme_family_representative_2_to_3_names
+133690,TIGER US NASDAQ100,KR,us_nasdaq_kr_listed,software_cloud,035420,NAVER,theme_family_representative_2_to_3_names
+133690,TIGER US NASDAQ100,KR,us_nasdaq_kr_listed,software_cloud,035720,Kakao,theme_family_representative_2_to_3_names
+133690,TIGER US NASDAQ100,KR,us_nasdaq_kr_listed,software_cloud,259960,Krafton,theme_family_representative_2_to_3_names
+157490,TIGER Software,KR,software_cloud,software_cloud,035420,NAVER,theme_family_representative_2_to_3_names
+157490,TIGER Software,KR,software_cloud,software_cloud,035720,Kakao,theme_family_representative_2_to_3_names
+157490,TIGER Software,KR,software_cloud,software_cloud,259960,Krafton,theme_family_representative_2_to_3_names
+229200,KODEX KOSDAQ150,KR,korea_growth,software_cloud,035420,NAVER,theme_family_representative_2_to_3_names
+229200,KODEX KOSDAQ150,KR,korea_growth,software_cloud,035720,Kakao,theme_family_representative_2_to_3_names
+229200,KODEX KOSDAQ150,KR,korea_growth,software_cloud,259960,Krafton,theme_family_representative_2_to_3_names
+364980,TIGER KRX BBIG K-New Deal,KR,software_cloud,software_cloud,035420,NAVER,theme_family_representative_2_to_3_names
+364980,TIGER KRX BBIG K-New Deal,KR,software_cloud,software_cloud,035720,Kakao,theme_family_representative_2_to_3_names
+364980,TIGER KRX BBIG K-New Deal,KR,software_cloud,software_cloud,259960,Krafton,theme_family_representative_2_to_3_names
+371160,TIGER China Hang Seng Tech,KR,software_cloud,software_cloud,035420,NAVER,theme_family_representative_2_to_3_names
+371160,TIGER China Hang Seng Tech,KR,software_cloud,software_cloud,035720,Kakao,theme_family_representative_2_to_3_names
+371160,TIGER China Hang Seng Tech,KR,software_cloud,software_cloud,259960,Krafton,theme_family_representative_2_to_3_names
+379810,KODEX US NASDAQ100,KR,us_nasdaq_kr_listed,software_cloud,035420,NAVER,theme_family_representative_2_to_3_names
+379810,KODEX US NASDAQ100,KR,us_nasdaq_kr_listed,software_cloud,035720,Kakao,theme_family_representative_2_to_3_names
+379810,KODEX US NASDAQ100,KR,us_nasdaq_kr_listed,software_cloud,259960,Krafton,theme_family_representative_2_to_3_names

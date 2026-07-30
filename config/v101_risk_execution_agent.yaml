@@ -1,0 +1,73 @@
+version: v101.0
+research_only: true
+live_execution_allowed: false
+active_policy: PARENT_EXECUTION_CONTRACT
+candidate_policies:
+  - V69_REBALANCE_BAND_2PP
+  - DYNAMIC_MIN_ORDER_50BPS_NAV
+  - V69_ALPHA_FIRST_BUY_PRIORITY
+policy:
+  parent:
+    v69_rebalance_band: 0.0
+    v79_rebalance_band: 0.05
+    minimum_order_notional_krw: 100000
+    dynamic_min_order_nav_fraction: 0.0
+    v69_buy_priority: CORE_THEN_TARGET_DESC
+    v79_buy_priority: DEFICIT_DESC
+    deferred_min_order_sets_pending: true
+  v69_rebalance_band_2pp:
+    v69_rebalance_band: 0.02
+    v79_rebalance_band: 0.05
+    minimum_order_notional_krw: 100000
+    dynamic_min_order_nav_fraction: 0.0
+    v69_buy_priority: CORE_THEN_TARGET_DESC
+    v79_buy_priority: DEFICIT_DESC
+    deferred_min_order_sets_pending: true
+  dynamic_min_order_50bps_nav:
+    v69_rebalance_band: 0.0
+    v79_rebalance_band: 0.05
+    minimum_order_notional_krw: 100000
+    dynamic_min_order_nav_fraction: 0.005
+    v69_buy_priority: CORE_THEN_TARGET_DESC
+    v79_buy_priority: DEFICIT_DESC
+    deferred_min_order_sets_pending: false
+  v69_alpha_first_buy_priority:
+    v69_rebalance_band: 0.0
+    v79_rebalance_band: 0.05
+    minimum_order_notional_krw: 100000
+    dynamic_min_order_nav_fraction: 0.0
+    v69_buy_priority: NONCORE_THEN_CORE
+    v79_buy_priority: DEFICIT_DESC
+    deferred_min_order_sets_pending: true
+periods:
+  development: ['2018-01-01', '2022-12-31']
+  validation: ['2023-01-01', '2024-12-31']
+  observed: ['2025-01-01', '2026-07-03']
+  recent_1y: ['2025-07-04', '2026-07-03']
+promotion:
+  purge_sessions: 60
+  development_tolerance_pp: 1.0
+  validation_tolerance_pp: 0.25
+  purged_validation_tolerance_pp: 0.25
+  recent1y_tolerance_pp: 0.50
+  stress_tolerance_pp: 0.50
+  mdd_tolerance_pp: 0.50
+  minimum_order_reduction_ratio: 0.10
+  average_tracking_error_tolerance_pp: 0.25
+  maximum_tracking_error_tolerance_pp: 2.0
+  validation_bootstrap_probability_min: 0.70
+  bootstrap_samples: 2000
+capacity_diagnostics:
+  initial_capital_krw: [10000000, 100000000, 1000000000]
+real_data_contract:
+  status: UNVERIFIED_EXTERNAL
+  required:
+    - broker_order_status_history
+    - broker_fills_with_exchange_timestamps
+    - quote_bid_ask_and_tick_size
+    - fee_tax_schedule_effective_dated
+    - order_reject_code_dictionary
+    - partial_fill_and_cancel_replace_rules
+    - account_buying_power_and_settlement
+    - price_limit_and_session_calendar
+    - client_order_id_or_equivalent_idempotency_key

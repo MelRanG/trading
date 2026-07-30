@@ -1,0 +1,13 @@
+gate,passed,detail
+LEGACY_V90_V93_QUALITY_GATES_PASS,True,"[{""detail"": ""gates=5"", ""passed"": true, ""source"": ""reports/v90_trade_attribution/v90_quality_gates.csv""}, {""detail"": ""gates=5"", ""passed"": true, ""source"": ""reports/v91_hypothesis_generator/v91_quality_gates.csv""}, {""detail"": ""gates=5"", ""passed"": true, ""source"": ""reports/v92_automated_research/v92_quality_gates.csv""}, {""detail"": ""gates=4"", ""passed"": true, ""source"": ""reports/v93_shadow_promotion/v93_quality_gates.csv""}]"
+RESEARCH_ATTEMPT_IDS_UNIQUE,True,rows=39
+CANDIDATE_FINGERPRINTS_UNIQUE,True,forward_candidates=7
+HISTORICAL_RESULTS_CANNOT_PROMOTE,True,HISTORICAL_REUSED_SCREENING_ONLY
+NO_AUTOMATIC_PARENT_MUTATION,True,FROZEN_RESEARCH_GOVERNANCE_NO_CAPITAL
+NO_AUTOMATIC_CAPITAL_AUTHORITY,True,all candidates shadow-only
+FORWARD_QUEUE_CAP_ENFORCED,True,"{""V69"": 3, ""V79"": 3}"
+RUNTIME_ADAPTER_REQUIRED_BEFORE_FORWARD,True,current candidates are contract-ready but runtime-blocked; no false READY claim
+QUEUE_NOT_SORTED_BY_PERFORMANCE,True,PREREGISTRATION_RELEASE_THEN_SOURCE_ROW
+NO_FORWARD_OBSERVATION_NO_PROMOTION,True,observations_exist=False;promoted=0
+SAME_HISTORY_RETUNING_FORBIDDEN,True,historical_end=2026-07-03
+LIVE_EXECUTION_BLOCKED,True,human review required after frozen forward

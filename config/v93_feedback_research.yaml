@@ -1,0 +1,74 @@
+version: v93.0
+research_only: true
+live_execution_allowed: false
+data_end: '2026-07-03'
+attribution:
+  horizons: [1, 3, 5, 10, 20, 60]
+  effective_event_spacing_sessions: 20
+  core_return_broad_rally_20d: 0.05
+  core_return_broad_rally_60d: 0.10
+  selection_error_threshold: 0.05
+  early_exit_threshold: 0.05
+  volatility_mae_threshold: -0.10
+hypothesis:
+  rolling_evidence_sessions: 504
+  purge_sessions: 60
+  minimum_effective_events: 6
+  minimum_issue_rate: 0.25
+  minimum_issue_severity: 0.02
+  max_hypotheses_per_family_fold: 1
+research:
+  test_years: [2021, 2022, 2023, 2024, 2025, 2026]
+  return_delta_min_pp: 1.0
+  mdd_tolerance_pp: 2.0
+  stress_return_delta_min_pp: 0.0
+  issue_reduction_min: 0.10
+  turnover_ratio_max: 1.50
+  worst_regime_delta_min_pp: -5.0
+shadow:
+  minimum_evaluated_folds: 2
+  minimum_passed_folds: 2
+  median_return_delta_min_pp: 0.0
+  median_stress_delta_min_pp: 0.0
+  automatic_capital_authority: false
+families:
+  V69:
+    parent: V69_PARENT
+    strategy_id: v69_fixed80_daily_control
+    hypotheses:
+      selection_error:
+        candidate: V69_VOL_ADJUSTED_ALPHA
+        changed_component: alpha_scoring
+        statement: Normalize V69 relative momentum by realized volatility to reduce unstable leader selection.
+      volatility_pain:
+        candidate: V69_VOL_ADJUSTED_ALPHA
+        changed_component: alpha_scoring
+        statement: Penalize high-volatility leaders inside V69 scoring.
+      early_exit:
+        candidate: V69_EXIT_CONFIRM_2
+        changed_component: exit_confirmation
+        statement: Require two weekly deterioration confirmations before V69 exits.
+      broad_rally_undercapture:
+        candidate: V69_FAST_ALPHA
+        changed_component: alpha_horizon_weight
+        statement: Increase short-horizon relative momentum weight to improve broad-rally participation.
+  V79:
+    parent: V79_PARENT
+    strategy_id: v79_core70_generic_trend30
+    hypotheses:
+      selection_error:
+        candidate: V79_VOL_ADJUSTED_TREND
+        changed_component: sleeve_alpha_scoring
+        statement: Normalize V79 sleeve trend ranks by realized volatility.
+      volatility_pain:
+        candidate: V79_VOL_ADJUSTED_TREND
+        changed_component: sleeve_alpha_scoring
+        statement: Penalize unstable high-volatility trend leaders in the V79 sleeve.
+      early_exit:
+        candidate: V79_EXIT_CONFIRM_2
+        changed_component: sleeve_exit_confirmation
+        statement: Require two hard-trend exit confirmations in the V79 sleeve.
+      broad_rally_undercapture:
+        candidate: V79_SIGNAL_STRENGTH_WEIGHT
+        changed_component: sleeve_sizing
+        statement: Scale only the V79 sleeve weight with its own signal strength and volatility state.

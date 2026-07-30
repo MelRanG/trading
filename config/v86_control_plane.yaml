@@ -1,0 +1,18 @@
+version: v86.0
+mode: PAPER
+live_execution_allowed: false
+default_strategy_id: v69_fixed80_daily_control
+registry_file: config/strategy_registry_v84.yaml
+feedback_candidate_registry: reports/v86_control_plane_dashboard/feedback_candidate_registry.json
+feedback_candidate_registry_source: reports/v103_review_feedback_agent/v103_forward_shadow_registry.json
+feedback_proposals_file: reports/v92_automated_research/v92_fold_results.csv
+strategy_metrics_file: reports/v92_automated_research/v92_strategy_metrics.csv
+operations_config: config/v85_operations.yaml
+static_dir: src/quant_harness/v86_control_plane_dashboard/static
+ui:
+  title: Quant Harness Control Plane
+  refresh_seconds: 30
+  show_archived: false
+  one_ui_for_all_strategies: true
+  account_isolation_required: true
+  final_champion_default_view: true

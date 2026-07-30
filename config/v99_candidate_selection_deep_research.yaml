@@ -1,0 +1,40 @@
+version: v99.0
+research_only: true
+live_execution_allowed: false
+parallel_workers: 4
+active_policy: TOP_SCORE_SECTOR_DEDUP
+purge_sessions: 60
+frozen_forward_reference:
+  policy_id: UNCERTAINTY_AWARE_ROTATION
+  iqr_multiplier: 0.25
+research_candidates:
+  - policy_id: TREND_QUALITY_SCORE
+    description: score-only smooth trend quality using return, efficiency ratio, and inverse volatility
+  - policy_id: SECTOR_RESIDUAL_MOMENTUM
+    description: score-only momentum after subtracting each semantic sector median
+  - policy_id: EXPECTED_VALUE_ROTATION
+    description: rotation-only gate fitted from strictly matured historical pair outcomes
+expected_value_rotation:
+  outcome_horizon_sessions: 60
+  minimum_walk_forward_samples: 30
+  ridge_penalty: 0.001
+  cost_buffer_return: 0.008
+error_taxonomy:
+  chase_mae_20d: 0.08
+  delayed_entry_edge_20d: 0.05
+  round_trip_cost_buffer: 0.008
+promotion:
+  development_tolerance_pp: 3.0
+  validation_improvement_min_pp: 1.0
+  purged_validation_improvement_min_pp: 1.0
+  recent1y_tolerance_pp: 3.0
+  stress_tolerance_pp: 3.0
+  mdd_tolerance_pp: 2.0
+  order_count_ratio_max: 1.25
+  minimum_changed_reviews_validation: 5
+  selection_edge_tolerance_pp: 1.0
+  rotation_edge_tolerance_pp: 1.0
+  validation_bootstrap_probability_min: 0.90
+  familywise_probability_min: 0.90
+  bootstrap_samples: 2000
+  automatic_parent_mutation: false

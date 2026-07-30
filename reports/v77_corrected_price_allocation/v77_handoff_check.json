@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "bundle_version": "V77_CORRECTED_PRICE_ALLOCATION",
+  "checks_total": 23,
+  "checks_passed": 23,
+  "checks_failed": 0,
+  "failed_checks": [],
+  "checks": [
+    {
+      "check": "authoritative_file:current_state",
+      "passed": true,
+      "detail": "config/current_project_state.json"
+    },
+    {
+      "check": "authoritative_file:llm_handoff",
+      "passed": true,
+      "detail": "docs/CURRENT_STATE_FOR_LLM.md"
+    },
+    {
+      "check": "authoritative_file:v77_design",
+      "passed": true,
+      "detail": "docs/V77_CORRECTED_PRICE_ALLOCATION_DESIGN.md"
+    },
+    {
+      "check": "authoritative_file:v77_result",
+      "passed": true,
+      "detail": "reports/v77_corrected_price_allocation/V77_FINAL_KOREAN_SUMMARY.md"
+    },
+    {
+      "check": "authoritative_file:v77_decision",
+      "passed": true,
+      "detail": "reports/v77_corrected_price_allocation/v77_decision.json"
+    },
+    {
+      "check": "authoritative_file:v77_trials",
+      "passed": true,
+      "detail": "reports/v77_corrected_price_allocation/v77_allocation_rebalance_trials.csv"
+    },
+    {
+      "check": "authoritative_file:paper_runtime_audit",
+      "passed": true,
+      "detail": "docs/V72_2_OPERATIONAL_AUDIT.md"
+    },
+    {
+      "check": "package_version",
+      "passed": true,
+      "detail": "pyproject=77.0.0"
+    },
+    {
+      "check": "readme_points_to_current_state",
+      "passed": true,
+      "detail": "canonical handoff link"
+    },
+    {
+      "check": "readme_separates_runtime_and_research",
+      "passed": true,
+      "detail": "dual-track wording"
+    },
+    {
+      "check": "v73_legacy_return_matches_manifest",
+      "passed": true,
+      "detail": "595.9002350525"
+    },
+    {
+      "check": "v73_marked_invalid_for_deployment",
+      "passed": true,
+      "detail": "legacy price data mixed raw open with adjusted close"
+    },
+    {
+      "check": "v77_shadow_matches_manifest",
+      "passed": true,
+      "detail": "FIXED_100__EVENT_ONLY"
+    },
+    {
+      "check": "v77_promotion_blocked",
+      "passed": true,
+      "detail": "{'positive_probability': 0.8794, 'median_relative_return': 0.22227044878821178}"
+    },
+    {
+      "check": "v77_runtime_unchanged",
+      "passed": true,
+      "detail": "paper runtime unchanged"
+    },
+    {
+      "check": "v76_rolled_back",
+      "passed": true,
+      "detail": "v76_krx_cross_asset_alpha_complete_rolled_back"
+    },
+    {
+      "check": "v76_live_blocked",
+      "passed": true,
+      "detail": "live_allowed=False"
+    },
+    {
+      "check": "real_pain_row_count",
+      "passed": true,
+      "detail": "rows=0"
+    },
+    {
+      "check": "real_krx_row_count",
+      "passed": true,
+      "detail": "rows=0"
+    },
+    {
+      "check": "runtime_uses_v69_selection",
+      "passed": true,
+      "detail": "v72_runtime import"
+    },
+    {
+      "check": "runtime_not_silently_using_v73",
+      "passed": true,
+      "detail": "research/runtime separation"
+    },
+    {
+      "check": "legacy_active_strategy_is_documented",
+      "passed": true,
+      "detail": "legacy baseline retained and labeled"
+    },
+    {
+      "check": "live_flags_blocked",
+      "passed": true,
+      "detail": "unexpected=[]"
+    }
+  ]
+}

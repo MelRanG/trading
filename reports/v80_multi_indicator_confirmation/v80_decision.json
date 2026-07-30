@@ -1,0 +1,16 @@
+{
+  "status": "v80_multi_indicator_confirmation_backtest_complete_live_blocked",
+  "champion_unchanged": "V69_FIXED80_DAILY_CORRECTED",
+  "official_challenger_unchanged": "V79_GENERIC_TREND_BASE70_SLEEVE30",
+  "candidate_count": 5,
+  "best_new_candidate_by_total_return": "V80_MULTI_PANEL_CONFIRMATION",
+  "best_new_candidate_by_recent_1y": "V80_TREND_CONFIRMATION",
+  "balanced_shadow_candidates_vs_v69": [
+    "V80_TREND_CONFIRMATION",
+    "V80_FOUR_MARKET_ELEMENTS",
+    "V80_MULTI_PANEL_CONFIRMATION"
+  ],
+  "automatic_registry_change": false,
+  "live_allowed": false,
+  "quality_gates_passed": true
+}

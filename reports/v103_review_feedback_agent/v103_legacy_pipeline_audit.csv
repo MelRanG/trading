@@ -1,0 +1,5 @@
+source,passed,detail
+reports/v90_trade_attribution/v90_quality_gates.csv,True,gates=5
+reports/v91_hypothesis_generator/v91_quality_gates.csv,True,gates=5
+reports/v92_automated_research/v92_quality_gates.csv,True,gates=5
+reports/v93_shadow_promotion/v93_quality_gates.csv,True,gates=4

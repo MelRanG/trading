@@ -1,0 +1,5 @@
+family,candidate,evaluated_folds,passed_folds,median_return_delta_pp,median_stress_delta_pp,median_issue_reduction,worst_mdd_delta_pp,shadow_eligible
+V69,V69_EXIT_CONFIRM_2,1,0,0.0,0.0,0.0,0.0,False
+V69,V69_VOL_ADJUSTED_ALPHA,1,0,-9.0329276515522,-8.913069311828707,0.0,-0.5910988456710449,False
+V79,V79_EXIT_CONFIRM_2,1,0,0.0,0.0,0.0,0.0,False
+V79,V79_VOL_ADJUSTED_TREND,1,0,0.0,0.0,0.0,0.0,False
