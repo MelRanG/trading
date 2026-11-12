@@ -1,0 +1,79 @@
+schema_version: KRX_MARKET_FLOW_PACK_V1
+source_name: KRX_DATA_MARKETPLACE
+official_home: https://data.krx.co.kr/contents/MDC/MAIN/main/index.cmd
+official_open_api: https://openapi.krx.co.kr/contents/OPP/INFO/service/OPPINFO004.cmd
+open_api_missing_notice: https://openapi.krx.co.kr/contents/OPP/COMM/notice/OPPCOMM001_S2.cmd?bbsSeq=5
+research_start: '2021-10-13'
+preferred_raw_start: '2020-01-01'
+source_end: '2026-07-31'
+availability_policy: PIT_CONSERVATIVE_OFFICIAL_EOD_TPLUS1
+revision_policy: NO_HISTORICAL_REVISION_LEDGER
+canonical_columns:
+  - observation_date
+  - effective_date
+  - observed_at_utc
+  - available_at_utc
+  - market_session
+  - source_name
+  - source_dataset_id
+  - revision_id
+  - source_checksum
+  - metric_name
+  - instrument_or_market
+  - investor_type
+  - value
+  - unit
+  - availability_policy
+  - pit_quality
+datasets:
+  - id: KOSPI_INVESTOR_TRADING
+    menu: 통계 > 기본 통계 > 주식 > 거래실적 > 투자자별 거래실적
+    filters: 시장=KOSPI, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSPI_INVESTOR_TRADING_20200101_20260731*.csv
+    minimum_fields: [일자, 투자자구분, 매도거래량, 매도거래대금, 매수거래량, 매수거래대금, 순매수거래량, 순매수거래대금]
+  - id: KOSDAQ_INVESTOR_TRADING
+    menu: 통계 > 기본 통계 > 주식 > 거래실적 > 투자자별 거래실적
+    filters: 시장=KOSDAQ, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSDAQ_INVESTOR_TRADING_20200101_20260731*.csv
+    minimum_fields: [일자, 투자자구분, 매도거래량, 매도거래대금, 매수거래량, 매수거래대금, 순매수거래량, 순매수거래대금]
+  - id: KOSPI200_FUTURES_INVESTOR_TRADING
+    menu: 통계 > 기본 통계 > 파생상품 > 거래실적 > 투자자별 거래실적
+    filters: 상품=KOSPI200선물, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSPI200_FUTURES_INVESTOR_TRADING_20200101_20260731*.csv
+    minimum_fields: [일자, 투자자구분, 매도거래량, 매수거래량, 순매수거래량]
+  - id: KOSPI_PROGRAM_TRADING
+    menu: 통계 > 기본 통계 > 주식 > 거래실적 > 프로그램매매
+    filters: 시장=KOSPI, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSPI_PROGRAM_TRADING_20200101_20260731*.csv
+    minimum_fields: [일자]
+  - id: KOSDAQ_PROGRAM_TRADING
+    menu: 통계 > 기본 통계 > 주식 > 거래실적 > 프로그램매매
+    filters: 시장=KOSDAQ, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSDAQ_PROGRAM_TRADING_20200101_20260731*.csv
+    minimum_fields: [일자]
+  - id: KOSPI200_FUTURES_BASIS
+    menu: 통계 > 기본 통계 > 파생상품 > 세부안내 > 베이시스 추이(선물)
+    filters: 상품=KOSPI200선물, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSPI200_FUTURES_BASIS_20200101_20260731*.csv
+    minimum_fields: [일자, 베이시스]
+  - id: KOSPI200_OPTION_IMPLIED_VOLATILITY
+    menu: 통계 > 기본 통계 > 파생상품 > 세부안내 > 내재변동성 추이(옵션)
+    filters: 상품=KOSPI200옵션, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSPI200_OPTION_IMPLIED_VOLATILITY_20200101_20260731*.csv
+    minimum_fields: [일자, 내재변동성]
+  - id: KOSPI200_OPTION_PUT_CALL_RATIO
+    menu: 통계 > 기본 통계 > 파생상품 > 세부안내 > P/C Ratio 추이(옵션)
+    filters: 상품=KOSPI200옵션, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: KOSPI200_OPTION_PUT_CALL_RATIO_20200101_20260731*.csv
+    minimum_fields: [일자]
+  - id: ETF_INVESTOR_TRADING
+    menu: 통계 > 기본 통계 > 증권상품 > ETF > 투자자별 거래실적
+    filters: 시장=전체, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: ETF_INVESTOR_TRADING_20200101_20260731*.csv
+    minimum_fields: [일자, 투자자구분, 매도거래량, 매수거래량, 순매수거래량]
+  - id: ETF_INSTRUMENT_INVESTOR_TRADING
+    menu: 통계 > 기본 통계 > 증권상품 > ETF > 투자자별 거래실적(개별종목)
+    filters: 현재 V79 ETF universe 각 종목, 기간=2020-01-01~2026-07-31, 일별
+    expected_pattern: ETF_INSTRUMENT_INVESTOR_TRADING_*_20200101_20260731*.csv
+    minimum_fields: [일자, 종목코드, 투자자구분, 매도거래량, 매수거래량, 순매수거래량]
+

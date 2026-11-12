@@ -83,8 +83,12 @@ def _input_hash(root: Path) -> str:
     configs plus all point-in-time market, flow and filing inputs.
     """
     files = [
+        root / "config/active_strategy.yaml",
+        root / "config/strategy_registry_v84.yaml",
         root / "config/v69_dynamic_theme_leadership.yaml",
+        root / "config/v77_corrected_price_allocation.yaml",
         root / "config/v79_generic_trend_sleeve.yaml",
+        root / "config/v85_operations.yaml",
         root / "config/v95_market_regime_agent.yaml",
         root / "config/v98_candidate_selection_agent.yaml",
         root / "config/v100_strategy_agent.yaml",
@@ -92,6 +96,9 @@ def _input_hash(root: Path) -> str:
         root / "config/v102_market_evidence_contract.yaml",
         root / "config/v104_end_to_end_causal_challenger_audit.yaml",
         root / "data/toss_v19c_daily/universe.csv",
+        root / "data/all_prices_long_v62_9_expanded.csv",
+        root / "data/canonical/v84_market_manifest.csv",
+        root / "data/agent_ready_v62_16/agent_etf_to_stock_mapping_v62_16.csv",
         root / "data/historical_investor_flow/market_investor_flow_daily.csv",
         root / "data/opendart_quarterly_pit.csv",
     ]
@@ -105,10 +112,10 @@ def _input_hash(root: Path) -> str:
     return digest.hexdigest()
 
 
-@lru_cache(maxsize=4)
-def _cached_context(root_text: str) -> dict[str, Any]:
+@lru_cache(maxsize=8)
+def _cached_context(root_text: str, use_common_cutoff: bool, input_hash: str) -> dict[str, Any]:
     root = Path(root_text)
-    cfg77 = v77._load_config(root)
+    cfg77 = v77._load_config(root, use_common_cutoff=use_common_cutoff)
     market = v77.load_adjusted_market(root, cfg77)
     cfg69 = replace(
         v69._load_config(root),
@@ -129,10 +136,11 @@ def _cached_context(root_text: str) -> dict[str, Any]:
     }
 
 
-def _runtime_context(root: Path, market_override: dict[str, Any] | None = None) -> dict[str, Any]:
+def _runtime_context(root: Path, market_override: dict[str, Any] | None = None, *, use_common_cutoff: bool = False) -> dict[str, Any]:
+    current_input_hash = _input_hash(root)
     if market_override is None:
-        return _cached_context(str(root.resolve()))
-    cfg77 = v77._load_config(root)
+        return _cached_context(str(root.resolve()), use_common_cutoff, current_input_hash)
+    cfg77 = v77._load_config(root, use_common_cutoff=use_common_cutoff)
     market = market_override
     cfg69 = replace(
         v69._load_config(root), end_date=cfg77.end_date, core_ticker=cfg77.core_ticker,
@@ -142,7 +150,7 @@ def _runtime_context(root: Path, market_override: dict[str, Any] | None = None) 
     cfg79 = v79._load_config(root)["trend_sleeve"]
     f69 = v94._strict_v69_features(market["close"], market["value"], universe, cfg69)
     f79 = v94._strict_v79_features(market["close"], market["value"], universe, cfg79)
-    cached = _cached_context(str(root.resolve()))
+    cached = _cached_context(str(root.resolve()), use_common_cutoff, current_input_hash)
     flow = cached["flow"]
     fundamental_risk = cached["fundamental_risk"]
     events = cached["fundamental_events"]
@@ -157,9 +165,10 @@ def build_candidate_ledgers(
     spec: CandidateSpec,
     *,
     market_override: dict[str, Any] | None = None,
+    use_common_cutoff: bool = False,
 ) -> dict[str, Any]:
     root = Path(root)
-    ctx = _runtime_context(root, market_override)
+    ctx = _runtime_context(root, market_override, use_common_cutoff=use_common_cutoff)
     cfg77, market, cfg69, universe, cfg79 = (
         ctx["cfg77"], ctx["market"], ctx["cfg69"], ctx["universe"], ctx["cfg79"]
     )

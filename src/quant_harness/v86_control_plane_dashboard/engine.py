@@ -194,6 +194,10 @@ class ControlPlane:
             },
             "candidates": [combined[k] for k in sorted(combined)],
         }
+        # Reading the catalog must not rewrite a historical report solely because
+        # the volatile generation timestamp changed.
+        if path.exists() and existing.get("policy") == payload["policy"] and existing.get("candidates") == payload["candidates"]:
+            return path
         path.write_text(json.dumps(payload, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
         return path
 

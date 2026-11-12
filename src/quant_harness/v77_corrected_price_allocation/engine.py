@@ -48,12 +48,37 @@ class V77Config:
     mdd_tolerance_pp: float
 
 
-def _load_config(root: Path) -> V77Config:
+def _load_config(root: Path, *, use_common_cutoff: bool = False) -> V77Config:
     raw = yaml.safe_load((root / "config/v77_corrected_price_allocation.yaml").read_text(encoding="utf-8"))
+    configured_end = raw.get("end_date")
+    if use_common_cutoff:
+        configured_end = None
+    if configured_end in (None, "", "AUTO") and not use_common_cutoff:
+        # Historical research callers remain bound to the already-sealed
+        # observed-only boundary; operational Paper explicitly opts into the
+        # validated common cutoff below.
+        configured_end = raw.get("selection_periods", {}).get("observed_only", [None, None])[1]
+    if configured_end in (None, "", "AUTO"):
+        universe_path = root / str(raw["price_policy"]["etf_source"]) / "universe.csv"
+        universe = pd.read_csv(universe_path, dtype={"ticker": str})
+        cutoffs: list[pd.Timestamp] = []
+        for ticker in universe["ticker"].astype(str).str.zfill(6):
+            path = universe_path.parent / f"{ticker}_1d.csv"
+            if not path.is_file():
+                raise FileNotFoundError(path)
+            timestamps = pd.read_csv(path, usecols=["timestamp"])["timestamp"]
+            cutoffs.append(pd.to_datetime(timestamps, utc=True).dt.tz_convert("Asia/Seoul").dt.tz_localize(None).dt.normalize().max())
+        benchmark_path = root / "data/all_prices_long_v62_9_expanded.csv"
+        benchmark = pd.read_csv(benchmark_path, usecols=["date", "ticker"], dtype={"ticker": str})
+        benchmark = benchmark[benchmark["ticker"].astype(str).str.strip().eq(str(raw["benchmark_ticker"]))]
+        if benchmark.empty:
+            raise ValueError("benchmark cutoff is unavailable")
+        cutoffs.append(pd.to_datetime(benchmark["date"], errors="raise").max())
+        configured_end = min(cutoffs).date().isoformat()
     def ex(name: str) -> ExecutionSpec:
         return ExecutionSpec(**{k: float(v) for k, v in raw["execution"][name].items()})
     return V77Config(
-        start_date=str(raw["start_date"]), end_date=str(raw["end_date"]),
+        start_date=str(raw["start_date"]), end_date=str(configured_end),
         initial_capital_krw=float(raw["initial_capital_krw"]),
         core_ticker=str(raw["core_ticker"]).zfill(6), benchmark_ticker=str(raw["benchmark_ticker"]),
         semiconductor_benchmark_ticker=str(raw["semiconductor_benchmark_ticker"]).zfill(6),
@@ -104,6 +129,7 @@ def load_adjusted_market(root: Path, cfg: V77Config) -> dict[str, Any]:
         invalid = (
             d[["open", "high", "low", "close"]].isna().any(axis=1)
             | d[["open", "high", "low", "close"]].le(0).any(axis=1)
+            | d["volume"].isna()
             | d["high"].lt(d[["open", "close"]].max(axis=1))
             | d["low"].gt(d[["open", "close"]].min(axis=1))
         )
@@ -127,6 +153,12 @@ def load_adjusted_market(root: Path, cfg: V77Config) -> dict[str, Any]:
     bench["close"] = pd.to_numeric(bench["adj_close"], errors="coerce")
     bench["ticker"] = cfg.benchmark_ticker
     bench = bench[(bench["date"] >= cfg.start_date) & (bench["date"] <= cfg.end_date)]
+    # KS11 is price-only: benchmark volume is non-authoritative and cannot
+    # enter value/ADV calculations. ETF volume remains required above.
+    # Keep the non-authoritative benchmark volume nullable without mixing an
+    # object-typed ``pd.NA`` column into the numeric ETF frame.  The latter
+    # triggers pandas' concat dtype warning on every model build.
+    bench["volume"] = np.nan
     raw = pd.concat([raw, bench[["date", "ticker", "open", "high", "low", "close", "volume"]]], ignore_index=True)
 
     pivots = {col: raw.pivot_table(index="date", columns="ticker", values=col, aggfunc="last").sort_index() for col in ("open", "high", "low", "close", "volume")}
@@ -134,6 +166,9 @@ def load_adjusted_market(root: Path, cfg: V77Config) -> dict[str, Any]:
     idx = idx[(idx >= cfg.start_date) & (idx <= cfg.end_date)]
     for key in pivots:
         pivots[key] = pivots[key].reindex(idx)
+    # Keep the price-panel column shape for downstream research callers while
+    # retaining KS11 as an all-null, non-authoritative volume series.
+    pivots["volume"] = pivots["volume"].reindex(columns=pivots["close"].columns)
     # Tradable prices are never forward-filled and open never falls back to close.
     if pivots["open"][cfg.core_ticker].isna().any() or pivots["close"][cfg.core_ticker].isna().any():
         raise ValueError("core ticker contains missing adjusted open/close")

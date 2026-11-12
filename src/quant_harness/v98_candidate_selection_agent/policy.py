@@ -23,6 +23,7 @@ ABLATION_POLICIES = (
     "ABLATE_V79_126_COMPONENT",
     "ABLATE_V79_252_COMPONENT",
     "ABLATE_V79_TREND_FILTER",
+    "V79_HIGH252_PROXIMITY",
 )
 
 SUPPORTED_SELECTION_POLICIES = (
@@ -179,11 +180,19 @@ def prepare_selection_features(
         )
     elif policy == "ABLATE_V79_TREND_FILTER" and family == "V79":
         eligible = features["eligible_without_trend_filter"]
+    elif policy == "V79_HIGH252_PROXIMITY" and family == "V79":
+        # Fixed historical challenger: replace V79's sleeve score only.  The
+        # D-1 universe, liquidity, return, and MA eligibility gates remain
+        # exactly the parent V79 contract.
+        score = features["high252_proximity"]
 
     return {
         **features,
         "selection_score": score,
-        "selection_eligible": eligible.fillna(False).astype(bool),
+        # Normalize through pandas' nullable boolean dtype first.  Calling
+        # fillna directly on an object frame triggers pandas' deprecated
+        # silent downcast warning on every AS-OF intraday evaluation.
+        "selection_eligible": eligible.astype("boolean").fillna(False).astype(bool),
         "horizon_consensus_count": count,
         "horizon_dispersion": dispersion_frame,
     }

@@ -9,9 +9,47 @@ import pandas as pd
 import yaml
 
 from .adapter import load_candidate_specs, load_config, replay_candidate
+from .receipts import issue_receipt, receipt_status
 
 PARENT_BY_STRATEGY = {"V69": "V69_PARENT", "V79": "V79_PARENT"}
 DEFAULT_OUTPUT = Path("reports/runtime/v104_forward_observations.csv")
+DATA_GATE_CHECK = "V104_DATA_GATE"
+RECONCILIATION_CHECK = "V104_RECONCILIATION"
+ADAPTER_CHECK = "V104_ADAPTER_IMPLEMENTATION"
+
+
+def _classify_replay_observation(session: str | pd.Timestamp, freeze_end: str | pd.Timestamp) -> dict[str, Any]:
+    """A batch replay has no capture provenance and can never be Forward evidence."""
+    session_date = pd.Timestamp(session).normalize()
+    freeze_date = pd.Timestamp(freeze_end).normalize()
+    return {
+        "post_freeze": bool(session_date > freeze_date),
+        "historical_replay_only": True,
+        "new_forward_observation": False,
+        "reason": "BATCH_REPLAY_HAS_NO_CAPTURE_PROVENANCE",
+    }
+
+
+def _enabled_forward_candidate_ids(
+    contract: dict[str, Any], candidate_ids: Iterable[str] | None = None,
+) -> list[str]:
+    """Return only candidates explicitly enabled by both registry and candidate gate."""
+    listed = list(contract.get("enabled_candidates", []))
+    configs = contract.get("candidates", {})
+    requested = (
+        [candidate_id for candidate_id in listed if configs.get(candidate_id, {}).get("enabled_for_new_forward") is True]
+        if candidate_ids is None else list(candidate_ids)
+    )
+    unknown = sorted(set(requested) - set(configs))
+    if unknown:
+        raise ValueError(f"unknown V104 runtime candidates: {unknown}")
+    disabled = sorted(
+        candidate_id for candidate_id in requested
+        if candidate_id not in listed or configs.get(candidate_id, {}).get("enabled_for_new_forward") is not True
+    )
+    if disabled:
+        raise ValueError(f"candidates not enabled for new forward: {disabled}")
+    return requested
 
 
 def _order_signature(orders: pd.DataFrame, session: pd.Timestamp) -> str:
@@ -57,7 +95,9 @@ def build_session_observations(
     root = Path(root)
     cfg = load_config(root)
     contract = yaml.safe_load((root / "config/v104_challenger_runtime_contract.yaml").read_text(encoding="utf-8"))
-    enabled = list(candidate_ids or contract.get("enabled_candidates", []))
+    enabled = _enabled_forward_candidate_ids(contract, candidate_ids)
+    if not enabled:
+        return pd.DataFrame()
     specs = load_candidate_specs(root)
     unknown = sorted(set(enabled) - set(specs))
     if unknown:
@@ -87,8 +127,20 @@ def build_session_observations(
             raise ValueError(f"candidate fingerprint mutation detected for {candidate_id}")
         if candidate["input_hash"] != parent["input_hash"]:
             raise ValueError(f"parent/candidate input hash mismatch for {candidate_id}")
+        data_evidence = {
+            "candidate_input_hash": candidate["input_hash"], "parent_input_hash": parent["input_hash"],
+            "candidate_fingerprint": spec.fingerprint,
+        }
+        reconciliation_evidence = {
+            "candidate_target_hash": str(ctarget["target_hash"]), "parent_target_hash": str(ptarget["target_hash"]),
+            "candidate_order_signature": _order_signature(candidate["orders"], session),
+            "parent_order_signature": _order_signature(parent["orders"], session),
+        }
+        adapter_evidence = {"candidate_fingerprint": spec.fingerprint, "strategy": spec.strategy}
+        session_text = session.date().isoformat()
+        classification = _classify_replay_observation(session_text, freeze_end)
         rows.append({
-            "session": session.date().isoformat(),
+            "session": session_text,
             "candidate_id": candidate_id,
             "parent_candidate_id": parent_id,
             "strategy": spec.strategy,
@@ -105,13 +157,31 @@ def build_session_observations(
             "candidate_minus_parent_nav_krw": float(crow["nav_krw"] - prow["nav_krw"]),
             "candidate_cash_krw": float(crow["cash_krw"]),
             "parent_cash_krw": float(prow["cash_krw"]),
-            "historical_replay_only": bool(session <= freeze_end),
-            "new_forward_observation": bool(session > freeze_end),
-            "data_gate_passed": True,
-            "reconciliation_passed": True,
+            **classification,
+            "data_gate_status": receipt_status(root, check_id=DATA_GATE_CHECK, session=session_text, candidate_id=candidate_id, input_hash=candidate["input_hash"], expected_evidence=data_evidence),
+            "reconciliation_status": receipt_status(root, check_id=RECONCILIATION_CHECK, session=session_text, candidate_id=candidate_id, input_hash=candidate["input_hash"], expected_evidence=reconciliation_evidence),
+            "adapter_implemented_and_tested_status": receipt_status(root, check_id=ADAPTER_CHECK, session=session_text, candidate_id=candidate_id, input_hash=candidate["input_hash"], expected_evidence=adapter_evidence),
             "live_execution_allowed": False,
         })
     return pd.DataFrame(rows).sort_values(["session", "candidate_id"]).reset_index(drop=True)
+
+
+def validate_session_receipts(root: Path | str, *, candidate_ids: Iterable[str] | None = None, as_of: str | pd.Timestamp | None = None) -> int:
+    """Execute V104's deterministic checks and write their receipts for a forward session."""
+    root = Path(root)
+    rows = build_session_observations(root, candidate_ids=candidate_ids, as_of=as_of)
+    if rows.empty or not rows["new_forward_observation"].all():
+        return 0
+    for row in rows.to_dict("records"):
+        data_evidence = {"candidate_input_hash": row["input_hash"], "parent_input_hash": row["input_hash"], "candidate_fingerprint": row["candidate_fingerprint"]}
+        reconciliation_evidence = {
+            "candidate_target_hash": row["candidate_target_hash"], "parent_target_hash": row["parent_target_hash"],
+            "candidate_order_signature": row["candidate_order_signature"], "parent_order_signature": row["parent_order_signature"],
+        }
+        adapter_evidence = {"candidate_fingerprint": row["candidate_fingerprint"], "strategy": row["strategy"]}
+        for check_id, evidence in ((DATA_GATE_CHECK, data_evidence), (RECONCILIATION_CHECK, reconciliation_evidence), (ADAPTER_CHECK, adapter_evidence)):
+            issue_receipt(root, check_id=check_id, session=row["session"], candidate_id=row["candidate_id"], input_hash=row["input_hash"], result_status="PASSED", evidence=evidence)
+    return int(len(rows) * 3)
 
 
 def append_new_forward_observations(
@@ -127,13 +197,21 @@ def append_new_forward_observations(
     if rows.empty:
         return {"status": "NO_ENABLED_CANDIDATES", "rows_appended": 0, "live_execution_allowed": False}
     if not rows["new_forward_observation"].all():
+        post_freeze_batch = bool(
+            (~rows["new_forward_observation"].astype(bool) & rows.get("post_freeze", pd.Series(False, index=rows.index)).astype(bool)).any()
+        )
         return {
-            "status": "NO_NEW_SESSION_AFTER_V104_FREEZE",
+            "status": "BLOCKED_BATCH_REPLAY_HAS_NO_CAPTURE_PROVENANCE" if post_freeze_batch else "NO_NEW_SESSION_AFTER_V104_FREEZE",
             "session": str(rows["session"].iloc[0]),
             "rows_appended": 0,
             "historical_replay_rows": int(rows["historical_replay_only"].sum()),
+            "reason": "BATCH_REPLAY_HAS_NO_CAPTURE_PROVENANCE" if post_freeze_batch else "SESSION_NOT_AFTER_FREEZE",
             "live_execution_allowed": False,
         }
+    validate_session_receipts(root, candidate_ids=candidate_ids, as_of=as_of)
+    rows = build_session_observations(root, candidate_ids=candidate_ids, as_of=as_of)
+    if not (rows[["data_gate_status", "reconciliation_status", "adapter_implemented_and_tested_status"]] == "PASSED").all().all():
+        return {"status": "BLOCKED_VALIDATION_RECEIPT", "rows_appended": 0, "live_execution_allowed": False}
     target = root / (Path(output_path) if output_path is not None else DEFAULT_OUTPUT)
     target.parent.mkdir(parents=True, exist_ok=True)
     key = ["session", "candidate_id"]

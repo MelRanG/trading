@@ -14,9 +14,9 @@ def _cfg(root: Path) -> dict[str, Any]:
     return yaml.safe_load((root / "config/v93_feedback_research.yaml").read_text(encoding="utf-8"))
 
 
-def run(root: Path | str) -> dict[str, Any]:
+def run(root: Path | str, *, output_dir: Path | str | None = None) -> dict[str, Any]:
     root = Path(root)
-    out_dir = root / "reports" / REPORT
+    out_dir = Path(output_dir) if output_dir is not None else root / "reports" / REPORT
     out_dir.mkdir(parents=True, exist_ok=True)
     cfg = _cfg(root)
     summary_path = root / "reports/v92_automated_research/v92_candidate_summary.csv"

@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+import shutil
 
 import pandas as pd
 import pytest
@@ -11,6 +12,7 @@ from quant_harness.v83_independent_self_research.engine import run
 
 
 ROOT = Path(__file__).resolve().parents[1]
+REPORT_ROOT = ROOT / "reports/v83_independent_self_research"
 
 
 def _artifact_fingerprint() -> str:
@@ -30,12 +32,21 @@ def _artifact_fingerprint() -> str:
 
 
 @pytest.fixture(scope="module", autouse=True)
-def v83_result() -> dict:
-    manifest_path = ROOT / "reports/v83_independent_self_research/v83_artifact_manifest.json"
-    decision_path = ROOT / "reports/v83_independent_self_research/v83_decision.json"
+def v83_result(tmp_path_factory) -> dict:
+    global REPORT_ROOT
+    project_root = tmp_path_factory.mktemp("v83_project")
+    for name in ("src", "config", "data"):
+        shutil.copytree(ROOT / name, project_root / name)
+    shutil.copytree(
+        ROOT / "reports/v79_generic_trend_sleeve",
+        project_root / "reports/v79_generic_trend_sleeve",
+    )
+    REPORT_ROOT = project_root / "reports/v83_independent_self_research"
+    manifest_path = REPORT_ROOT / "v83_artifact_manifest.json"
+    decision_path = REPORT_ROOT / "v83_decision.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8")) if manifest_path.exists() else {}
     if not decision_path.exists() or manifest.get("input_fingerprint") != _artifact_fingerprint():
-        result = run(ROOT)
+        result = run(project_root)
         manifest_path.write_text(json.dumps({"schema_version": 1, "input_fingerprint": _artifact_fingerprint()}, indent=2), encoding="utf-8")
         return result
     decision = json.loads(decision_path.read_text(encoding="utf-8"))
@@ -43,7 +54,7 @@ def v83_result() -> dict:
 
 
 def _read(name: str) -> pd.DataFrame:
-    return pd.read_csv(ROOT / "reports/v83_independent_self_research" / name)
+    return pd.read_csv(REPORT_ROOT / name)
 
 
 def test_v83_decision_and_all_quality_gates_pass(v83_result: dict) -> None:
@@ -87,7 +98,7 @@ def test_feedback_evidence_is_purged_and_matured() -> None:
 
 def test_own_outcome_ledgers_never_cross_families() -> None:
     for family in ("v69", "v79"):
-        for path in (ROOT / "reports/v83_independent_self_research").glob(f"v83_own_outcomes_{family}_*.csv"):
+        for path in REPORT_ROOT.glob(f"v83_own_outcomes_{family}_*.csv"):
             frame = pd.read_csv(path)
             assert frame["family"].eq(family.upper()).all()
             assert frame["scenario"].str.startswith(family.upper()).all()
@@ -107,7 +118,7 @@ def test_future_mutation_and_vendor_robustness_gates_pass() -> None:
 
 
 def test_all_targets_are_d1_and_sum_to_one() -> None:
-    report = ROOT / "reports/v83_independent_self_research"
+    report = REPORT_ROOT
     for path in report.glob("v83_target_*.csv"):
         frame = pd.read_csv(path)
         assert (frame["target_weight_sum"] - 1.0).abs().max() <= 1e-12
@@ -116,6 +127,6 @@ def test_all_targets_are_d1_and_sum_to_one() -> None:
 
 
 def test_no_live_or_registry_auto_change() -> None:
-    decision = json.loads((ROOT / "reports/v83_independent_self_research/v83_decision.json").read_text(encoding="utf-8"))
+    decision = json.loads((REPORT_ROOT / "v83_decision.json").read_text(encoding="utf-8"))
     assert decision["live_allowed"] is False
     assert decision["automatic_registry_change"] is False

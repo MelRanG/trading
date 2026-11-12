@@ -406,21 +406,21 @@ def run(root: Path | str) -> dict[str, Any]:
         row = delta_by_id.loc[candidate_id]
         future_ok = bool(future.set_index("candidate_id").loc[candidate_id, "passed"])
         gates = {
-            "adapter_implemented_and_tested": True,
+            "adapter_implemented_and_tested_status": "NOT_RUN",
             "target_change": int(row["changed_target_days"]) > 0,
             "order_or_nav_change": int(row["changed_order_days"]) > 0 or int(row["changed_nav_days"]) > 0,
             "no_negative_cash": int(row["negative_cash_days"]) == 0,
             "future_mutation_invariant": future_ok,
             "same_input_hash_as_parent": run["input_hash"] == runs[PARENT_BY_STRATEGY[run["spec"].strategy]]["input_hash"],
         }
-        ready = bool(all(gates.values()))
+        ready = bool(all(value is True for value in gates.values()))
         if ready and len(enabled) < int(cfg["maximum_parallel_forward_candidates"]):
             enabled.append(candidate_id)
         adapter_rows.append({
             "candidate_id": candidate_id, "priority_rank": rank, "strategy": run["spec"].strategy,
             "candidate_fingerprint": run["spec"].fingerprint, "input_hash": run["input_hash"],
             "paper_account_id": f"PAPER-V104-{candidate_id}",
-            "adapter_status": "IMPLEMENTED_AND_TESTED_FORWARD_NOT_STARTED" if ready else "BLOCKED_GATE_FAILURE",
+            "adapter_status": "NOT_RUN" if gates["adapter_implemented_and_tested_status"] == "NOT_RUN" else ("IMPLEMENTED_AND_TESTED_FORWARD_NOT_STARTED" if ready else "BLOCKED_GATE_FAILURE"),
             "enabled_for_new_forward": ready, "historical_return_delta_pp": float(row["return_pct_delta"]),
             "gates_json": json.dumps(gates, sort_keys=True),
         })

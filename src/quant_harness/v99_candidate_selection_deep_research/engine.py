@@ -539,6 +539,7 @@ def _ablation_summary(metrics: pd.DataFrame) -> pd.DataFrame:
         "ABLATE_V69_LONG_FILTER": "V69", "ABLATE_V69_TREND_FILTER": "V69",
         "ABLATE_V79_63_COMPONENT": "V79", "ABLATE_V79_126_COMPONENT": "V79",
         "ABLATE_V79_252_COMPONENT": "V79", "ABLATE_V79_TREND_FILTER": "V79",
+        "V79_HIGH252_PROXIMITY": "V79",
     }
     rows: list[dict[str, Any]] = []
     for policy, strategy in primary.items():
@@ -771,9 +772,9 @@ def _ablation_policy_worker(root_text: str, policy: str, cache_dir_text: str) ->
     return str(path)
 
 
-def run(root: Path | str) -> dict[str, Any]:
+def run(root: Path | str, *, output_dir: Path | str | None = None) -> dict[str, Any]:
     root = Path(root)
-    out = root / "reports" / REPORT
+    out = Path(output_dir) if output_dir is not None else root / "reports" / REPORT
     out.mkdir(parents=True, exist_ok=True)
     cfg = _load_config(root)
     cfg77 = v77._load_config(root)

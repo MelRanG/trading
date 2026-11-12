@@ -1,0 +1,16 @@
+contract_id: OPEN_5M_DELAY_NEXT_1M_V1
+decision_contract: D_MINUS_1_DAILY_CANDIDATE_AND_TARGET
+regular_session_timezone: Asia/Seoul
+one_minute_timestamp_convention: BAR_END_TIMESTAMP
+first_completed_five_minute:
+  start: "09:00"
+  end: "09:05"
+execution_reference: NEXT_ONE_MINUTE_OPEN_AT_09_05__TIMESTAMP_09_06
+order_sequence: SELL_THEN_BUY
+missing_minute_data: INTRADAY_DATA_UNAVAILABLE
+daily_price_fallback: false
+intraday_retry: false
+split_orders: false
+stop_loss: false
+take_profit: false
+quick_take: false

@@ -9,11 +9,12 @@ from quant_harness.v91_hypothesis_generator.engine import run
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_v91_generates_only_repeated_material_self_errors() -> None:
-    result = run(ROOT)
+def test_v91_generates_only_repeated_material_self_errors(tmp_path) -> None:
+    output = tmp_path / "v91_hypothesis_generator"
+    result = run(ROOT, output_dir=output)
     assert result["quality_gates_passed"] is True
     cfg = yaml.safe_load((ROOT / "config/v93_feedback_research.yaml").read_text())
-    hypotheses = pd.read_csv(ROOT / "reports/v91_hypothesis_generator/v91_hypotheses.csv")
+    hypotheses = pd.read_csv(output / "v91_hypotheses.csv")
     proposed = hypotheses[hypotheses["proposal_created"].astype(bool)]
     assert not hypotheses.duplicated(["family", "test_year"]).any()
     assert (proposed["issue_rate"] >= float(cfg["hypothesis"]["minimum_issue_rate"])).all()

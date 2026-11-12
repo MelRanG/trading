@@ -1,0 +1,42 @@
+contract_id: DAILY_TARGET_5M_PRICE_CONFIRM_V1
+version: v1
+candidate_models:
+  - V69_PARENT
+  - V79_NO63_VOL_GUARD
+period:
+  start: '2023-01-30'
+  end: '2024-08-30'
+inputs:
+  daily_decision: D1_CONFIRMED_ONLY
+  intraday_signal: PRICE_ONLY
+  minute_volume_used: false
+  daily_open: true
+  completed_five_minute_close: true
+  prior_confirmed_daily_close: true
+execution:
+  sell_or_reduce: FIRST_VALID_1M_OPEN
+  buy_or_increase: NEXT_VALID_1M_OPEN_AFTER_FIRST_CONFIRMATION
+  no_confirmation_action: NO_INTRADAY_CONFIRMATION
+  carry_unconfirmed_buy: false
+  completed_bars_only: true
+  sell_before_buy: true
+  no_daily_fallback: true
+  regular_session: Asia/Seoul
+constraints:
+  minimum_order_notional_krw: 100000
+  max_participation_of_d1_adv: 0.01
+  fees_spread_impact: V101_PARENT_EXECUTION_CONTRACT
+excluded_rules:
+  - minute_volume
+  - vwap
+  - gap_threshold
+  - moving_average_intraday
+  - opening_range_breakout
+  - stop_loss
+  - take_profit
+  - quick_take
+  - scale_in
+  - cooldown
+  - intraday_candidate_change
+  - forced_close
+  - same_day_reentry

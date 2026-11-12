@@ -1,0 +1,13 @@
+schema_version: ALPHA_RESEARCH_FACTORY_COMPLETION_V1
+calculation_version: ALPHA_EXECUTION_FEASIBILITY_V1
+operational_replay_budget: 1
+fixture_replay_budget: 20
+minimum_fill_ratio: 0.25
+maximum_cost_to_gross_spread_ratio: 1.0
+pit_limitation: ETF_UNIVERSE_PIT_LIMITED_OBSERVED_FIRST_BAR_PROXY
+promotion_ceiling: FORWARD_SHADOW_ONLY
+data_readiness:
+  common_start: '2021-10-13'
+  common_end: '2026-07-31'
+  minimum_start: '2021-10-13'
+

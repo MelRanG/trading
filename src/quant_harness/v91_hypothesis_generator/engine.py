@@ -70,9 +70,9 @@ def _issue_rows(evidence: pd.DataFrame, cfg: dict[str, Any]) -> pd.DataFrame:
     return pd.DataFrame(rows).sort_values(["score", "severity"], ascending=False).reset_index(drop=True)
 
 
-def run(root: Path | str) -> dict[str, Any]:
+def run(root: Path | str, *, output_dir: Path | str | None = None) -> dict[str, Any]:
     root = Path(root)
-    out_dir = root / "reports" / REPORT
+    out_dir = Path(output_dir) if output_dir is not None else root / "reports" / REPORT
     out_dir.mkdir(parents=True, exist_ok=True)
     cfg = _cfg(root)
     decision_path = root / "reports/v90_trade_attribution/v90_decision_attribution.csv"

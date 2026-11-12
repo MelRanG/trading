@@ -1,5 +1,33 @@
 # SYSTEM AS-IS AUDIT
 
+## KRX_MARKET_FLOW_PACK_V1 access state (2026-08-07)
+
+KRX 공식 Open API 서비스 목록에는 요청된 투자자 수급·프로그램매매·선물
+basis·옵션 IV·P/C ratio가 없다. KRX의 2026-06-01 공식 공지는 Open API
+미제공 자료를 Data Marketplace 화면 검색/다운로드 또는 데이터 구매로
+이용하도록 안내한다. 저장소에는 해당 공식 원본이 없으므로 현재 상태는
+`HUMAN_DATA_DOWNLOAD_REQUIRED` 및 `KRX_FLOW_DATA_BLOCKED`다. 화면 내부의
+비공개 요청을 고정 API로 사용하지 않는다.
+
+수동 CSV intake는 `data/krx_market_flow_pack_v1/drop_zone/`을 사용하며,
+checksum raw archive와 `PIT_CONSERVATIVE_OFFICIAL_EOD_TPLUS1` canonical 계약을
+적용한다. 원본과 명시적 schema sidecar가 모두 검증되기 전에는 가설,
+diagnostic, V101, operational replay를 실행하지 않는다. 확인 명령은
+`python scripts/run_krx_market_flow_pack.py --dry-run`, 검증된 파일의 실제
+intake는 `python scripts/run_krx_market_flow_pack.py --ingest`다.
+
+## Alpha Research Factory completion (2026-08-06)
+
+Factory control plane은 immutable preregistration, deterministic diagnostic,
+robustness, V101 execution-feasibility, 격리 operational replay budget gate를
+순서대로 강제한다. 실제 operational replay는 회차당 최대 1회이며 사람 승인
+전 최상위 상태는 `FORWARD_SHADOW_ONLY`다. Fixture budget은 실제 연구 budget과
+분리되고 fixture 결과는 alpha evidence로 취급하지 않는다. 현재 독립 데이터
+감사에서는 `READY_PIT` 원천이 없어 실제 첫 연구 회차는
+`REAL_RESEARCH_ROUND_DATA_BLOCKED`로 fail-closed되며 broker mutation, 운영 DB,
+`PAPER-PRIMARY` 접근은 모두 금지된다. 재현 명령은
+`python scripts/run_alpha_research_factory_completion.py`다.
+
 ## 1. 감사 범위와 판정 표기
 
 이 문서는 V104.2 Codex Clean Release 저장소의 **현재 구현 사실**을 정적 추적한 결과다. 코드는 수정하지 않았다.

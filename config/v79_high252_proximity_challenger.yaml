@@ -1,0 +1,22 @@
+contract_id: V79_HIGH252_PROXIMITY_VOL_GUARD_V1
+candidate_id: V79_HIGH252_PROXIMITY_VOL_GUARD
+baseline_candidate_id: V79_NO63_VOL_GUARD
+status: HISTORICAL_COMPARATIVE_REPLAY_ONLY
+signal_contract:
+  score: close_d1 / rolling_max_adjusted_close_252d_d1 - 1
+  ranking: cross_sectional_rank_descending
+  replacement_scope: V79_sleeve_score_only
+  unchanged:
+    - V94 universe and eligibility
+    - V95 MA120_VOLATILITY_GUARD_35PCT regime
+    - V69 base selection
+    - V100 FIXED_PARENT_ALLOCATIONS 70_30 target
+    - V101 PARENT_EXECUTION_CONTRACT
+    - initial capital, costs, D1 ADV, minimum notional, SELL before BUY
+research_measurement:
+  forward_spread_horizons_days: [20, 60]
+  non_overlapping_samples: true
+  moving_block_bootstrap_block_observations: 5
+  confidence_level: 0.95
+  bootstrap_resamples: 2000
+live_execution_allowed: false

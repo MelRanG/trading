@@ -119,6 +119,11 @@ def _strict_v79_features(close: pd.DataFrame, value: pd.DataFrame, universe: pd.
         stable_liquidity_floor_krw=stable_floor,
     )
     ma = close[tickers].rolling(int(cfg["trend_ma_days"]), min_periods=int(cfg["trend_ma_days"])).mean()
+    # This is a D-1 feature.  It is intentionally separate from the V79
+    # parent score so a registered challenger can replace only the sleeve
+    # ranking while retaining the parent eligibility contract unchanged.
+    high252 = close[tickers].rolling(252, min_periods=252).max()
+    high252_proximity = close[tickers].div(high252).sub(1.0)
     eligible = gate["gate"] & returns[1].shift(1).gt(0) & returns[2].shift(1).gt(0) & close[tickers].shift(1).gt(ma.shift(1))
     return {
         "score": score.shift(1),
@@ -127,6 +132,7 @@ def _strict_v79_features(close: pd.DataFrame, value: pd.DataFrame, universe: pd.
         "absolute_return_short": returns[0].shift(1),
         "absolute_return_medium": returns[1].shift(1),
         "absolute_return_long": returns[2].shift(1),
+        "high252_proximity": high252_proximity.shift(1),
         "universe_gate": gate,
     }
 

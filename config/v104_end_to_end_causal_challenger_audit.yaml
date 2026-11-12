@@ -196,6 +196,17 @@ candidates:
     evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
     execution_policy: PARENT_EXECUTION_CONTRACT
     purpose: preregistered orthogonal regime-selection composite
+  - candidate_id: V79_HIGH252_PROXIMITY_VOL_GUARD
+    strategy: V79
+    universe_policy: STRICT_PIT_CORRECTNESS
+    regime_policy: MA120_VOLATILITY_GUARD_35PCT
+    base_selection_policy: TOP_SCORE_SECTOR_DEDUP
+    sleeve_selection_policy: V79_HIGH252_PROXIMITY
+    strategy_policy: FIXED_PARENT_ALLOCATIONS
+    evidence_policy: MARKET_EVIDENCE_DIAGNOSTIC_ONLY
+    execution_policy: PARENT_EXECUTION_CONTRACT
+    audit_only: true
+    purpose: fixed 252-day-high-proximity sleeve replacement; historical comparative replay only
   - candidate_id: V79_UNCERTAINTY_VOL_GUARD
     strategy: V79
     universe_policy: STRICT_PIT_CORRECTNESS

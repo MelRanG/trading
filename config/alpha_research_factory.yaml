@@ -1,0 +1,38 @@
+schema_version: ALPHA_RESEARCH_FACTORY_CONTROL_PLANE_V1
+factory_mode: DRY_RUN_ONLY
+capital_mutation_allowed: false
+live_execution_allowed: false
+proposal_budget_per_cycle: 3
+operational_replay_budget_per_cycle: 1
+human_approval_required_for_promotion: true
+universe_pit_limitation: OBSERVED_FIRST_BAR_PROXY_NOT_COMPLETE_LISTING_DELISTING_HISTORY
+known_semantic_duplicates:
+  - strategy_family: V79
+    universe_contract: V94_STRICT_PIT_CORRECTNESS
+    signal_semantics: ADJUSTED_CLOSE_DIV_252D_ROLLING_HIGH_MINUS_1
+    decision_timing: D1
+    existing_contract: config/v79_high252_proximity_challenger.yaml
+proposals:
+  - proposal_id: HIGH252_EQUIVALENT
+    proposal_origin: LLM_PROPOSAL_ONLY
+    strategy_family: V79
+    universe_contract: V94_STRICT_PIT_CORRECTNESS
+    signal_semantics: ADJUSTED_CLOSE_DIV_252D_ROLLING_HIGH_MINUS_1
+    decision_timing: D1
+    requested_diagnostic: IC_SPREAD
+  - proposal_id: REVERSAL_5D
+    proposal_origin: LLM_PROPOSAL_ONLY
+    strategy_family: V79
+    universe_contract: V94_STRICT_PIT_CORRECTNESS
+    signal_semantics: ADJUSTED_CLOSE_RETURN_5D_REVERSAL
+    decision_timing: D1
+    requested_diagnostic: IC_SPREAD
+  - proposal_id: PIT_NEWS_EVENT
+    proposal_origin: LLM_PROPOSAL_ONLY
+    strategy_family: V79
+    universe_contract: V94_STRICT_PIT_CORRECTNESS
+    signal_semantics: HISTORICAL_PIT_NEWS_SEVERE_EVENT
+    decision_timing: D1
+    required_inputs:
+      - historical_pit_news
+    requested_diagnostic: NEWS_EVENT_DIAGNOSTIC

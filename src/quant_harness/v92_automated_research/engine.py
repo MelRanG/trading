@@ -51,9 +51,9 @@ def _issue_score(
     return float(row["rate"] + row["severity"]), len(frame)
 
 
-def run(root: Path | str) -> dict[str, Any]:
+def run(root: Path | str, *, output_dir: Path | str | None = None) -> dict[str, Any]:
     root = Path(root)
-    out_dir = root / "reports" / REPORT
+    out_dir = Path(output_dir) if output_dir is not None else root / "reports" / REPORT
     out_dir.mkdir(parents=True, exist_ok=True)
     cfg = _cfg(root)
     hypotheses_path = root / "reports/v91_hypothesis_generator/v91_hypotheses.csv"

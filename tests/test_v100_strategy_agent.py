@@ -9,8 +9,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 @pytest.fixture(scope="module")
-def result():
-    return run(ROOT)
+def result(tmp_path_factory):
+    return run(ROOT, output_dir=tmp_path_factory.mktemp("v100_reports") / "v100_strategy_agent")
 
 
 def test_v100_quality_and_parent_parity(result):

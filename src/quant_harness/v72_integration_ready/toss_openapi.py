@@ -11,7 +11,7 @@ from decimal import Decimal
 from pathlib import Path
 from typing import Any, Callable
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
 from .contracts import BrokerAccount, BrokerHolding, BrokerOrder, BrokerQuote, Side
@@ -32,7 +32,7 @@ class TossEndpointMap:
     order_create_path: str | None = None
     order_cancel_path: str | None = None
     order_list_path: str | None = None
-    market_calendar_path: str | None = None
+    market_calendar_path: str | None = '/api/v1/market-calendar/{market}'
 
     @classmethod
     def from_json(cls, path: Path | str | None) -> 'TossEndpointMap':
@@ -94,10 +94,13 @@ def _normalize_order_status(value: Any) -> str:
     text = str(value or '').strip().upper().replace('-', '_').replace(' ', '_')
     aliases = {
         'PENDING': 'ACCEPTED', 'SUBMITTED': 'ACCEPTED', 'RECEIVED': 'ACCEPTED',
+        'PENDING_CANCEL': 'ACCEPTED', 'PENDING_REPLACE': 'ACCEPTED',
         'PARTIAL': 'PARTIALLY_FILLED', 'PARTIALLYFILLED': 'PARTIALLY_FILLED',
+        'PARTIAL_FILLED': 'PARTIALLY_FILLED',
         'COMPLETED': 'FILLED', 'DONE': 'FILLED',
         'CANCELLED': 'CANCELED', 'CANCEL': 'CANCELED',
-        'FAILED': 'REJECTED',
+        'FAILED': 'REJECTED', 'REPLACED': 'CANCELED',
+        'CANCEL_REJECTED': 'REJECTED', 'REPLACE_REJECTED': 'REJECTED',
     }
     normalized = aliases.get(text, text)
     allowed = {'NEW', 'ACCEPTED', 'PARTIALLY_FILLED', 'FILLED', 'CANCELED', 'REJECTED'}
@@ -210,11 +213,21 @@ class TossOpenApiClient:
         response_headers: dict[str, str] = {}
         raw = b''
         for attempt in range(attempts):
-            status, response_headers, raw = self._send(Request(url, data=payload, headers=headers, method=method))
+            try:
+                status, response_headers, raw = self._send(
+                    Request(url, data=payload, headers=headers, method=method)
+                )
+            except TossApiError:
+                if method.upper() != 'GET' or attempt == attempts - 1:
+                    raise
+                time.sleep(min((2 ** attempt) + random.uniform(0, 0.25), 8.0))
+                continue
             if 200 <= status < 300:
                 break
             if method.upper() != 'GET' or status not in {429, 500, 502, 503, 504} or attempt == attempts - 1:
-                raise TossApiError(f'Toss API returned status {status}: {raw[:500]!r}')
+                # Provider bodies may contain account-linked or other sensitive data.
+                # Never include raw responses in exceptions that callers could log.
+                raise TossApiError(f'Toss API returned status {status}')
             retry_after = response_headers.get('Retry-After') or response_headers.get('retry-after')
             try:
                 wait = float(retry_after) if retry_after is not None else (2 ** attempt)
@@ -302,26 +315,45 @@ class TossOpenApiClient:
 
     def get_daily_candles(self, symbol: str, *, start_date: str, end_date: str) -> list[dict[str, Any]]:
         data = self._request('GET', self.endpoint_map.candles_path, query={
-            'symbol': symbol, 'interval': '1d', 'startDate': start_date, 'endDate': end_date,
+            # Official v1.2 candle contract: bounded pages, inclusive `before`,
+            # and adjusted OHLC.  The caller still supplies a date window; the
+            # provider filters the returned page to that window below.
+            'symbol': symbol, 'interval': '1d', 'count': 200,
+            'before': f'{end_date}T23:59:59+09:00', 'adjusted': 'true',
         })
         payload = data.get('data', data)
-        rows = _dig(payload, self.field_map.candles_list, payload if isinstance(payload, list) else [])
+        result_payload = _dig(payload, 'result', payload)
+        rows = _dig(result_payload, self.field_map.candles_list, result_payload if isinstance(result_payload, list) else [])
         result: list[dict[str, Any]] = []
         for row in rows or []:
             close = _dig(row, self.field_map.candle_close)
+            if close is None:
+                close = row.get('closePrice') if isinstance(row, dict) else None
             volume = _dig(row, self.field_map.candle_volume, 0)
             if close is None:
                 continue
             value = _dig(row, self.field_map.candle_value)
             candle_date = _dig(row, self.field_map.candle_date)
+            if not candle_date and isinstance(row, dict):
+                candle_date = row.get('timestamp')
             if not candle_date:
                 raise TossApiError(f'Candle row did not contain {self.field_map.candle_date}')
+            candle_date = str(candle_date)[:10]
+            if candle_date < str(start_date) or candle_date > str(end_date):
+                continue
+            open_price = _dig(row, self.field_map.candle_open)
+            high_price = _dig(row, self.field_map.candle_high)
+            low_price = _dig(row, self.field_map.candle_low)
+            if isinstance(row, dict):
+                open_price = row.get('openPrice', open_price)
+                high_price = row.get('highPrice', high_price)
+                low_price = row.get('lowPrice', low_price)
             result.append({
-                'date': str(candle_date)[:10],
+                'date': candle_date,
                 'ticker': str(symbol).zfill(6) if str(symbol).isdigit() else str(symbol),
-                'open': float(_dig(row, self.field_map.candle_open, close)),
-                'high': float(_dig(row, self.field_map.candle_high, close)),
-                'low': float(_dig(row, self.field_map.candle_low, close)),
+                'open': float(open_price if open_price is not None else close),
+                'high': float(high_price if high_price is not None else close),
+                'low': float(low_price if low_price is not None else close),
                 'adj_close': float(close),
                 'volume': float(volume or 0),
                 'value_approx': float(value) if value is not None else float(close) * float(volume or 0),
@@ -329,20 +361,145 @@ class TossOpenApiClient:
             })
         return result
 
+    def get_market_indicator_prices(self, symbols: list[str]) -> list[dict[str, Any]]:
+        """Return the raw market-indicator price identity fields from Toss."""
+        requested = [str(symbol).strip() for symbol in symbols if str(symbol).strip()]
+        if not requested:
+            raise TossApiError('Market-indicator price discovery requires a symbol catalog probe.')
+        data = self._request('GET', '/api/v1/market-indicators/prices', query={'symbols': ','.join(requested)})
+        payload = data.get('result', data.get('data', data))
+        rows = payload if isinstance(payload, list) else _dig(payload, 'indicators', [])
+        if not isinstance(rows, list):
+            raise TossApiError('Market-indicator price response schema is not verified.')
+        result: list[dict[str, Any]] = []
+        for row in rows:
+            if not isinstance(row, dict) or not row.get('symbol'):
+                raise TossApiError('Market-indicator price row is malformed.')
+            result.append({
+                'symbol': str(row['symbol']),
+                'name': row.get('name'),
+                'timestamp': row.get('timestamp'),
+                'last_price': row.get('lastPrice', row.get('last_price')),
+            })
+        return result
+
+    def get_market_indicator_candles_page(
+        self,
+        symbol: str,
+        *,
+        interval: str = '1d',
+        count: int = 200,
+        before: str | None = None,
+    ) -> tuple[list[dict[str, Any]], str | None]:
+        """Read one official market-indicator candle page (GET-only)."""
+        if interval not in {'1m', '1d'} or not 1 <= int(count) <= 200:
+            raise TossApiError('market-indicator candle contract requires interval=1m|1d and count<=200')
+        query: dict[str, Any] = {'interval': interval, 'count': int(count)}
+        if before is not None:
+            query['before'] = before
+        path = f'/api/v1/market-indicators/{quote(str(symbol), safe="")}/candles'
+        data = self._request('GET', path, query=query)
+        result = data.get('result', data.get('data', data))
+        if not isinstance(result, dict) or not isinstance(result.get('candles'), list):
+            raise TossApiError('market-indicator candle response schema is not verified.')
+        rows: list[dict[str, Any]] = []
+        for row in result['candles']:
+            if not isinstance(row, dict) or not row.get('timestamp'):
+                raise TossApiError('market-indicator candle row is malformed.')
+            def field(name: str, fallback: str) -> Any:
+                value = row.get(name)
+                return row.get(fallback) if value is None else value
+            rows.append({
+                'timestamp': str(row['timestamp']),
+                'symbol': str(symbol),
+                'open': field('open', 'openPrice'),
+                'high': field('high', 'highPrice'),
+                'low': field('low', 'lowPrice'),
+                'close': field('close', 'closePrice'),
+                'volume': row.get('volume'),
+            })
+        next_before = result.get('nextBefore', result.get('next_before'))
+        if next_before is not None and not isinstance(next_before, str):
+            raise TossApiError('market-indicator nextBefore is not a string.')
+        return rows, next_before
+
+    def get_intraday_candles_page(
+        self,
+        symbol: str,
+        *,
+        before: str,
+        interval: str = '1m',
+        count: int = 200,
+    ) -> tuple[list[dict[str, Any]], str | None]:
+        """Read one official 1-minute candle page; this method is GET-only."""
+        if interval != '1m' or not 1 <= int(count) <= 200:
+            raise TossApiError('intraday candle contract requires interval=1m and count<=200')
+        data = self._request('GET', self.endpoint_map.candles_path, query={
+            'symbol': symbol, 'interval': interval, 'count': int(count),
+            'before': before, 'adjusted': 'true',
+        })
+        result = data.get('result', data)
+        if not isinstance(result, dict) or not isinstance(result.get('candles'), list):
+            raise TossApiError('intraday candle response schema is not verified')
+        rows: list[dict[str, Any]] = []
+        for row in result['candles']:
+            if not isinstance(row, dict) or not row.get('timestamp'):
+                raise TossApiError('intraday candle row is malformed')
+            def field(name: str, fallback: str) -> Any:
+                value = row.get(name)
+                return row.get(fallback) if value is None else value
+            rows.append({
+                'timestamp': str(row['timestamp']),
+                'symbol': str(symbol).zfill(6) if str(symbol).isdigit() else str(symbol),
+                'open': field('open', 'openPrice'),
+                'high': field('high', 'highPrice'),
+                'low': field('low', 'lowPrice'),
+                'close': field('close', 'closePrice'),
+                'volume': row.get('volume', 0),
+                'adjusted_query': True,
+                'source': 'TOSS_OPEN_API',
+            })
+        next_before = result.get('nextBefore')
+        if next_before is not None and not isinstance(next_before, str):
+            raise TossApiError('intraday nextBefore is not a string')
+        return rows, next_before
+
 
     def get_market_calendar(self, *, market: str, start_date: str, end_date: str) -> list[dict[str, Any]]:
         path = (self.endpoint_map.market_calendar_path or '').replace('{market}', market)
-        data = self._request('GET', path, query={'startDate': start_date, 'endDate': end_date})
-        payload = data.get('data', data)
-        rows = _dig(payload, self.field_map.calendar_list, payload if isinstance(payload, list) else [])
+        # The official endpoint returns a current snapshot (previous/today/next
+        # business day), not a caller-selected date range.
+        data = self._request('GET', path)
+        payload = data.get('result', data.get('data', data))
+        if isinstance(payload, dict) and {'previousBusinessDay', 'today', 'nextBusinessDay'}.issubset(payload):
+            rows = []
+            for key in ('previousBusinessDay', 'today', 'nextBusinessDay'):
+                item = payload.get(key)
+                if not isinstance(item, dict):
+                    continue
+                integrated = item.get('integrated')
+                krx = item.get('krx')
+                session_data = integrated if isinstance(integrated, dict) else krx if isinstance(krx, dict) else {}
+                regular = session_data.get('regularMarket') if isinstance(session_data, dict) else None
+                rows.append({
+                    'date': str(item.get('date', ''))[:10],
+                    'is_open': key != 'today' or isinstance(regular, dict),
+                    'regular_market_end': regular.get('endTime') if isinstance(regular, dict) else None,
+                    'raw': item,
+                })
+        else:
+            rows = _dig(payload, self.field_map.calendar_list, payload if isinstance(payload, list) else [])
         result: list[dict[str, Any]] = []
         for row in rows or []:
-            session = str(_dig(row, self.field_map.calendar_date, ''))[:10]
+            session = str(row.get('date') or _dig(row, self.field_map.calendar_date, ''))[:10]
             if not session:
                 continue
-            raw_open = _dig(row, self.field_map.calendar_is_open, True)
+            raw_open = row.get('is_open', _dig(row, self.field_map.calendar_is_open, True))
             is_open = raw_open if isinstance(raw_open, bool) else str(raw_open).lower() in {'true', '1', 'y', 'yes', 'open'}
-            result.append({'date': session, 'is_open': is_open, 'raw': row})
+            end_time = row.get('regular_market_end')
+            if end_time is None:
+                end_time = _dig(row, 'integrated.regularMarket.endTime') or _dig(row, 'krx.regularMarket.endTime')
+            result.append({'date': session, 'is_open': is_open, 'regular_market_end': end_time, 'raw': row.get('raw', row)})
         return result
 
     def next_trading_session(self, *, market: str, after_date: str, search_days: int = 14) -> str:

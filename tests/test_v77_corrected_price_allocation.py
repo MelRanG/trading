@@ -2,8 +2,11 @@ from __future__ import annotations
 
 from pathlib import Path
 import json
+import shutil
+from dataclasses import replace
 
 import pandas as pd
+import pytest
 
 from quant_harness.v77_corrected_price_allocation.engine import (
     _load_config,
@@ -45,6 +48,31 @@ def test_tradable_open_is_never_filled_from_close() -> None:
     assert not market["close"][core].isna().any()
     gates = pd.read_csv(ROOT / "reports/v77_corrected_price_allocation/v77_quality_gates.csv")
     assert bool(gates.loc[gates["gate"].eq("NO_OPEN_TO_CLOSE_FALLBACK"), "passed"].iloc[0])
+
+
+def test_ks11_volume_is_discarded_from_the_market_panel() -> None:
+    cfg = _load_config(ROOT)
+    market = load_adjusted_market(ROOT, cfg)
+    # The source retains legacy KS11 volume values, but the runtime strips
+    # them before any value/ADV panel can be formed.
+    assert market["volume"][cfg.benchmark_ticker].isna().all()
+    assert market["adv20_d1"][cfg.benchmark_ticker].isna().all()
+
+
+def test_etf_null_volume_remains_fail_closed(tmp_path) -> None:
+    cfg = _load_config(ROOT)
+    source = tmp_path / "data" / "toss_v19c_daily"
+    source.mkdir(parents=True)
+    pd.DataFrame({"ticker": ["091170"]}).to_csv(source / "universe.csv", index=False)
+    etf = pd.read_csv(ROOT / "data/toss_v19c_daily/091170_1d.csv")
+    eligible = etf.index[etf["timestamp"].str[:10].le("2026-07-03")]
+    etf.loc[eligible[0], "volume"] = None
+    etf.to_csv(source / "091170_1d.csv", index=False)
+    bench_dir = tmp_path / "data"
+    shutil.copy2(ROOT / "data/all_prices_long_v62_9_expanded.csv", bench_dir / "all_prices_long_v62_9_expanded.csv")
+    isolated = replace(cfg, etf_source="data/toss_v19c_daily", core_ticker="091170")
+    with pytest.raises(ValueError, match="091170: invalid adjusted OHLC"):
+        load_adjusted_market(tmp_path, isolated)
 
 
 def test_independent_order_reconstruction_matches_selected_account() -> None:

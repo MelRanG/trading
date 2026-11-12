@@ -1,0 +1,16 @@
+schema_version: ALPHA_RESEARCH_DIAGNOSTIC_V1
+proposal_id: REVERSAL_5D
+proposal_contract: runtime/alpha_research_factory/contracts/REVERSAL_5D.json
+calculation_version: D1_REVERSAL_RANK_IC_SPREAD_V1
+universe_contract: V94_STRICT_PIT_CORRECTNESS
+exclude_tickers: ["069500"]
+signal:
+  formula: negative_adjusted_close_return_5d_d1
+  decision_timing: D1
+forward_return_horizons_sessions: [5, 20, 60]
+minimum_cross_section_observations: 6
+minimum_usable_dates_per_horizon: 120
+pass_criteria:
+  minimum_horizons_with_positive_rank_ic: 2
+  minimum_horizons_with_positive_top3_bottom3_spread: 2
+  unknown_nan_reasons_allowed: 0

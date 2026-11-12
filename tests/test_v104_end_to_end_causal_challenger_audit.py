@@ -3,10 +3,19 @@ from __future__ import annotations
 from pathlib import Path
 
 import pandas as pd
+import pytest
 import yaml
 
 from quant_harness.v104_end_to_end_causal_challenger_audit.adapter import _input_hash
 from quant_harness.v104_end_to_end_causal_challenger_audit import forward_runtime
+from quant_harness.v104_end_to_end_causal_challenger_audit.forward_runtime import (
+    _classify_replay_observation,
+    _enabled_forward_candidate_ids,
+)
+from quant_harness.v104_end_to_end_causal_challenger_audit.receipts import (
+    issue_receipt,
+    receipt_status,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports/v104_end_to_end_causal_challenger_audit"
@@ -96,6 +105,37 @@ def test_v104_market_data_is_bound_into_input_hash(tmp_path: Path) -> None:
     assert first != second
 
 
+def test_v104_benchmark_data_is_bound_into_input_hash(tmp_path: Path) -> None:
+    benchmark = tmp_path / "data/all_prices_long_v62_9_expanded.csv"
+    benchmark.parent.mkdir(parents=True)
+    benchmark.write_text("date,ticker,close\n2026-07-03,KS11,100\n", encoding="utf-8")
+    first = _input_hash(tmp_path)
+    benchmark.write_text("date,ticker,close\n2026-07-03,KS11,101\n", encoding="utf-8")
+    second = _input_hash(tmp_path)
+    assert first != second
+
+
+def test_post_freeze_batch_replay_is_never_forward_evidence():
+    flags = _classify_replay_observation("2026-07-31", "2026-07-03")
+    assert flags["post_freeze"] is True
+    assert flags["historical_replay_only"] is True
+    assert flags["new_forward_observation"] is False
+    assert flags["reason"] == "BATCH_REPLAY_HAS_NO_CAPTURE_PROVENANCE"
+
+
+def test_forward_runner_respects_candidate_enable_flags():
+    contract = {
+        "enabled_candidates": ["CANDIDATE_A", "CANDIDATE_B"],
+        "candidates": {
+            "CANDIDATE_A": {"enabled_for_new_forward": False},
+            "CANDIDATE_B": {"enabled_for_new_forward": True},
+        },
+    }
+    assert _enabled_forward_candidate_ids(contract) == ["CANDIDATE_B"]
+    with pytest.raises(ValueError, match="not enabled for new forward"):
+        _enabled_forward_candidate_ids(contract, ["CANDIDATE_A"])
+
+
 def test_v104_forward_writer_rejects_historical_rows(monkeypatch, tmp_path: Path) -> None:
     rows = pd.DataFrame([{
         "session": "2026-07-03", "candidate_id": "V79_NO63",
@@ -106,6 +146,29 @@ def test_v104_forward_writer_rejects_historical_rows(monkeypatch, tmp_path: Path
     assert result["status"] == "NO_NEW_SESSION_AFTER_V104_FREEZE"
     assert result["rows_appended"] == 0
     assert not (tmp_path / forward_runtime.DEFAULT_OUTPUT).exists()
+
+
+def test_v104_receipt_contract_rejects_unverified_or_mismatched_passes(tmp_path: Path) -> None:
+    common = {
+        "check_id": "V104_DATA_GATE", "session": "2026-07-06", "candidate_id": "V79_NO63",
+        "input_hash": "sealed-input", "expected_evidence": {"candidate_fingerprint": "fixed"},
+    }
+    # Plain producer fields are declarations, not evidence, and are ignored.
+    assert receipt_status(tmp_path, **common) == "NOT_RUN"
+    injected = {"data_gate_passed": True, "reconciliation_passed": "True"}
+    assert injected["data_gate_passed"] is True and injected["reconciliation_passed"] == "True"
+    assert receipt_status(tmp_path, **common) == "NOT_RUN"
+
+    issue_receipt(tmp_path, check_id=common["check_id"], session="2026-07-07", candidate_id=common["candidate_id"], input_hash=common["input_hash"], result_status="PASSED", evidence=common["expected_evidence"])
+    assert receipt_status(tmp_path, **common) == "NOT_RUN"
+
+    issue_receipt(tmp_path, check_id=common["check_id"], session=common["session"], candidate_id=common["candidate_id"], input_hash="wrong-input", result_status="PASSED", evidence=common["expected_evidence"])
+    assert receipt_status(tmp_path, **common) == "FAILED"
+
+    issued = issue_receipt(tmp_path, check_id=common["check_id"], session=common["session"], candidate_id=common["candidate_id"], input_hash=common["input_hash"], result_status="PASSED", evidence=common["expected_evidence"])
+    assert issued["validator_version"]
+    assert issued["validated_at_utc"]
+    assert receipt_status(tmp_path, **common) == "PASSED"
 
 
 def test_v104_benchmarks_are_truthfully_classified_and_live_blocked() -> None:

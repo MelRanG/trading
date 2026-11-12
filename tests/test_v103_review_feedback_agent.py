@@ -16,9 +16,10 @@ ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "reports/v103_review_feedback_agent"
 
 
-def test_v103_full_governance_run_and_live_blocked():
-    summary = run(ROOT)
-    gates = pd.read_csv(REPORT / "v103_quality_gates.csv")
+def test_v103_full_governance_run_and_live_blocked(tmp_path):
+    output = tmp_path / "v103_review_feedback_agent"
+    summary = run(ROOT, output_dir=output)
+    gates = pd.read_csv(output / "v103_quality_gates.csv")
     assert summary["quality_gates_passed"] is True
     assert summary["promoted_candidates"] == 0
     assert summary["parents_changed"] is False

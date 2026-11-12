@@ -327,9 +327,9 @@ def _operational_gaps() -> pd.DataFrame:
     ])
 
 
-def run(root: Path | str) -> dict[str, Any]:
+def run(root: Path | str, *, output_dir: Path | str | None = None) -> dict[str, Any]:
     root = Path(root)
-    out = root / "reports" / REPORT
+    out = Path(output_dir) if output_dir is not None else root / "reports" / REPORT
     out.mkdir(parents=True, exist_ok=True)
     cfg, cfg77, market, cfg69, universe, cfg79, selection69, selection79 = _load_context(root)
     runs = {policy: _execute_policy(root, policy) for policy in ALL_POLICIES}

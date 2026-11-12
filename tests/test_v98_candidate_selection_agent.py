@@ -16,8 +16,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 @pytest.fixture(scope="module")
-def result():
-    return run(ROOT)
+def result(tmp_path_factory):
+    return run(ROOT, output_dir=tmp_path_factory.mktemp("v98_reports") / "v98_candidate_selection_agent")
 
 
 def test_v98_quality_parent_parity_and_sector_merge(result):

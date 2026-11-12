@@ -1,0 +1,10 @@
+schema_version: ALPHA_RESEARCH_ROBUSTNESS_V1
+calculation_version: D1_ROBUSTNESS_BUCKETS_V1
+minimum_bucket_dates: 20
+minimum_rolling_windows: 3
+minimum_rolling_direction_agreement: 0.60
+maximum_single_bucket_concentration: 0.70
+minimum_horizons_with_positive_rank_ic: 1
+minimum_horizons_with_positive_spread: 1
+rolling_window_dates: 60
+operational_replay_budget: 1

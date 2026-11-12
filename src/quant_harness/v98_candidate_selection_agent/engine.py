@@ -310,9 +310,9 @@ def _promotion_decision(
     return pd.DataFrame(rows)
 
 
-def run(root: Path | str) -> dict[str, Any]:
+def run(root: Path | str, *, output_dir: Path | str | None = None) -> dict[str, Any]:
     root = Path(root)
-    out = root / "reports" / REPORT
+    out = Path(output_dir) if output_dir is not None else root / "reports" / REPORT
     out.mkdir(parents=True, exist_ok=True)
     cfg = _load_config(root)
     cfg77 = v77._load_config(root)

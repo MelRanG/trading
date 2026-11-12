@@ -1,4 +1,9 @@
 .env
+.env.*
+!.env.example
+.venv/
+venv/
+*.py[cod]
 *.db-wal
 *.db-shm
 __pycache__/
@@ -10,3 +15,7 @@ data/runtime/*
 data/raw/*
 !data/raw/.gitkeep
 data/canonical/v87_market_bars.csv
+
+# Local execution state and downloaded minute-bar cache are not deployment artifacts.
+/runtime/
+/data/toss_intraday_1m/

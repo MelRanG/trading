@@ -1,0 +1,35 @@
+contract_id: V79_5M_ASOF_V1
+candidate_id: V79_NO63_VOL_GUARD
+strategy: V79
+base_strategy_config: config/v79_generic_trend_sleeve.yaml
+regime_policy: MA120_VOLATILITY_GUARD_35PCT
+selection_policy: ABLATE_V79_63_COMPONENT
+allocation_policy: FIXED_PARENT_ALLOCATIONS
+execution_policy: PARENT_EXECUTION_CONTRACT
+period:
+  start: '2023-01-30'
+  end: '2024-08-30'
+initial_state:
+  initial_capital_krw: 10000000
+  positions: {}
+  pending_orders: 0
+feature_mapping:
+  d1_fixed:
+    - V95 MA120 volatility guard and benchmark regime
+    - ETF universe and D-1 eligibility gates
+    - D-1 ADV and value/volume eligibility inputs
+  asof_price_update:
+    - temporary intraday OHLC price features
+    - price return/momentum and moving-average relationship
+    - price-volatility and price-ranking inputs
+  non_portable_fail_closed:
+    - full-day volume/value signals
+    - close-dependent conditions without a completed current-day bar
+execution_contract:
+  first_evaluation_after: '09:05:00 Asia/Seoul'
+  interval: 5m
+  completed_bars_only: true
+  use_next_one_minute_open: true
+  sell_before_buy: true
+  no_daily_fallback: true
+  no_vwap_gap_volume_stop_take_profit: true

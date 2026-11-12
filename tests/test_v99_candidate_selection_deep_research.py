@@ -4,17 +4,44 @@ import pandas as pd
 import pytest
 
 from quant_harness.v98_candidate_selection_agent.policy import (
+    ABLATION_POLICIES,
     EXPECTED_VALUE_ROTATION,
     expected_value_rotation_gate,
 )
-from quant_harness.v99_candidate_selection_deep_research.engine import run
+from quant_harness.v99_candidate_selection_deep_research.engine import _ablation_summary, run
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def test_ablation_summary_includes_every_registered_component():
+    rows = []
+    metrics = [
+        {"policy": "TOP_SCORE_SECTOR_DEDUP", "strategy": strategy}
+        for strategy in ("V69", "V79")
+    ]
+    for policy in ABLATION_POLICIES:
+        strategy = "V69" if policy.startswith("ABLATE_V69") else "V79"
+        metrics.append({"policy": policy, "strategy": strategy})
+    for row in metrics:
+        rows.append({
+            **row,
+            "return_pct": 10.0,
+            "validation_return_pct": 2.0,
+            "development_return_pct": 3.0,
+            "purged_validation_return_pct": 1.5,
+            "observed_return_pct": 0.5,
+            "recent_1y_return_pct": 1.0,
+            "stress_return_pct": 8.0,
+            "mdd_pct": -10.0,
+            "order_count": 4,
+        })
+    summary = _ablation_summary(pd.DataFrame(rows))
+    assert set(ABLATION_POLICIES).issubset(set(summary["policy"]))
+
+
 @pytest.fixture(scope="module")
-def result():
-    return run(ROOT)
+def result(tmp_path_factory):
+    return run(ROOT, output_dir=tmp_path_factory.mktemp("v99_reports") / "v99_candidate_selection_deep_research")
 
 
 def test_v99_quality_and_parent_parity(result):
