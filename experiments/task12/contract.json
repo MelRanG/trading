@@ -1,0 +1,82 @@
+{
+  "schema": "TASK12_READINESS_V1",
+  "scope": "S_ONLY_INPUT_LABEL_REGIME_AND_ENGINE_ADMISSIBILITY_NO_ALPHA_SEARCH",
+  "budget": {
+    "external_data_requests": 300,
+    "planned_requests": 0,
+    "LLM_calls": 0,
+    "training_jobs": 0,
+    "CPU_target_hours": 4
+  },
+  "input": {
+    "primary": "runtime/task10/tape/{market}/*.csv; original nominal two-provider reconciled evidence",
+    "extended": "runtime/task6/data/accepted; adjusted/revision provenance partial, context only until action review",
+    "universe": "Frozen Task6 US38/KR20, current survivor cohort; no historical all-listed claim",
+    "B": "N>=50 and historical membership/delisting/actions required; not a blocker for S"
+  },
+  "split": {
+    "fit_end": "2025-12-31",
+    "diagnostic_validation_start": "2026-01-01",
+    "end": "2026-11-13",
+    "kind": "ALL_PREVIOUSLY_EXPOSED_DEVELOPMENT_NOT_HOLDOUT",
+    "normalization": "fit only",
+    "purge": "target_end strictly before validation; embargo>=primaryH and known release lag"
+  },
+  "labels": {
+    "definition": "signal close t; entry open t+1; exit open t+H+1; H-session nominal price return",
+    "horizons": [
+      5,
+      20,
+      60
+    ],
+    "maturity": "Historical S virtual cutoff: exit session strictly before fit boundary; actual receipt clock remains backfill 2026-11 and is never relabeled as past observation. Strict Forward requires exit and source receipt <= actual evaluation clock.",
+    "missing": "No filling, no own-symbol shift across missing market sessions",
+    "warmup_default": 63,
+    "primary": "Declare per candidate before generation; horizons not universal holding rules",
+    "other_types": "Intraday/time-series/event primary registered separately with observation and execution timestamp",
+    "availability": "S_BACKFILL_VIRTUAL_SESSION_DIAGNOSTIC; NOT_ORIGINAL_PIT_OBSERVATION"
+  },
+  "regime": {
+    "AS_OF": {
+      "return63_up": 0.1,
+      "return63_down": -0.1,
+      "MA": 126,
+      "crash_return5": -0.1,
+      "rebound_return10": 0.08,
+      "prior20_min_drawdown63": -0.15,
+      "sideways_abs_return63": 0.05,
+      "volatility20_annual_high": 0.3,
+      "priority": [
+        "CRASH",
+        "REBOUND",
+        "UP",
+        "DOWN",
+        "SIDEWAYS",
+        "TRANSITION"
+      ]
+    },
+    "EX_POST": {
+      "future_sessions": 20,
+      "up": 0.1,
+      "down": -0.1,
+      "crash_next5": -0.1,
+      "sideways_abs_future20": 0.05,
+      "use": "EVALUATOR_ONLY_NEVER_TRADE_OR_TRAIN_INPUT"
+    },
+    "coverage": "Counts/contiguous ranges only; no strategy returns or selected-stock optimization; high vol overlaps"
+  },
+  "evaluation": {
+    "Layer1": "Pure IC/RankIC/spread or type-appropriate forecast/event metrics, no cash/risk",
+    "Layer2": "Existing replay_targets with preregistered native-aligned holding/targets, fixed exposure and matched baseline; no forced top4",
+    "Layer3": "Same frozen signal with/without existing MA63 plus risk-only baseline",
+    "selection": "Campaign-wide attempts including failures; fixed primary per alpha, reused history diagnostic only; no automatic promotion",
+    "benchmark": {
+      "US": "S&P500; SPY distinct proxy",
+      "KR": "KOSPI; KODEX200 distinct proxy"
+    }
+  },
+  "forward_fix": {
+    "scope": "Collection/recovery only; unchanged initial contract/models/strategy/old decisions; append technical compatibility receipt",
+    "no_new_queues_or_timers": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+ "version":"TASK9_HISTORICAL_V1",
+ "period":{"start":"2021-11-01","end":"2026-11-14"},
+ "cutoff_months":["2021-11","2023-11","2024-11","2025-11","2026-05"],
+ "cutoff_rule":"Last independently verified regular session of each month; filing date-only evidence is delayed until the following calendar day and a verified session",
+ "stages":{"audit":{"public_http_max":24,"dart_calls_max":20,"llm_calls":0},"representative":{"max_universe_filing_rows_per_market":100,"company_deep_max_per_market":4,"llm_calls_max":8,"known_token_budget":450000},"five_dates":{"company_deep_max_per_market_per_date":4,"llm_calls_max":24,"known_token_budget":1200000},"rolling":{"deep_frequency":"quarterly","llm_calls_max":120,"known_token_budget":5000000,"requires":"representative PIT/execution/action gates passed, then stage-specific registration"}},
+ "model":"gpt-6.1-terra",
+ "budget_enforcement":"Reserve attempts before calls; unknown usage is not zero; stop new calls when known usage reaches budget, subscription cap is not bypassed",
+ "research_modes":["A_fundamentals","B_A_plus_market","C_B_plus_alternatives"],
+ "A_prompt":"Apply the V3 core principles supplied in the task; the original full Master Prompt V3 is not present and will not be invented",
+ "pit":{"levels":["VERIFIED","PARTIAL","UNVERIFIED"],"allow_current_survivor_universe":false,"allow_interpolation_missing":false,"restatement":"Require original accession/publication version; current comparative statements not accepted as original past knowledge","llm_historical_memory":"Uncontrolled confound even in network-none worker"},
+ "representative_gate":"Dated candidate listing and original disclosures, official sessions, decision seal before evaluator, eligible prices and action/dividend coverage; fail closed if mandatory evidence missing",
+ "fallback":"Run bounded PARTIAL source-grounded research and diagnostic plumbing if full replay blocked; never fabricate returns or treat cash caused by missing data as valid strategy performance",
+ "policy":{"US_initial":100000,"KR_initial":10000000,"gross_cap":0.8,"single_name_cap":0.2,"sector_cap":0.4,"currency_separation":true,"no_etf_investments":true,"benchmarks":{"US":"S&P 500","KR":"KOSPI"},"cash_interest":0,"costs":"existing frozen task3 assumptions, empirical spreads unavailable flagged separately","entry":"Next verified regular session after all research input publication cutoffs","horizons_sessions":[21,63,126,252]},
+ "promotion":false,"live":false,"operating_database_writes":false,"forward_evidence":false,
+ "baseline_conditions":"Index total-return if verified, otherwise explicit price-index limitation; same exposure index/cash; no invented sector-neutrality without historical sectors"
+}

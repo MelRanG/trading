@@ -1,0 +1,7 @@
+from common import *
+from quant_harness.investment.exploration import research_store
+from quant_harness.investment.research import digest as qdigest
+from quant_harness.investment.research_dispatcher import worker_hash
+store,_=research_store(R);path=B/'dispatch_registry.json';old=json.loads(path.read_text())
+if (B/'dispatch_registry_v2.json').exists():raise SystemExit('ExistingV2 preserved')
+freeze(B/'dispatch_registry_v1.json',old);proposal=store.get(old['proposal_id']);proposal={**proposal,'challenger':proposal['challenger']+'_V2_STOCK_ONLY_QUOTE_ROUTE','worker_hash':worker_hash(),'problem_evidence':{**proposal['problem_evidence'],'routing_fix':'Nontradable index must not be sent to stock quote endpoint. Company monitoring remains enabled; index adapter PENDING. Worker includes numeric validator dependency hash.'}};newid=store.put('task92_factory_proposal',proposal);new={**old,'schema':'TASK92_DISPATCH_V2','proposal_id':newid,'worker_hash':worker_hash()};new.pop('registry_hash');new['registry_hash']=qdigest(new);freeze(B/'dispatch_registry_v2.json',new);dump(path,new);freeze(B/'dispatch_migration.json',{'reason':'Provider route bug fix before any postseal market quote','old_registry_hash':old['registry_hash'],'new_registry_hash':new['registry_hash'],'old_proposal_retained':old['proposal_id'],'no_strategy_or_risk_change':True,'old_worker_archive':'runtime/task9_2/source_versions/research_dispatcher_v1.py','nontradable_benchmark':'SEPARATE_ADAPTER_PENDING_NOT_FAKE_EQUITY_QUOTE'});print('V2_SOURCE_ROUTING_REGISTERED',worker_hash())

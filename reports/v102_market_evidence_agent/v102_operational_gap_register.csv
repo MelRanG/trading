@@ -1,5 +1,0 @@
-module,required_real_data,block_condition,status
-PainSupply,official timestamped investor flow by market/sector/ticker; revisions,"missing KOSPI session, forward-filled gap, missing provenance",PAPER_ONLY
-DisclosureFundamental,"OpenDART received_at, correction chain, CFS/OFS scope, effective-dated ETF holdings",filing timestamp/revision ambiguity or constituent coverage <2,PAPER_ONLY
-News,historical and forward published_at/first_seen_at/source_document_id/source tier/correction chain,"no PIT archive, duplicate event, unknown entity, unofficial critical claim",BLOCK_LIVE
-MarketEvidenceAgent,cross-module conflict ledger and action audit,more than one module changes capital without deterministic precedence,DIAGNOSTIC_ONLY

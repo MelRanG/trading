@@ -1,0 +1,10 @@
+from common import *
+W=Path('/home/ansy/app/quant-diligence/task9-3-work');W.mkdir(exist_ok=True);(W/'home').mkdir(exist_ok=True)
+for m in ['US','KR']:
+ rows=json.loads((B/'screens'/f'{m}.json').read_text());view=[]
+ for r in rows:
+  z={k:v for k,v in r.items() if k not in ['gate','financial_facts']}
+  z['financial_facts']=[{k:f[k] for k in ['metric','label','value','unit','period_end','published','source_hash']} for f in r.get('financial_facts',[])];view.append(z)
+ packet={'asof':'2026-05-15','market':m,'candidates':view,'contract_hash':sha(Path(__file__).parent/'contract.json'),'quant':'causal MOM63 only, not native Quanta/RDalpha','pit':'Dated index or filings list plus re-downloaded asof quotes; limited universe, not entire market; no future returns.'}
+ request={'messages':[{'role':'system','content':'Original Vibe bounded historical market/industry research prioritization using supplied data ONLY, asof2026-05-15regularclose. No tools, no outside knowledge or future memory. Candidate names/sector/sourceevent plus factual numeric/price signals only. Choose exactly5 eligible names for deeper research, diversify industries rather than choose largest momentum only. Do not call a screening rank a buy. Missing business context is an explicit research question. For US at least2 names from dated2026index-change candidates and at least2 from other economic sectors in oldbroadcohort if eligible; no hardcodes to futurewinners. KR at least3 distinct business types if inferable, label sector inference not verified fact. Explain growth/value/turnaround/catalyst/macro opportunities and why each alternative excluded/notresearched. Return JSON {asof,market,deep:[{symbol,priority,sector,discovery_thesis,research_questions,why_selected}],excluded:[{symbol,reason}],macro_known:[],limitations:[]}. Priority notinvestmentrecommendation. Do not invent unseen news, marketcaps, consensus or financial facts.'},{'role':'user','content':json.dumps(packet,ensure_ascii=False)}]}
+ freeze(B/'requests'/f'discover_{m}.request.json',request);freeze(W/f'discover_{m}.request.json',request)

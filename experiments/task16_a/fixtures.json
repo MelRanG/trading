@@ -1,0 +1,21 @@
+{
+  "scope": "Synthetic controls fixed before classifier implementation. Independent of historical source evidence, authored in the same session. No post-score tuning.",
+  "development": [
+    {"case_id":"DEV_CAP","facts":{"max_names":4,"actual_names":7,"unfilled_exit_count":4,"new_buy_count":3}},
+    {"case_id":"DEV_PENDING","facts":{"horizons":[20,60],"elapsed_sessions":8}}
+  ],
+  "evaluation": [
+    {"case_id":"I01_UNIT","facts":{"provider_amount":1500000,"normalized_amount":1500000000,"certified_unit_factor":1},"gold":["DATA_ERROR","REPAIR_DATA_OR_EXECUTION"],"defect":true},
+    {"case_id":"I02_FUTURE","facts":{"input_times":[{"available_at":"2025-01-03T09:01:00+09:00","used":true}]},"gold":["DATA_ERROR","REPAIR_DATA_OR_EXECUTION"],"defect":true},
+    {"case_id":"I03_UNFILLED","facts":{"sell_filled":0,"sell_ordered":80,"holdings_before":80,"holdings_after":0,"cash_before":2000,"cash_after":10000},"gold":["DATA_ERROR","REPAIR_DATA_OR_EXECUTION"],"defect":true},
+    {"case_id":"I04_COST","facts":{"equal_policy_and_exposure":true,"gross_before":0.02,"gross_after":0.02,"net_before":0.015,"net_after":0.006,"cost_before":0.005,"cost_after":0.014,"mature_windows":3,"cost_repeats":3,"independent_validation_available":true},"gold":["EXECUTION_COST","PROPOSE_RESEARCH"]},
+    {"case_id":"I05_SHORT_LOSS","facts":{"short_loss":-0.021,"elapsed_sessions":5,"mature_windows":1},"gold":["UNDETERMINED","MONITOR"]},
+    {"case_id":"I06_IMMATURE","facts":{"horizons":[20,60],"elapsed_sessions":12,"short_loss":-0.08},"gold":["UNDETERMINED","INSUFFICIENT_EVIDENCE"]},
+    {"case_id":"I07_MODEL_ONLY","facts":{"model_frozen":true,"model_error_before":0.23,"model_error_after":0.33,"matched_net_delta":0.0,"mature_windows":3},"gold":["UNDETERMINED","MONITOR"]},
+    {"case_id":"I08_MAINTAIN","facts":{"mature_windows":4,"within_risk_contract":true,"matched_net_delta":-0.0002},"gold":["NORMAL_VARIANCE","MAINTAIN"]},
+    {"case_id":"I09_STOP","facts":{"hypothesis_id":"FLOW5_50_50","same_policy_delta":-0.51,"mature_windows":3},"gold":["SELECTION_SIZING","REJECT_HYPOTHESIS"]},
+    {"case_id":"I10_UNUSED_FUTURE","facts":{"input_times":[{"available_at":"2025-01-03T13:00:00+09:00","used":false}],"mature_windows":4,"within_risk_contract":true,"matched_net_delta":0.001},"gold":["NORMAL_VARIANCE","MAINTAIN"]},
+    {"case_id":"I11_ALPHA","facts":{"equal_policy_and_exposure":true,"mature_windows":3,"ic_before":0.07,"ic_after":-0.04,"benchmark_ic":0.01,"independent_validation_available":true},"gold":["ALPHA_DECAY","PROPOSE_RESEARCH"]},
+    {"case_id":"I12_RECENT_STOP","facts":{"hypothesis_id":"V102_FLOW_ENTRY_BLOCK_PERSISTENT_5D","same_policy_delta":-0.008},"gold":["SELECTION_SIZING","REJECT_HYPOTHESIS"]}
+  ]
+}

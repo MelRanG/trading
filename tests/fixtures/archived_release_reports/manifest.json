@@ -1,0 +1,108 @@
+{
+  "git_commit": "26d57222f000413082c55d5945d7e61509f7be45",
+  "scope": "Archived release output fixtures for tests only; no current operational readiness evidence.",
+  "files": [
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_agent_causal_audit.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_agent_causal_audit.csv",
+      "sha256": "6994bab62a34cc93ccca17c379a75ce5c31ad07f58d0865b0159bb8993edd262",
+      "bytes": 1206
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_benchmark_comparison.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_benchmark_comparison.csv",
+      "sha256": "7c95196b42dd6d5093bc860b3435c384ef055b35a2877b2a404668af14901dc3",
+      "bytes": 429
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_candidate_deltas.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_candidate_deltas.csv",
+      "sha256": "c5c1bbbd94bae8e83c1bb3b9251c5d2fb4a0dcc17a97035b097da5fc6061b927",
+      "bytes": 24380
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_candidate_metrics.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_candidate_metrics.csv",
+      "sha256": "c4655fe5e81fc1f19c0d326791fb6f6970ad58566bf84f9988000a4dbb13edfa",
+      "bytes": 20038
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_future_mutation_audit.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_future_mutation_audit.csv",
+      "sha256": "7ca3e97381db0f2196767ea8d481b26914e7b67d2539fcf4ab62fb798ff42d77",
+      "bytes": 146
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_historical_improvement_inventory.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_historical_improvement_inventory.csv",
+      "sha256": "7c30aeaba054b6b5bbaa7398b8b30dbfc42f1688a19c4030048ba6e362737a2d",
+      "bytes": 2862
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_parent_parity.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_parent_parity.csv",
+      "sha256": "0be859903434fe5b51168569a3df3c0f5ade67d34dc6bc5224b60c96fea7b5c1",
+      "bytes": 146
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_quality_gates.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_quality_gates.csv",
+      "sha256": "2654b8cb6c0bfcbbe118ad8b5efd9e88f7da3f1584899f800e74d44119595b53",
+      "bytes": 4795
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_runtime_adapter_registry.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_runtime_adapter_registry.csv",
+      "sha256": "246567fec379c1c8b99a15c2d8c390d39655a50f8c403e37b753d0fe980e8354",
+      "bytes": 1495
+    },
+    {
+      "path": "v104_end_to_end_causal_challenger_audit/v104_shadow_replay_observations.csv",
+      "original": "reports/v104_end_to_end_causal_challenger_audit/v104_shadow_replay_observations.csv",
+      "sha256": "d34b0b48dda6612303b8718a7d2e76494f5fae35ff32fb02c9f721d2b1abe4c0",
+      "bytes": 2276423
+    },
+    {
+      "path": "v84_dual_paper_parity/summary.json",
+      "original": "reports/v84_dual_paper_parity/summary.json",
+      "sha256": "b9c8c7219d36efee10aa78d70c4a28c0d0b7c4ea063530312ea34ce0c2d9bcea",
+      "bytes": 831
+    },
+    {
+      "path": "v84_dual_paper_parity/execution_parity.csv",
+      "original": "reports/v84_dual_paper_parity/execution_parity.csv",
+      "sha256": "9dc1d2a88d5275b983913bb1c7ca422e7d5a1644a7c0933f69b404fbc8f43b19",
+      "bytes": 193
+    },
+    {
+      "path": "v85_operational_hardening/summary.json",
+      "original": "reports/v85_operational_hardening/summary.json",
+      "sha256": "30adc572f44c93cd73c27188aff13726aeb96fc3339781dc44c7d7a0dc8bab81",
+      "bytes": 3808
+    },
+    {
+      "path": "v88_order_reconciliation/summary.json",
+      "original": "reports/v88_order_reconciliation/summary.json",
+      "sha256": "ec4195daf31d999d8e24907c9b9d7aee77d862cc2a5883d933516e37b5873321",
+      "bytes": 1704
+    },
+    {
+      "path": "v104_2_jul30_crash_bridge/v104_2_jul03_actual_positions.csv",
+      "original": "reports/v104_2_jul30_crash_bridge/v104_2_jul03_actual_positions.csv",
+      "sha256": "c9398af7c09ce332ce9d23c8441a2d5c94b7a57617149f68207c51f360da101d",
+      "bytes": 1085
+    },
+    {
+      "path": "v104_2_jul30_crash_bridge/v104_2_precrash_vs_crash_summary.csv",
+      "original": "reports/v104_2_jul30_crash_bridge/v104_2_precrash_vs_crash_summary.csv",
+      "sha256": "7f5218acd7b5882064e994daf18f83aaec7ae5d49a24894de87156221399ae09",
+      "bytes": 1078
+    },
+    {
+      "path": "v104_2_jul30_crash_bridge/v104_2_scope_and_limitations.csv",
+      "original": "reports/v104_2_jul30_crash_bridge/v104_2_scope_and_limitations.csv",
+      "sha256": "f57cd28ae802005c7b68f4b959aff792a7c55e4e504cb01d3883b28f241f206c",
+      "bytes": 594
+    }
+  ]
+}

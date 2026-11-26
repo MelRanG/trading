@@ -1,0 +1,14 @@
+{
+  "id":"VIBE_ACADEMIC_RETSKEW_H20",
+  "scope":"US-only, original Vibe declared equity_us; KR not evaluated. Task13/14 exposed survivor diagnostic.",
+  "hypothesis":"Lower 60-session stock-level return skew predicts higher H20 relative stock rank beyond MAX21, reversal, momentum and volatility.",
+  "feature":"Original Vibe academic_retskew compute; cross-sectional z-score of the negative 60-session sample skew of simple daily returns. Positive direction. No change to native windows.",
+  "label":"t close information; t+1 to t+21 opens, all 21 opens positive finite and native H1/R0 eligible. End within signal year. Price research, no orders.",
+  "calendar":"Exposed 2023-04-03 to 2024-12-31. Future maturity affects the common evaluation mask only. No return-fitted score.",
+  "controls":["REV5","MOM20","MOM63","MAX21","VOL20","DOWNSIDE_SHARE20","DVOL20","H1"],
+  "primary":"Same-date average partial rank IC with H20, controlling all listed features, time block 21 sessions with 5000 draws and seed 163201. Positive directional test. Report nominal and conservative known-cycle-family Bonferroni49 diagnostic (H1 43, MA20 2, EPS US 1, Cycle1 2, Cycle2 1), incomplete global selection history.",
+  "comparison":"Report individual control RankIC, candidate RankIC and fixed equal weight rank mean of REV5, MOM20, MOM63, negative MAX21 and negative VOL20. Compare baseline top 20% return with equal-ranked baseline plus candidate residual score top 20%, before costs.",
+  "preflight":"Hash-verified original clean checkout and H1 panel, prefix and future perturbation causal checks, native parity vs literal negative rolling skew. At least 50 names/date and 252 evaluation dates including at least 100 each year, abs(mean daily rank overlap) below .95 for controls, computed before labels.",
+  "gate":"Forward_required diagnostic only if positive CI lower, one-sided p<.05, conservative family p<.05, positive both years, positive upper-tail lift with and without five largest abs names. Rejected if both primary and tail upper CI are negative; else insufficient evidence. No Task15, no sign/timing/threshold search.",
+  "factory":"One existing Task4 PROCESS_DIAGNOSTIC_ONLY in dedicated isolated ledger; Task15 economic approval remains separate."
+}

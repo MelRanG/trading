@@ -1,0 +1,11 @@
+[
+ {"year":2021,"symbol":"INTC","fiscal_year":2022,"actual":1.94,"last_quarter_runrate":6.68,"unit":"USD/share","published":"2023-01-26","url":"https://www.intc.com/news-events/press-releases/detail/1600/intel-reports-fourth-quarter-and-full-year-2022-financial"},
+ {"year":2021,"symbol":"TRV","fiscal_year":2022,"actual":11.77,"last_quarter_runrate":10.48,"unit":"USD/share","published":"2023-01-24","url":"https://investor.travelers.com/newsroom/press-releases/news-details/2023/Travelers-Reports-Fourth-Quarter-2022-Net-Income-per-Diluted-Share-of-3.44-and-Return-on-Equity-of-15.8/default.aspx"},
+ {"year":2021,"symbol":"DOW","fiscal_year":2022,"actual":6.28,"last_quarter_runrate":8.92,"unit":"USD/share","published":"2023-01-26","url":"https://investors.dow.com/en/news/news-details/2023/Dow-reports-fourth-quarter-2022-results/default.aspx"},
+ {"year":2022,"symbol":"INTC","fiscal_year":2023,"actual":0.40,"last_quarter_runrate":1.0,"unit":"USD/share","published":"2024-01-25","url":"https://www.intc.com/news-events/press-releases/detail/1672/intel-reports-fourth-quarter-and-full-year-2023-financial"},
+ {"year":2022,"symbol":"DOW","fiscal_year":2023,"actual":0.82,"last_quarter_runrate":4.08,"unit":"USD/share","published":"2024-01-25","url":"https://investors.dow.com/en/news/news-details/2024/Dow-reports-fourth-quarter-2023-results/default.aspx"},
+ {"year":2022,"symbol":"AXP","fiscal_year":2023,"actual":11.21,"last_quarter_runrate":9.88,"unit":"USD/share","published":"2024-01-26","url":"https://s26.q4cdn.com/747928648/files/doc_financials/2023/Q4-2023-Earnings-Press-Release.pdf"},
+ {"year":2023,"symbol":"CSCO","fiscal_year":2024,"actual":2.54,"last_quarter_runrate":3.56,"unit":"USD/share","published":"2024-08-14","url":"https://investor.cisco.com/news/news-details/2024/CISCO-REPORTS-FOURTH-QUARTER-AND-FISCAL-YEAR-2024-EARNINGS/default.aspx"},
+ {"year":2023,"symbol":"MRK","fiscal_year":2024,"actual":64168,"last_quarter_runrate":63848,"unit":"USD_million","published":"2025-02-04","url":"https://www.merck.com/news/merck-announces-fourth-quarter-and-full-year-2024-financial-results/"},
+ {"year":2023,"symbol":"DOW","fiscal_year":2024,"actual":1.57,"last_quarter_runrate":1.68,"unit":"USD/share","published":"2025-01-30","url":"https://investors.dow.com/en/news/news-details/2025/Dow-reports-fourth-quarter-2024-results/default.aspx"}
+]

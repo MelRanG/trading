@@ -1,0 +1,36 @@
+{
+  "version": "TASK8_SHADOW_V1",
+  "mode": "SHADOW_ONLY",
+  "live_execution_allowed": false,
+  "automatic_promotion": false,
+  "gross_cap": 0.8,
+  "single_name_cap": 0.2,
+  "sector_cap": 0.35,
+  "correlation_cluster_cap": 0.3,
+  "max_pair_correlation": 0.8,
+  "max_turnover": 0.4,
+  "research_name_weight": 0.1,
+  "max_evidence_age_hours": 168,
+  "max_quote_age_seconds": 60,
+  "require_positive_net_edge": true,
+  "account_currencies": {
+    "US": "USD",
+    "KR": "KRW"
+  },
+  "outcome_observation": {
+    "enabled": true,
+    "minimum_interval_hours": 24,
+    "maximum_requests_per_tick": 4,
+    "url_hosts": [
+      "investor.nvidia.com",
+      "investors.coreweave.com",
+      "nvidianews.nvidia.com"
+    ]
+  },
+  "research_database": "quant_task3_task8_research",
+  "market_accounts": {
+    "US": "quant_task3_task8_shadow_us",
+    "KR": "quant_task3_task8_shadow_kr"
+  },
+  "notes": "Preregistered risk/abstention diagnostic, not alpha selection. No existing strategy or account change. No automatic price or revenue forecast to expected equity return conversion."
+}

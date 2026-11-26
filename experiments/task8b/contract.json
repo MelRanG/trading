@@ -1,0 +1,13 @@
+{
+ "version":"TASK8B_DISCOVERY_V1",
+ "selection_before_evaluation":true,
+ "discovery":{"rss_queries_per_market":4,"rss_items_per_query":20,"native_us_screen_top":40,"max_selected_per_market":8,"minimum_independent_companies":12,"minimum_sectors":5},
+ "budgets":{"discovery":{"calls":3,"tokens":180000},"analysis":{"calls":10,"tokens":650000},"counter":{"calls":4,"tokens":250000}},
+ "source_request_budget":75,
+ "price_request_budget":22,
+ "valuation":{"horizons_years":[1,2,3],"methods":["FCFE_EXIT_MULTIPLE","FCFF_EV_BRIDGE"],"probabilities":"DO_NOT_INVENT_CALIBRATED_PROBABILITIES","missing_data":"RESOLVABLE_RESEARCH_GAP_OR_CONDITIONAL_RANGE"},
+ "exploration_shadow":{"gross_cap":0.3,"single_name_cap":0.05,"initial_probe_weight":0.025,"maximum_names":6,"decision_lifetime_hours":96,"holding_checkpoints_sessions":[21,63,126],"buy_rule":"next eligible observed regular-session quote after seal","exit_rule":"presealed126session exit or documented thesis invalidation; no discretionary retroactive stop fitting","benchmarks":{"US":"SPY","KR":"069500.KS"},"minimum_diverse_sectors":3,"paper_promotion":false,"live":false},
+ "comparison":"Original Vibe valuation outputs versus identical source/policy HYBRID risk and capital-bridge gates; no historical company-return fabrication",
+ "frozen_history":"Task7/8 old predictions remain unchanged; additional findings appended; no reused2026holdout",
+ "costs":"Reuse existing per-market Paper assumptions, distinguish unknown observed spread from assumed costs"
+}

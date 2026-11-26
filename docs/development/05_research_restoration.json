@@ -1,0 +1,50 @@
+{
+  "commit": "26d5722",
+  "restored": [
+    {
+      "path": "docs/research/01_github_discovery.md",
+      "git_blob": "4a5cceb7dec2da2c2bdc4fce129dc04ad978d62b"
+    },
+    {
+      "path": "docs/research/02_repository_comparison.md",
+      "git_blob": "ee75c341d40c006150dbff0ee7f0fff629c1b1a8"
+    },
+    {
+      "path": "docs/research/02_validation_addendum.md",
+      "git_blob": "ccdf88cd19d6defa26f92d74e72ffe58ffc238a0"
+    },
+    {
+      "path": "docs/research/03_candidate_validation.md",
+      "git_blob": "0b7c70a8e4dc1941c960a3177bb5e9b75dd183de"
+    },
+    {
+      "path": "docs/research/03_investment_skills.md",
+      "git_blob": "dd4326bda62e4a31fe4111b49769d220bf650cbf"
+    },
+    {
+      "path": "docs/research/04_1_hermes_deep_validation.md",
+      "git_blob": "3d5b4a35996df55caa5a06b51dc091814e77b9af"
+    },
+    {
+      "path": "docs/research/04_candidate_blackbox.md",
+      "git_blob": "fcd92047413bd67df9ac1cb9717329c7c310c428"
+    },
+    {
+      "path": "docs/research/04_final_architecture.md",
+      "git_blob": "7c2fbf337925bf3961b8554eb77f6e81d484d182"
+    },
+    {
+      "path": "docs/research/05_market_pilots.md",
+      "git_blob": "7954d9cce61565d34c8afa8926f23e6831807e87"
+    },
+    {
+      "path": "docs/research/05_minimal_ab_validation.md",
+      "git_blob": "9fb5de45d2e861564b0f1acfeed45c9f2d71ca47"
+    },
+    {
+      "path": "docs/research/06_candidate_final_decision.md",
+      "git_blob": "6af048df06a4bb0b127680cb9c23532a7f3fc356"
+    }
+  ],
+  "scope": "Exact tracked history; uncommitted deleted changes are not recoverable from Git."
+}

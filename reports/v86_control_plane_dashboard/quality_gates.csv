@@ -1,8 +1,0 @@
-gate,passed
-single_ui_for_all_strategies,True
-isolated_account_model,True
-operational_strategies_visible,False
-feedback_candidates_discovered,True
-champion_default_view,True
-live_blocked,True
-read_only_governance,True

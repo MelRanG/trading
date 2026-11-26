@@ -1,0 +1,15 @@
+[Unit]
+Description=Quant Harness bounded stock Paper and research tick
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/ansy/app/trading
+Environment=PYTHONPATH=/home/ansy/app/trading/src
+Environment=QUANT_HARNESS_MODE=PAPER
+Environment=TOSS_ALLOW_LIVE_ORDERS=false
+EnvironmentFile=-/home/ansy/app/trading/runtime/task5/service.env
+ExecStart=/home/ansy/app/trading/.venv/bin/python /home/ansy/app/trading/scripts/run_autonomous_operations.py
+TimeoutStartSec=900
+UMask=0077
+NoNewPrivileges=true

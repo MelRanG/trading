@@ -1,0 +1,12 @@
+{
+ "version":"TASK9_REPLAY_COMPLETION_V1",
+ "priority":"Data and execution eligibility before any additional model calls",
+ "reuse":"Task9 historical original accessions and model outputs; no outcome-driven candidate changes",
+ "candidate_cohort":"Existing2021 deterministic original-report cohort; operating company filters from dated originals only, not current survivors",
+ "source_budgets":{"public_get":24,"dart":20,"krx_authenticated_probe":6,"model_calls_before_data_gate":0},
+ "representative_hypothesis":{"asof":"2021-11-30","entry":"Next independently verified regular-session open","holding_sessions":63,"exit":"Open of the next verified session after63 completed holding sessions","model_calls_max_after_gate":3,"known_tokens_max":250000,"selection_basis":"No subsequent price outcomes; A/B/C use same qualified source pool and frozen costs/risk"},
+ "mandatory":["dated listing and company/ticker mapping","eligible raw price events and official sessions","corporate action/dividend/delisting treatment","source publication before information cutoff","pre-outcome decision seal","risk and costs"],
+ "auth":"Existing .env credentials only. DART credentials never sent to KRX. No account creation, impersonation, captcha or access-control bypass.",
+ "trading":"Isolated historical research only, no operating Paper changes, no Live, no promotion",
+ "failure":"Record exact external authorization or source gaps; do not create trades or returns from unsupported inputs"
+}

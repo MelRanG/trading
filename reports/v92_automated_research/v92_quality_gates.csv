@@ -1,6 +1,0 @@
-gate,passed,detail
-NO_SAME_FOLD_MUTATION,True,candidate is evaluated as a separate account only
-BASE_AND_STRESS_COSTS_REQUIRED,True,proposal_folds=4
-INTENDED_ISSUE_EFFECT_MEASURED,True,parent versus candidate own-trade issue score
-ONE_COMPONENT_ABLATION_RETAINED,True,hypothesis catalog
-NO_AUTOMATIC_CAPITAL_AUTHORITY,True,backtest can only mark shadow eligibility

@@ -1,7 +1,0 @@
-gate,passed
-v69_weight_single_source,True
-canonical_unique,True
-canonical_adjusted_only,True
-v69_parity_under_1krw,True
-v79_parity_under_1krw,True
-live_blocked,True

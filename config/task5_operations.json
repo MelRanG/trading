@@ -1,0 +1,33 @@
+{
+  "schema": "TASK5_OPERATIONS_V1",
+  "mode": "ISOLATED_STOCK_PAPER",
+  "markets": [
+    "US",
+    "KR"
+  ],
+  "maximum_watch": {
+    "US": 150,
+    "KR": 100
+  },
+  "discovery_batch": 4,
+  "provider_daily_calls": {
+    "US": 100,
+    "KR": 100
+  },
+  "catalog_ttl_hours": 24,
+  "timer_seconds": 300,
+  "company_model_calls_per_market_day": 1,
+  "company_reason": "One bounded Terra research call per market/day; measured token ceiling, no hard CLI token guarantee, no trading authority.",
+  "yahoo_automated_permission_verified": false,
+  "new_strategy_enrollment": false,
+  "automatic_promotion": false,
+  "backup_interval_hours": 24,
+  "backup_keep_days": 14,
+  "raw_retention": "KEEP_ALL_REFERENCED_EVIDENCE",
+  "live_execution_allowed": false,
+  "company_token_budget_per_call": 40000,
+  "provider_daily_wire_calls": {
+    "US": 200,
+    "KR": 200
+  }
+}

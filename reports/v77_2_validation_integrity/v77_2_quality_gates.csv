@@ -1,8 +1,0 @@
-gate,passed,detail
-SELECTION_COLUMNS_DEV_VALIDATION_ONLY,True,"scenario,allocation_policy,rebalancing_policy,development_return_pct,development_sharpe,development_mdd_pct,development_order_count,validation_return_pct,validation_sharpe,validation_mdd_pct,validation_order_count,negative_cash_days,max_oracle_nav_error_krw"
-OBSERVED_MUTATION_ISOLATION,True,selected=FIXED_80__DAILY_EXACT mutated_selected=FIXED_80__DAILY_EXACT
-VALIDATION_ONLY_BOOTSTRAP,False,"{""positive_probability"": 0.0, ""median_relative_return"": 0.0, ""months"": 23}"
-MULTIPLE_TESTING_FAMILYWISE,False,raw=0.0000 family_size=40 bonferroni_lower_bound=0.0000
-VALIDATION_STRESS_NONINFERIOR,False,selected_stress=28.61 baseline=31.01
-AUTO_PROMOTION,False,"all selection-isolation, validation, familywise and stress gates required"
-LIVE_BLOCKED,True,research and shadow only

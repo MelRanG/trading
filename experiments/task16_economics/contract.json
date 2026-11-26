@@ -1,0 +1,17 @@
+{
+  "id": "KR_R5_FIVE_HOLD_NEXT_OPEN_V1",
+  "evidence_grade": "EXPOSED_CONDITIONAL_ONLY",
+  "hypothesis": "After identical causal entry, limiting holding to five sessions could avoid losses enough to offset missed gains and earlier execution costs.",
+  "sample": "All R5 frozen regular decision days with risk on, a nonempty target and 21 observations through 2026-11-18. Model common entry using pre-decision targets, previous close, D-1 ADV and the current opening quote. Count failed entries in the gross sample; no realized-return filter.",
+  "capital": "KRW 10000000 each episode, no deposits, no linking or annualization. From cash on each eligible entry, same filled names and integer shares per cost scenario across arms; at most four, 20% each, 80% opening. No additions or replacement names subsequently.",
+  "policies": {
+    "candidate": "Apply mandatory risk-off liquidation. Otherwise hold five exchange sessions inclusive of entry, then start liquidation at session six open; retry residuals at successive eligible opens. Never re-enter.",
+    "incumbent": "Apply same risk-off liquidation and frozen R5 scheduled weights, trimming or exiting original names with the existing sizing and retry semantics; no new names or buys. This is the sell-only conditional baseline, not the continuous R5 portfolio.",
+    "hold": "Keep the same entry holdings until terminal exit; passive price risk carried between entry and terminal settlement.",
+    "terminal": "Session 21 open exit request in all arms, then session 21 close NAV including any still supervised residual. Disclose residual; no imputed forced proceeds."
+  },
+  "prices": "Nominal KRX daily opening price as a model, no auction certification. Zero daily volume prevents execution as ex-post all-day feasibility veto only. Screen 29% extreme opening gap against previous nominal close and eligibility, no intraday range ordering. Previous 20 sessions of nominal notional ADV enforce 1% cap. Company action or missing valid close while held fails closed; a sourced zero-volume positive close can mark a residual. No cash dividends.",
+  "costs": "Frozen Korean contract from config/task3_equity_contract.json. Sell-side fee includes tax proxy, not actual account taxation. Fixed 2x fee/spread/impact stress; participation/cash/target caps remain unchanged. No per-entry quantity differences across arms within each cost scenario.",
+  "metrics": "Mean paired terminal net returns vs both stock baselines, calendar-block 21-session bootstrap (seed 16101, 5000), gross separately not required, yield by entry windows and issuer concentration, per-episode drawdown downside and actual exposure, fee and impact difference, positive/negative differences as opportunity/capital preservation observations. Lagged stock-exposure price-only KODEX200 reference; full ETF execution path excluded from this episode study. Positive lower intervals against both controls, nonnegative both under cost stress, nonworsening average MDD, and at least 12 occupied calendar blocks required for exploratory promise; otherwise inconclusive or underperformance. Independent confirmation always separate.",
+  "limits": "No fund/broker access, Forward/Paper/Live, Task15 pass, optimization, model training or additional experiment."
+}

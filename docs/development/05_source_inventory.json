@@ -1,0 +1,2020 @@
+{
+  "method": "AST absolute import references plus explicit current entrypoints; conservative, not runtime coverage",
+  "removed_sources": [],
+  "files": [
+    {
+      "path": "scripts/analyze_daily_excess_return.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/audit_current_model_evidence.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/audit_daily_agent_causality.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/audit_equity_comparison.py",
+      "category": "RESEARCH",
+      "reason": "Explicit bounded diagnostic/analysis tool, not timer",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/backup_operations.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/backup_review_state.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/classify_operating_sources.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/collect_asof_5m_data.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/probe_operations_restore.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/probe_review_restart.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_active_market_data_update.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_alpha_research_diagnostics.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_alpha_research_factory.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_alpha_research_factory_completion.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_alpha_research_robustness.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_asof_5m_models.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_autonomous_operations.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_base_operational_replay_validation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_common_experiment.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_current_models_5m_data_pilot.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_current_models_5m_fresh_daily_audit.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_current_models_5m_validation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_daily_model_calendar_analysis.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_daily_models_5m_price_confirm.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_daily_paper_cycle.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_daily_price_ladder_replay.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_equity_cycle.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_historical_operational_replay.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_independent_review_note.py",
+      "category": "RESEARCH",
+      "reason": "Explicit bounded diagnostic/analysis tool, not timer",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_investment_cycle.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_investment_skill_ab.py",
+      "category": "RESEARCH",
+      "reason": "Explicit bounded diagnostic/analysis tool, not timer",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_krx_market_flow_pack.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_model_validation_gate.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_news_shadow_intake.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_open_5m_execution_validation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_open_5m_full_nav_validation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_open_5m_long_horizon_audit.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_open_5m_long_horizon_validation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_operational_candidate_comparison.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_pain_supply_shadow.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_paper_decision_preview.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_paper_execution_cycle.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_recent_candidate_extension.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_review_cycle.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_review_daily.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_review_event.py",
+      "category": "RESEARCH",
+      "reason": "Explicit bounded diagnostic/analysis tool, not timer",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_rss_news_shadow.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_seeded_open_5m_recent_replay.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_task3_legacy_comparison.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_three_model_backtest.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_toss_operational_snapshot.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v100_strategy_agent.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v101_risk_execution_agent.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v102_market_evidence_agent.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v103_review_feedback_agent.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v104_2_jul30_crash_bridge.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v104_end_to_end_causal_challenger_audit.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v104_forward_session.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v104_future_mutation_check.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v77_2_validation_integrity.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v77_corrected_price_allocation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v78_preregistered_alpha_research.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v79_generic_trend_sleeve.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v79_high252_operational_replay.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v80_multi_indicator_confirmation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v83_actual_data_preflight.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v83_independent_self_research.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v84_dual_paper_parity.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v85_operating_day.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v85_operational_hardening.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v85_scheduler.py",
+      "category": "LEGACY",
+      "reason": "Former scheduling path; Compose now requires legacy-reference profile; preserve replay/tests",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v86_control_plane.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v87_actual_data_ingestion.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v88_order_reconciliation.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v89_forward_governance.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v90_trade_attribution.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v91_hypothesis_generator.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v92_automated_research.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v93_shadow_promotion.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v94_universe_agent.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v95_market_regime_agent.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v96_market_regime_extension.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v98_candidate_selection_agent.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/run_v99_candidate_selection_deep_research.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/scan_equity_universe.py",
+      "category": "RESEARCH",
+      "reason": "Explicit bounded diagnostic/analysis tool, not timer",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/score_review_outcome.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/serve_v86_control_plane.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/setup_operations_database.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "scripts/task3_database.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/active_market_data_update.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_active_market_data_update.py",
+        "src/quant_harness/daily_paper_runtime.py",
+        "src/quant_harness/investment/equities.py",
+        "src/quant_harness/three_model_backtest.py",
+        "tests/test_active_market_data_update.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/alpha_research_factory.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/run_alpha_research_factory.py",
+        "src/quant_harness/alpha_research_factory_completion.py",
+        "src/quant_harness/alpha_research_factory_diagnostics.py",
+        "src/quant_harness/alpha_research_factory_robustness.py",
+        "src/quant_harness/investment/operations_experiment.py",
+        "src/quant_harness/investment/review_engine.py",
+        "tests/test_alpha_research_factory.py",
+        "tests/test_alpha_research_factory_diagnostics.py",
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/alpha_research_factory_completion.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_alpha_research_factory_completion.py",
+        "tests/test_alpha_research_factory_completion.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/alpha_research_factory_diagnostics.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_alpha_research_diagnostics.py",
+        "tests/test_alpha_research_factory_diagnostics.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/alpha_research_factory_robustness.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_alpha_research_robustness.py",
+        "tests/test_alpha_research_factory_robustness.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/asof_5m_collection.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/collect_asof_5m_data.py",
+        "src/quant_harness/asof_5m_models.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/asof_5m_models.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_asof_5m_models.py",
+        "src/quant_harness/asof_5m_collection.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/base_operational_replay_validation.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_base_operational_replay_validation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/current_models_5m_data.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_current_models_5m_data_pilot.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/current_models_5m_fresh_daily_audit.py",
+        "src/quant_harness/daily_models_5m_price_confirm.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/current_models_5m_fresh_daily_audit.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_current_models_5m_fresh_daily_audit.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/current_models_5m_validation.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_current_models_5m_validation.py",
+        "src/quant_harness/asof_5m_collection.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/current_models_5m_data.py",
+        "src/quant_harness/current_models_5m_fresh_daily_audit.py",
+        "src/quant_harness/daily_models_5m_price_confirm.py",
+        "tests/test_current_models_5m_validation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/daily_model_calendar_analysis.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_daily_model_calendar_analysis.py",
+        "src/quant_harness/v79_high252_operational_replay.py",
+        "tests/test_daily_model_calendar_analysis.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/daily_models_5m_price_confirm.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_daily_models_5m_price_confirm.py",
+        "src/quant_harness/asof_5m_models.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/daily_paper_runtime.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_daily_paper_cycle.py",
+        "src/quant_harness/historical_operational_replay.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "tests/test_daily_paper_cycle.py",
+        "tests/test_paper_execution_safety_gates.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/historical_operational_replay.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/audit_current_model_evidence.py",
+        "scripts/run_historical_operational_replay.py",
+        "scripts/run_recent_candidate_extension.py",
+        "src/quant_harness/alpha_research_factory_completion.py",
+        "src/quant_harness/daily_model_calendar_analysis.py",
+        "src/quant_harness/open_5m_full_nav_validation.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/operational_candidate_comparison.py",
+        "src/quant_harness/recent_candidate_extension.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "src/quant_harness/v79_high252_operational_replay.py",
+        "tests/test_historical_operational_replay.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/__init__.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/discovery.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/run_investment_skill_ab.py",
+        "tests/test_autonomous_operations.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/equities.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/audit_equity_comparison.py",
+        "scripts/run_equity_cycle.py",
+        "scripts/run_investment_skill_ab.py",
+        "scripts/scan_equity_universe.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/operations.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/probe_operations_restore.py",
+        "scripts/run_autonomous_operations.py",
+        "tests/test_autonomous_operations.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/operations_backup.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/backup_operations.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/operations_data.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/backup_operations.py",
+        "scripts/probe_operations_restore.py",
+        "scripts/run_common_experiment.py",
+        "tests/test_autonomous_operations.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/operations_experiment.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/run_common_experiment.py",
+        "tests/test_autonomous_operations.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/portfolio.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "tests/test_investment_pipeline.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/research.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/audit_equity_comparison.py",
+        "scripts/backup_review_state.py",
+        "scripts/probe_review_restart.py",
+        "scripts/run_common_experiment.py",
+        "scripts/run_investment_skill_ab.py",
+        "scripts/run_task3_legacy_comparison.py",
+        "scripts/score_review_outcome.py",
+        "tests/test_autonomous_operations.py",
+        "tests/test_equity_pipeline.py",
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/probe_operations_restore.py",
+        "scripts/run_review_daily.py",
+        "scripts/run_review_event.py",
+        "scripts/score_review_outcome.py",
+        "tests/test_autonomous_operations.py",
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_access.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_engine.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/probe_operations_restore.py",
+        "scripts/run_review_cycle.py",
+        "scripts/run_review_daily.py",
+        "scripts/run_review_event.py",
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_execution.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_experiment.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_jobs.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/probe_review_restart.py",
+        "scripts/score_review_outcome.py",
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_model.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/run_independent_review_note.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/review_shadow.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/stockpaper.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/probe_operations_restore.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/store.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "scripts/probe_operations_restore.py",
+        "scripts/probe_review_restart.py",
+        "scripts/run_independent_review_note.py",
+        "scripts/run_investment_skill_ab.py",
+        "scripts/run_review_cycle.py",
+        "scripts/run_review_daily.py",
+        "scripts/run_review_event.py",
+        "scripts/scan_equity_universe.py",
+        "scripts/score_review_outcome.py",
+        "tests/test_equity_pipeline.py",
+        "tests/test_investment_pipeline.py",
+        "tests/test_review_self_improvement.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/investment/valuation.py",
+      "category": "ACTIVE",
+      "reason": "Task3/4/5 operating or Factory entry/module; optional tools retain separate flags",
+      "direct_absolute_import_references": [
+        "tests/test_investment_pipeline.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/krx_market_flow_pack.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_krx_market_flow_pack.py",
+        "tests/test_krx_market_flow_pack.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/model_validation_gate.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_model_validation_gate.py",
+        "src/quant_harness/base_operational_replay_validation.py",
+        "tests/test_model_validation_gate.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/news_shadow_runtime.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_news_shadow_intake.py",
+        "src/quant_harness/investment/discovery.py",
+        "src/quant_harness/rss_news_shadow.py",
+        "tests/test_news_shadow_runtime.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/open_5m_execution_validation.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_open_5m_execution_validation.py",
+        "src/quant_harness/asof_5m_collection.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/daily_models_5m_price_confirm.py",
+        "src/quant_harness/open_5m_full_nav_validation.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "tests/test_asof_5m_models.py",
+        "tests/test_open_5m_execution_validation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/open_5m_full_nav_validation.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_open_5m_full_nav_validation.py",
+        "tests/test_historical_operational_replay.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/open_5m_long_horizon_audit.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_open_5m_long_horizon_audit.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/open_5m_long_horizon_validation.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_open_5m_long_horizon_validation.py",
+        "src/quant_harness/open_5m_long_horizon_audit.py",
+        "tests/test_open_5m_long_horizon_validation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/operational_candidate_comparison.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_operational_candidate_comparison.py",
+        "src/quant_harness/daily_model_calendar_analysis.py",
+        "src/quant_harness/recent_candidate_extension.py",
+        "tests/test_operational_candidate_comparison.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/pain_supply_shadow.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_pain_supply_shadow.py",
+        "tests/test_pain_supply_shadow.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/paper_decision_runtime.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_paper_decision_preview.py",
+        "src/quant_harness/daily_paper_runtime.py",
+        "src/quant_harness/historical_operational_replay.py",
+        "src/quant_harness/model_validation_gate.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/operational_candidate_comparison.py",
+        "src/quant_harness/recent_candidate_extension.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "tests/test_historical_operational_replay.py",
+        "tests/test_operational_candidate_comparison.py",
+        "tests/test_paper_decision_preview.py",
+        "tests/test_paper_execution_safety_gates.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/paper_execution_runtime.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_paper_execution_cycle.py",
+        "src/quant_harness/daily_paper_runtime.py",
+        "src/quant_harness/historical_operational_replay.py",
+        "src/quant_harness/open_5m_execution_validation.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "tests/test_historical_operational_replay.py",
+        "tests/test_paper_execution_runtime.py",
+        "tests/test_paper_execution_safety_gates.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/paper_runtime_store.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/daily_model_calendar_analysis.py",
+        "src/quant_harness/daily_paper_runtime.py",
+        "src/quant_harness/historical_operational_replay.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/operational_candidate_comparison.py",
+        "src/quant_harness/paper_decision_runtime.py",
+        "src/quant_harness/paper_execution_runtime.py",
+        "src/quant_harness/recent_candidate_extension.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "tests/test_daily_paper_cycle.py",
+        "tests/test_paper_decision_preview.py",
+        "tests/test_paper_execution_runtime.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/recent_candidate_extension.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_recent_candidate_extension.py",
+        "src/quant_harness/open_5m_execution_validation.py",
+        "src/quant_harness/open_5m_full_nav_validation.py",
+        "src/quant_harness/open_5m_long_horizon_audit.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/seeded_recent_replay.py",
+        "tests/test_operational_candidate_comparison.py",
+        "tests/test_recent_candidate_extension.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/rss_news_shadow.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_rss_news_shadow.py",
+        "src/quant_harness/investment/discovery.py",
+        "tests/test_rss_news_shadow.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/seeded_recent_replay.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_seeded_open_5m_recent_replay.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/three_model_backtest.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_three_model_backtest.py",
+        "src/quant_harness/asof_5m_collection.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/current_models_5m_data.py",
+        "src/quant_harness/current_models_5m_fresh_daily_audit.py",
+        "src/quant_harness/current_models_5m_validation.py",
+        "src/quant_harness/daily_models_5m_price_confirm.py",
+        "src/quant_harness/open_5m_execution_validation.py",
+        "src/quant_harness/operational_candidate_comparison.py",
+        "tests/test_asof_5m_collection.py",
+        "tests/test_three_model_backtest.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/toss_runtime_store.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/toss_snapshot_runtime.py",
+        "tests/test_toss_runtime_store.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/toss_snapshot_runtime.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_toss_operational_snapshot.py",
+        "src/quant_harness/paper_decision_runtime.py",
+        "tests/test_paper_decision_preview.py",
+        "tests/test_v72_toss_read_only.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v100_strategy_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v100_strategy_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v100_strategy_agent.py",
+        "tests/test_v100_strategy_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v100_strategy_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/audit_daily_agent_causality.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/paper_decision_runtime.py",
+        "src/quant_harness/v100_strategy_agent/engine.py",
+        "src/quant_harness/v104_end_to_end_causal_challenger_audit/adapter.py",
+        "src/quant_harness/v84_dual_paper_parity/engine.py",
+        "tests/test_historical_operational_replay.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v101_risk_execution_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v101_risk_execution_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v101_risk_execution_agent.py",
+        "tests/test_v101_risk_execution_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v101_risk_execution_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "src/quant_harness/v84_dual_paper_parity/engine.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v102_market_evidence_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v102_market_evidence_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v102_market_evidence_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v102_market_evidence_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "src/quant_harness/news_shadow_runtime.py",
+        "src/quant_harness/v102_market_evidence_agent/engine.py",
+        "src/quant_harness/v104_end_to_end_causal_challenger_audit/adapter.py",
+        "src/quant_harness/v84_dual_paper_parity/engine.py",
+        "tests/test_v102_market_evidence_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v103_review_feedback_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v103_review_feedback_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v103_review_feedback_agent.py",
+        "tests/test_v103_review_feedback_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v103_review_feedback_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "tests/test_v103_review_feedback_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v104_end_to_end_causal_challenger_audit/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v104_end_to_end_causal_challenger_audit/adapter.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/analyze_daily_excess_return.py",
+        "scripts/audit_current_model_evidence.py",
+        "scripts/run_daily_price_ladder_replay.py",
+        "scripts/run_recent_candidate_extension.py",
+        "scripts/run_v104_future_mutation_check.py",
+        "src/quant_harness/asof_5m_collection.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/current_models_5m_data.py",
+        "src/quant_harness/current_models_5m_fresh_daily_audit.py",
+        "src/quant_harness/current_models_5m_validation.py",
+        "src/quant_harness/daily_model_calendar_analysis.py",
+        "src/quant_harness/daily_models_5m_price_confirm.py",
+        "src/quant_harness/historical_operational_replay.py",
+        "src/quant_harness/operational_candidate_comparison.py",
+        "src/quant_harness/paper_decision_runtime.py",
+        "src/quant_harness/paper_execution_runtime.py",
+        "src/quant_harness/recent_candidate_extension.py",
+        "src/quant_harness/three_model_backtest.py",
+        "src/quant_harness/v79_high252_operational_replay.py",
+        "src/quant_harness/v84_dual_paper_parity/engine.py",
+        "tests/test_historical_operational_replay.py",
+        "tests/test_operational_candidate_comparison.py",
+        "tests/test_paper_decision_preview.py",
+        "tests/test_paper_execution_runtime.py",
+        "tests/test_v104_end_to_end_causal_challenger_audit.py",
+        "tests/test_v79_high252_proximity_challenger.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v104_end_to_end_causal_challenger_audit/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v104_end_to_end_causal_challenger_audit.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v104_end_to_end_causal_challenger_audit/forward_runtime.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v104_forward_session.py",
+        "tests/test_v104_end_to_end_causal_challenger_audit.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v104_end_to_end_causal_challenger_audit/receipts.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "tests/test_v104_end_to_end_causal_challenger_audit.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v69_dynamic_theme_leadership/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v69_dynamic_theme_leadership/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/contracts.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/v88_order_reconciliation/engine.py",
+        "tests/test_v88_order_reconciliation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/env.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/live_safety.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/daily_paper_runtime.py",
+        "src/quant_harness/investment/stockpaper.py",
+        "src/quant_harness/paper_decision_runtime.py",
+        "src/quant_harness/paper_execution_runtime.py",
+        "src/quant_harness/toss_snapshot_runtime.py",
+        "tests/test_v72_toss_live_hardlock.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/market_store.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/opendart.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_news_shadow_intake.py",
+        "src/quant_harness/investment/discovery.py",
+        "src/quant_harness/investment/equities.py",
+        "src/quant_harness/news_shadow_runtime.py",
+        "tests/test_news_shadow_runtime.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/toss_openapi.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/active_market_data_update.py",
+        "src/quant_harness/asof_5m_collection.py",
+        "src/quant_harness/asof_5m_models.py",
+        "src/quant_harness/current_models_5m_data.py",
+        "src/quant_harness/current_models_5m_fresh_daily_audit.py",
+        "src/quant_harness/daily_models_5m_price_confirm.py",
+        "src/quant_harness/daily_paper_runtime.py",
+        "src/quant_harness/investment/equities.py",
+        "src/quant_harness/investment/operations.py",
+        "src/quant_harness/investment/operations_data.py",
+        "src/quant_harness/open_5m_execution_validation.py",
+        "src/quant_harness/open_5m_long_horizon_validation.py",
+        "src/quant_harness/three_model_backtest.py",
+        "src/quant_harness/toss_snapshot_runtime.py",
+        "tests/test_asof_5m_collection.py",
+        "tests/test_paper_decision_preview.py",
+        "tests/test_v72_toss_live_hardlock.py",
+        "tests/test_v72_toss_read_only.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v72_integration_ready/toss_read_only.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/toss_snapshot_runtime.py",
+        "tests/test_v72_toss_read_only.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v77_2_validation_integrity/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v77_2_validation_integrity/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v77_2_validation_integrity.py",
+        "src/quant_harness/v100_strategy_agent/engine.py",
+        "src/quant_harness/v101_risk_execution_agent/engine.py",
+        "src/quant_harness/v102_market_evidence_agent/engine.py",
+        "src/quant_harness/v104_end_to_end_causal_challenger_audit/engine.py",
+        "src/quant_harness/v78_preregistered_alpha_research/engine.py",
+        "src/quant_harness/v79_generic_trend_sleeve/engine.py",
+        "src/quant_harness/v80_multi_indicator_confirmation/engine.py",
+        "src/quant_harness/v83_independent_self_research/engine.py",
+        "src/quant_harness/v94_universe_agent/engine.py",
+        "src/quant_harness/v95_market_regime_agent/engine.py",
+        "src/quant_harness/v96_market_regime_extension/engine.py",
+        "src/quant_harness/v98_candidate_selection_agent/engine.py",
+        "src/quant_harness/v99_candidate_selection_deep_research/engine.py",
+        "tests/test_v77_2_validation_integrity.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v77_corrected_price_allocation/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v77_corrected_price_allocation/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/audit_equity_comparison.py",
+        "scripts/run_v77_corrected_price_allocation.py",
+        "src/quant_harness/alpha_research_factory_diagnostics.py",
+        "src/quant_harness/investment/equities.py",
+        "src/quant_harness/investment/operations_experiment.py",
+        "tests/test_investment_pipeline.py",
+        "tests/test_v77_2_validation_integrity.py",
+        "tests/test_v77_corrected_price_allocation.py",
+        "tests/test_v84_dual_paper_parity.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v78_preregistered_alpha_research/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v78_preregistered_alpha_research/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v78_preregistered_alpha_research.py",
+        "src/quant_harness/v79_generic_trend_sleeve/engine.py",
+        "src/quant_harness/v83_independent_self_research/engine.py",
+        "src/quant_harness/v84_dual_paper_parity/engine.py",
+        "tests/test_v78_preregistered_alpha_research.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v79_generic_trend_sleeve/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v79_generic_trend_sleeve/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v79_generic_trend_sleeve.py",
+        "tests/test_v79_generic_trend_sleeve.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v79_high252_operational_replay.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v79_high252_operational_replay.py",
+        "tests/test_operational_candidate_comparison.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v80_multi_indicator_confirmation/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v80_multi_indicator_confirmation/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v80_multi_indicator_confirmation.py",
+        "tests/test_v80_multi_indicator_confirmation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v83_independent_self_research/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v83_independent_self_research/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v83_actual_data_preflight.py",
+        "scripts/run_v83_independent_self_research.py",
+        "tests/test_v83_independent_self_research.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v84_dual_paper_parity/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v84_dual_paper_parity/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v84_dual_paper_parity.py",
+        "src/quant_harness/v85_operational_hardening/engine.py",
+        "tests/test_v100_strategy_agent.py",
+        "tests/test_v101_risk_execution_agent.py",
+        "tests/test_v84_dual_paper_parity.py",
+        "tests/test_v85_operational_hardening.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v85_operational_hardening/__init__.py",
+      "category": "LEGACY",
+      "reason": "Former scheduling path; Compose now requires legacy-reference profile; preserve replay/tests",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v85_operational_hardening/engine.py",
+      "category": "LEGACY",
+      "reason": "Former scheduling path; Compose now requires legacy-reference profile; preserve replay/tests",
+      "direct_absolute_import_references": [
+        "scripts/run_v85_operating_day.py",
+        "scripts/run_v85_operational_hardening.py",
+        "scripts/run_v85_scheduler.py",
+        "tests/test_v85_operational_hardening.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v86_control_plane_dashboard/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v86_control_plane_dashboard/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v86_control_plane.py",
+        "tests/test_v86_control_plane_dashboard.py",
+        "tests/test_v93_shadow_promotion.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v87_actual_data_ingestion/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v87_actual_data_ingestion/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v87_actual_data_ingestion.py",
+        "src/quant_harness/active_market_data_update.py",
+        "src/quant_harness/investment/discovery.py",
+        "src/quant_harness/investment/equities.py",
+        "src/quant_harness/investment/operations_data.py",
+        "tests/test_v87_actual_data_ingestion.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v88_order_reconciliation/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v88_order_reconciliation/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v88_order_reconciliation.py",
+        "tests/test_v88_order_reconciliation.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v89_forward_governance/__init__.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v89_forward_governance/engine.py",
+      "category": "BASELINE",
+      "reason": "Frozen replay, contracts, shared gate or regression dependency; not approved new strategy",
+      "direct_absolute_import_references": [
+        "scripts/run_v89_forward_governance.py",
+        "tests/test_v89_forward_governance.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v90_trade_attribution/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v90_trade_attribution/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v90_trade_attribution.py",
+        "scripts/run_v93_shadow_promotion.py",
+        "src/quant_harness/v103_review_feedback_agent/engine.py",
+        "src/quant_harness/v91_hypothesis_generator/engine.py",
+        "tests/test_v90_trade_attribution.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v91_hypothesis_generator/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v91_hypothesis_generator/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v91_hypothesis_generator.py",
+        "scripts/run_v93_shadow_promotion.py",
+        "src/quant_harness/v103_review_feedback_agent/engine.py",
+        "src/quant_harness/v92_automated_research/engine.py",
+        "tests/test_v91_hypothesis_generator.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v92_automated_research/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v92_automated_research/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v92_automated_research.py",
+        "scripts/run_v93_shadow_promotion.py",
+        "src/quant_harness/v103_review_feedback_agent/engine.py",
+        "src/quant_harness/v93_shadow_promotion/engine.py",
+        "tests/test_v92_automated_research.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v93_shadow_promotion/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v93_shadow_promotion/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v93_shadow_promotion.py",
+        "src/quant_harness/v103_review_feedback_agent/engine.py",
+        "tests/test_v93_shadow_promotion.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v94_universe_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v94_universe_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v94_universe_agent.py",
+        "tests/test_v79_high252_proximity_challenger.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v94_universe_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/v69_dynamic_theme_leadership/engine.py",
+        "src/quant_harness/v78_preregistered_alpha_research/engine.py",
+        "src/quant_harness/v79_generic_trend_sleeve/engine.py",
+        "src/quant_harness/v94_universe_agent/engine.py",
+        "tests/test_v94_universe_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v95_market_regime_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v95_market_regime_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v95_market_regime_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v95_market_regime_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/v104_end_to_end_causal_challenger_audit/adapter.py",
+        "src/quant_harness/v69_dynamic_theme_leadership/engine.py",
+        "src/quant_harness/v78_preregistered_alpha_research/engine.py",
+        "src/quant_harness/v95_market_regime_agent/engine.py",
+        "tests/test_v95_market_regime_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v96_market_regime_extension/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v96_market_regime_extension/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v96_market_regime_extension.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v96_market_regime_extension/policy.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/v96_market_regime_extension/engine.py",
+        "tests/test_v96_market_regime_extension.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v98_candidate_selection_agent/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v98_candidate_selection_agent/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v98_candidate_selection_agent.py",
+        "tests/test_v98_candidate_selection_agent.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v98_candidate_selection_agent/policy.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "src/quant_harness/v69_dynamic_theme_leadership/engine.py",
+        "src/quant_harness/v79_generic_trend_sleeve/engine.py",
+        "src/quant_harness/v98_candidate_selection_agent/engine.py",
+        "src/quant_harness/v99_candidate_selection_deep_research/engine.py",
+        "tests/test_v79_high252_proximity_challenger.py",
+        "tests/test_v98_candidate_selection_agent.py",
+        "tests/test_v99_candidate_selection_deep_research.py"
+      ],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v99_candidate_selection_deep_research/__init__.py",
+      "category": "BASELINE",
+      "reason": "No direct absolute Python import detected, but CLI/dynamic/config use or reproduction value unconfirmed; conservatively preserved, not proven UNUSED",
+      "direct_absolute_import_references": [],
+      "delete_safe": false
+    },
+    {
+      "path": "src/quant_harness/v99_candidate_selection_deep_research/engine.py",
+      "category": "BASELINE",
+      "reason": "Referenced helper/reproducibility dependency; preserve pending narrower audit",
+      "direct_absolute_import_references": [
+        "scripts/run_v99_candidate_selection_deep_research.py",
+        "tests/test_v99_candidate_selection_deep_research.py"
+      ],
+      "delete_safe": false
+    }
+  ]
+}

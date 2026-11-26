@@ -1,0 +1,9 @@
+{
+  "version": "PARTIAL_ORIGINAL_CORPUS_V1",
+  "status": "PARTIAL_NOT_FULL_INVESTABLE_UNIVERSE",
+  "selection": "First four unique corporate accession reports, ascending receipt number, no correction, quarterly/half-year, no current listing or future outcome filter",
+  "documents_per_date": 4,
+  "extra_dart_limit": 20,
+  "stage": "representative source feasibility + five-date partial corpus, no stage D permission",
+  "research_scope": "Original texts only; list alias/classification excluded from research input as not historical identity proof"
+}

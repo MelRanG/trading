@@ -59,5 +59,21 @@ def test_bad_reconciliation_blocks_canary(tmp_path: Path) -> None:
 
 def test_v89_readiness_harness(tmp_path: Path) -> None:
     root = _copy_root(tmp_path)
+    paths = ForwardGovernance(root).cfg["paths"]
+    summaries = [Path(paths[key]) for key in ("v85_summary", "v88_summary")]
+    for relative in summaries:
+        (root / relative).unlink(missing_ok=True)
+    blocked = run(root)
+    assert {key for key, ready in blocked["gates"].items() if not ready} == {
+        "v85_operational_ready", "v88_reconciliation_ready"
+    }
+    assert blocked["evaluation"]["live_execution_allowed"] is False
+
+    fixture = Path(__file__).resolve().parent / "fixtures/archived_release_reports"
+    for relative in summaries:
+        target = root / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(fixture / relative.relative_to("reports"), target)
     result = run(root)
     assert all(result["gates"].values())
+    assert result["evaluation"]["live_execution_allowed"] is False

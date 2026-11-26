@@ -1,0 +1,12 @@
+"""Same frozen observed-input task and deterministic checks for Terra/Luna."""
+from pathlib import Path
+import json,http.client,socket,hashlib
+BASE=Path(__file__).resolve().parents[2]/'runtime/task6_completion';obs=json.loads(Path('/home/ansy/app/quant-diligence/completion-vibe-work/observations.json').read_text());obs.pop('files')
+prompt='''Return JSON only with keys hypothesis,observed_facts (list of2 factual numeric facts from packet),falsification,code,classification. Propose ONE causal economical US price-volume research hypothesis from actual train-only observations. Provide executable code (only numpy/pandas imports), class SignalEngine.generate(data_map)->dict symbol Series scores; no I/O, future shifts or global fitting; lookback<=120. Scores close t predict next-session close/open-1. Fixed positive top4*20%,80%gross,next-open buy/same-close sell, fixed costs. No known returns or fake evaluation results. Also classify these independent audit cases using labels DATA_ERROR/PREDICTION_FAILURE/COST_PROBLEM/INSUFFICIENT_EVIDENCE/PENDING in their original order: (a)source stale at decision;(b)preregistered mature numeric forecast differs from observed value;(c)positive gross return becomes negative after fees;(d)paired interval spans zero;(e)forecast horizon not yet matured. Actual TRAIN packet: '''+json.dumps(obs,sort_keys=True)
+body={'model':'gpt-4o','messages':[{'role':'user','content':prompt}],'response_format':{'type':'json_object'}};(BASE/'model_comparison').mkdir(exist_ok=True);(BASE/'model_comparison/input.json').write_text(json.dumps(body,indent=2))
+class Conn(http.client.HTTPConnection):
+ def connect(self):self.sock=socket.socket(socket.AF_UNIX);self.sock.settimeout(210);self.sock.connect('/tmp/quant-task6-completion.sock')
+for engine in ['terra','luna']:
+ conn=Conn('localhost',timeout=210);conn.request('POST','/v1/chat/completions',json.dumps(body),{'Authorization':'Bearer task6-'+engine,'Content-Type':'application/json'});r=conn.getresponse();data=r.read();out=BASE/'model_comparison'/engine;out.mkdir(exist_ok=True);(out/'response.json').write_bytes(data)
+ if r.status!=200:(out/'failure.json').write_text(json.dumps({'http':r.status,'body':json.loads(data)}));print(engine,r.status,flush=True);continue
+ answer=json.loads(json.loads(data)['choices'][0]['message']['content']);(out/'candidate.json').write_text(json.dumps(answer,indent=2));(out/'factor.py').write_text(answer['code']);print(engine,'generated',flush=True)

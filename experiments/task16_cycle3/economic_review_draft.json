@@ -1,0 +1,26 @@
+{
+  "id": "KR_FIVE_SESSION_CLOSE_EXIT_MATCHED_V1",
+  "state": "DRAFT_HUMAN_APPROVAL_AND_EXECUTION_EVIDENCE_REQUIRED",
+  "owner": "Team3",
+  "scope": "One isolated historical policy comparison with KR individual stocks chosen by the already sealed R4 target stream. Policy question: does a fixed five-session hold avoid harmful overholding after identical entry?",
+  "design": {
+    "period": "R4 exposed interval 2023-04-03 through 2025-12-30. Use only pre-existing scheduled decisions whose 20-session observation period fits the sealed calendar, selected by dates alone.",
+    "population": "Each paired episode starts from the same priced opening basket, using the same entry decisions, nominal KRX integer shares, R4 funding/spread/ADV/restrictions, and equal KRW10000000 initial capital per alternative with no contributions. Quantities fixed by common fill. Use four slots, 20% cap per purchased name, 80% total target. Report calendar overlap and common failures.",
+    "intervention": "Count the verified entry session as session 1. Submit an unconditional close-auction liquidation of the episode's original holdings before the relevant auction cutoff on session 5, only with historically admissible execution evidence. Process mandatory risk exits in both active arms first. Carry residual shares and retry at the next contract-eligible execution event; model no trade when fill is unsupported. Retain cash after exit through the common terminal mark.",
+    "comparators": "Common initial basket held for 20 sessions, frozen incumbent sell/trim decisions on the original basket with no replacements for attribution, and a lagged stock-exposure-matched KODEX200 plus cash reference. Mark a distinct nominal same-capital KODEX200 buy-and-hold reference. No ETF inside the stock policies. No contributions in these episodes.",
+    "risk_control": "Compare episode-level daily NAV, downside volatility, MDD and lagged exposure, including residual exposure. Match the market comparator against lagged actual exposure. Report whether gains persist over plain hold and both active alternatives, and whether the rule simply changes exposure.",
+    "metric": "Predeclare a common 20-session net elapsed-capital endpoint and compare paired returns against both named stock controls. Block by overlapping 20-session calendar periods. Require positive paired effects with conservative 95% intervals excluding zero after controlling for the two comparisons, nonworsening downside, and positive base and 2x cost incremental direction. Report gross, fills, fees, missed gains, carry, downtime and dispersion. A continuous multi-basket NAV, cashflow-weighted return and CAGR require a separately sealed continuous policy and are outside this episode design.",
+    "costs": "Use the R4 frozen cost model, label its tax proxy explicitly, plus independently documented analogous closing-auction spread/impact/capacity inputs. Stress costs at 2x, do not choose a favorable result. Keep distributions price-only and identical unless official compatible evidence supports changing all arms before evaluation.",
+    "fill_gate": "Confirm the opening/closing classification and eligible auction execution or adopt a conservative independently validated auction fill model with timestamped venue data. Contract must specify order submission before uncross and capacity, priority, price limits, halts, corporate actions, and failed close attempts. Ordinary daily OHLC cannot supply this contract. If unavailable, stop, preserve the original rule; moving the exit to the next open is a different preregistration."
+  },
+  "evaluator": "Existing experiments/task13_f1_r4/execution.py trade_open for entry and mandatory compatible exits. No current compatible close-auction worker. Minimum addition if approved is an isolated, tested close-execution adapter using the same accounting and provenance rules. No operating code change.",
+  "budget_requested": "One offline exploratory economic policy experiment including comparator arms, no grid, one predeclared stress check. Reserve under explicitly approved evaluation scope, within the unchanged UTC-day allowance. No funds, broker, external data purchase or activation.",
+  "evidence_grade": "Conditional exposed-history sensitivity only; survivor and no independent validation. Neither Task15 pass nor operational eligibility.",
+  "approval": "Human research owner must accept this scope and cost/evaluator assumptions in the existing approval process, explicitly bind the reviewer approval to the frozen inputs, execution contract and experiment count, and enable the applicable research scope via the designated research owners. The current Task4 registry offers no field or worker route that grants economic permission; keeping this draft does not authorize or schedule it.",
+  "stops": [
+    "Missing auction/close data or residual valuation",
+    "Scope or cost mismatch",
+    "No human research-scope approval",
+    "No economic reservation in permissible contract"
+  ]
+}

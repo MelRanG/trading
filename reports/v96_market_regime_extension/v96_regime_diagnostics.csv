@@ -1,4 +1,0 @@
-policy,sessions,risk_on_sessions,partial_exposure_sessions,zero_exposure_sessions,mean_exposure_multiplier,regime_switches,switches_within_20_sessions,crash_guard_trigger_sessions
-D1_MA120_EXPLICIT,2083,1116,0,0,1.0,43,29,13
-MA120_CONTINUOUS_RISK_SCORE,2083,1116,743,967,0.40465023656610905,43,29,13
-MA120_CRASH_GUARD,2083,1116,0,13,0.9937590014402304,43,29,13

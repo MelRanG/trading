@@ -1,0 +1,57 @@
+{
+ "schema_version":"TASK4_REVIEW_V1",
+ "strategy_horizons":{"MOM63_STOCKS":[1,5,20],"DEFENSIVE_STOCKS":[1,5,20],"EQUAL_WEIGHT_STOCKS":[5,20]},
+ "unknown_strategy_action":"PENDING_CONTRACT_REQUIRED",
+ "taxonomy":["INFORMATION_MISSING","FORECAST_ERROR","SELECTION","TIMING","SIZING","EXECUTION","STOCHASTIC_LOSS","UNDETERMINED"],
+ "proposal_budget_per_utc_day":3,
+ "experiment_budget_per_utc_day":1,
+ "minimum_independent_cases":12,
+ "promotion_ceiling":"FORWARD_SHADOW_ONLY",
+ "human_approval_required":true,
+ "automatic_promotion":false,
+ "live_execution_allowed":false,
+ "research_job_lease_seconds":120,
+ "required_trace_fields":["contract_hash","input_hash","algorithm_hash"],
+ "review_worker_version":"TASK4_PROCESS_RULES_V1",
+ "immediate_triggers":["PROVENANCE_GAP","UNVERIFIED_SOURCE","EXECUTION_EXCEPTION","THESIS_INVALIDATION_EVENT"],
+ "experimental_scope":"Review integrity diagnostic is not investment-alpha efficacy. Missing final labels must remain pending.",
+ "hermes":{"mode":"SHADOW_PACKET_ONLY","gateway":false,"cron":false,"orders":false,"approval":false},
+ "exploratory_economics":{
+  "USER_OFFLINE_ECONOMICS_20261126": {
+    "user_authorization": {
+      "source": "User instruction: Quant Harness — 탐색적 경제성 연구 권한 정립 및 실제 실행, §2 and §9",
+      "scope": "Existing historical individual stocks, isolated offline cost-after exploration. One new policy; no promotion, independent certification, operational change or actual capital.",
+      "approved_text_excerpt": "이번 지시로 다음 범위의 격리된 오프라인 탐색 연구를 승인한다.",
+      "independent_alpha_or_promotion": false
+    },
+    "worker": "experiments/task16_economics/worker.py",
+    "artifacts": "runtime/task16_economics",
+    "proposal": {
+      "approval_id": "USER_OFFLINE_ECONOMICS_20261126",
+      "target": "strategy",
+      "champion": "FROZEN_R5_TRIM_AND_PASSIVE_HOLD",
+      "challenger": "KR_R5_FIVE_HOLD_NEXT_OPEN_V1",
+      "problem_evidence": {
+        "cycle3_selection_sha256": "561f2a2b2334e6967ae1630e955d69c3165f0bdd128be8751e06170c8bad0e01",
+        "preregistered_policy_sha256": "3a02a9e827a88890dbc203023f877f7f0baaa51abe273731ae29bf4250447380"
+      },
+      "expected_effect": "Avoid adverse exposure after identically sized entries net of truncating gains and costs.",
+      "falsification": "No paired net advantage and downside benefit against both stock controls after sensitivity.",
+      "budget": {
+        "experiments": 1,
+        "parameter_search": 0
+      },
+      "stop_conditions": [
+        "Daily reservation exhausted",
+        "Held action or marks unverified",
+        "Artifact or worker hash mismatch"
+      ],
+      "evaluation_metric": "Episode terminal net return and downside against both stock controls",
+      "minimum_cases": 12,
+      "split": "EXPLORATORY_ECONOMICS",
+      "input_hash": "a32079f3951b7dba908d05c254d56563fa6053a4503cc6e7d400e98028c9c485",
+      "worker_hash": "be2820e7c4d899c45106b8ea35188a3766993b9ec9a7016e892d9170d2ee297a"
+    }
+  }
+}
+}

@@ -1,0 +1,5 @@
+from components import *
+x=json.loads((B/'first_trigger.json').read_text());m='US';day=x['asof'];q=factor('mutation_asof_probe',m,frames(m,day),E/'task10-quanta-work/mutation/factor.py');full=pd.read_csv(B/'signals'/m/'quanta_candidate.csv',index_col=0,parse_dates=True);pd.testing.assert_frame_equal(full.reindex(index=q.index,columns=q.columns),q,check_names=False,rtol=1e-10,atol=1e-10);rows=[]
+for m in ['US','KR']:
+ case=json.loads((B/'accounts'/m/'summary.json').read_text())['research_event'];stage=case['rd_model_stage'];cut=case['source_asof'];prefix=predict(stage,m,frames(m,cut),tag=stage+'_causalprobe');full=predict(stage,m,frames(m));pd.testing.assert_frame_equal(full.reindex(index=prefix.index,columns=prefix.columns),prefix,check_names=False,rtol=1e-6,atol=1e-7);rows.append({'market':m,'cutoff':cut,'model_stage':stage,'prefix_inference_matches_full_at_same_date':True,'labelsnotneededforprediction':True})
+freeze(B/'causality_adoption_probes.json',{'quanta_mutation_at_adoption':'PREFIX_MATCH','models':rows,'real_isolated_worker_execution':True,'additional_LLM_calls':0});print('CAUSAL_PREFIX_PROBES_PASS')

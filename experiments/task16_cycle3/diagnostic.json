@@ -1,0 +1,16 @@
+{
+  "id": "KR_AUCTION_EVIDENCE_COVERAGE",
+  "selected": "Team2 C2",
+  "economic_status": "NOT_AUTHORIZED",
+  "budget": {"experiments": 1, "parameter_search": 0},
+  "scope": "Count evidence coverage on immutable R4/R5 ledger days, without deleting sessions or calculating a filtered NAV.",
+  "reason": "Opening execution evidence is a necessary input for a paired economic policy test and a 5-session close exit adds a second unobserved auction.",
+  "sources": ["R4 T1_A NAV and archived fills", "R5 nav, fills, events and independent_verification"],
+  "definitions": {
+    "R4": "All recorded sessions and days with simulated fills. Auction record is UNKNOWN on each day.",
+    "R5": "Count actual ledger sessions, simulated fills, stress_open flag, blocked_boards and FILL_UNCERTAIN event. Flag-based remainder is UNFLAGGED, not auction-confirmed.",
+    "verified": "A realized historical auction/queue execution would require contemporaneous timestamped auction volume, applicable order sequence/priority or equivalent admissible evidence, unavailable here."
+  },
+  "stops": ["input hash mismatch", "calendar or prior stress receipt mismatch", "no promotion or economic replay"],
+  "success": "Reconciled dated count and classification. Insufficient evidence for efficacy by construction."
+}

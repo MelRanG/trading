@@ -1,9 +1,0 @@
-agent,input,output,authority,counterfactual_test
-UniverseAgent,"point-in-time price availability, listing history, liquidity",eligible ETF set,HARD_ELIGIBILITY_VETO,candidate cannot be selected when ineligible
-MarketRegimeAgent,D-1 benchmark close and 120-day moving average,market trend gate,HARD_EXPOSURE_GATE,leader exposure becomes zero when trend gate is off
-PainSupplyAgent,D-1 PIT market investor-flow z-score and freshness,flow risk flag,OPTIONAL_20PP_WEIGHT_REDUCTION,FLOW_AUTHORITY ablation versus diagnostic
-DisclosureFundamentalAgent,D-1 available OpenDART quarterly filings,negative-income sector risk,OPTIONAL_20PP_WEIGHT_REDUCTION,FUNDAMENTAL_AUTHORITY ablation versus diagnostic
-CandidateSelectionAgent,"eligible ETFs, semantic sector taxonomy, D-1 scores",sector-deduplicated leader ticker,LEADER_SELECTION,sector duplicate lottery tickets are removed and selection ledger records D-1 leader changes
-StrategyAgent,leader and allocation policy,target leader/core weights,TARGET_WEIGHT,fixed/event/continuous policies compared under one engine
-RiskExecutionAgent,"adjusted open, D-1 ADV, fees, spread, impact, cash",final affordable integer fills,PARTICIPATION_AND_CASH_CAP,order notional and participation reconstruct exactly
-ReviewFeedbackAgent,D-1 20-session strategy excess return,feedback risk flag,OPTIONAL_20PP_WEIGHT_REDUCTION,FEEDBACK_AUTHORITY ablation versus diagnostic

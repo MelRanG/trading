@@ -1,9 +1,0 @@
-gate,passed
-dual_accounts_present,True
-sqlite_integrity,True
-backup_restore_passed,True
-idempotent_logical_state,True
-all_operational_stages_present,True
-point_in_time_universe_written,True
-risk_allowed_both,True
-live_blocked,True

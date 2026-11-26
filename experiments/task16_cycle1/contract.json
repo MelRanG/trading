@@ -1,0 +1,15 @@
+{
+ "campaign":"TASK13_EXPOSED_HISTORICAL_RESEARCH",
+ "id":"GAP_ABSORPTION_SIGNED_PRODUCT_20_H5",
+ "source":"TEAM2 GapAbsorption",
+ "hypothesis":"Repeated intraday absorption of overnight pressure indicates resilient liquidity; higher 20-day signed absorption predicts greater subsequent H5 returns after price controls.",
+ "formula":"g=log(open_t/close_t-1); d=log(close_t/open_t); average[-g*d/(abs(g)+0.01)] over exactly 20 sessions. Higher is better.",
+ "label":"Close t; open t+1 to open t+6, all six opens present and positive, with H1/R0 native masks. Adjusted prices for research. No orders.",
+ "controls":["REV5","MOM20","MOM63","VOL20","OVERNIGHT20","INTRADAY20","GAP_ABS20","Q3","H1"],
+ "primary":"2024 daily equal-weight partial rank correlation with H5, controlling for same-session price-based signals, Q3 and H1. One-sided Holm across two markets. Four generated candidates and parent campaign references retained; untested formulas not assigned outcomes. Report conservative H1-era 43+2 Bonferroni diagnostic, not exhaustive family.",
+ "preflight":"Minimum 50 names per date, 100 eligible 2024 dates per market. 2023 feature-only overlap to prior controls and competing versions: do not run if abs(mean daily rank correlation) >= .95 against any prior control. Prefix and future-OHLCV alteration must preserve scores. End H5 within calendar year.",
+ "baseline_longs":"Equal-weight average of REV5, MOM20 and MOM63 past-only ranks as fixed reference score. Augmented score averages that baseline and candidate residual rank equally. Mean daily top-fifth label difference on common observations; gross uninvested exposure and cost not evaluated.",
+ "confidence":"Circular date blocks of 10 sessions, 5000 draws fixed seed 163101. Evaluate separately by market. Report calendar half-year direction and attribution of top-fifth spread with and without five largest absolute issuer contributions; no portfolio replay.",
+ "stop":"Pass Layer1 only with strictly positive partial CI lower bound, Holm p<.05, positive halves, positive upper-quintile lift and positive lift after removing five largest absolute stock contributions. Otherwise end this family this cycle. No sign, formula, horizon or threshold retries. Separate Task15 approval and independent PIT evidence required.",
+ "factory":"One PROCESS_DIAGNOSTIC_ONLY registration and reservation via existing review functions, no queue, portfolio, ETF allocations, or capital. Historical survivor sample, previously exposed; not Forward."
+}

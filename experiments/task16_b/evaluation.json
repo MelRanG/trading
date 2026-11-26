@@ -1,0 +1,15 @@
+{
+  "scope": "Sealed synthetic judgments; assessment checks category, authority boundary and proposed method where applicable. No model sees expected outcomes.",
+  "cases": [
+    {"id":"T01","kind":"INVESTMENT","scenario":"Reconciled order intent and fill ledger show a unit conversion doubled executed share count. Counterfactual returns are missing.","facts":{"verified_defect":"E"},"gates":{"matched_ledger":true},"expected":["REPAIR","DATA_ERROR"]},
+    {"id":"T02","kind":"INVESTMENT","scenario":"Single modest drawdown within preregistered variation. Same-risk paired comparison remains in its historical tolerance and there has been no policy breach.","facts":{"within_budgeted_variability":"E"},"gates":{"matched_ledger":true},"expected":["MAINTAIN","STOCHASTIC_LOSS"]},
+    {"id":"T03","kind":"SIGNAL","scenario":"Provider supplies revised numbers but no first publication time. Fit scores exist, with no eligible evaluation labels.","gates":{"data":"BLOCKED","mature":false},"expected":["HOLD","INFORMATION_MISSING"]},
+    {"id":"T04","kind":"SIGNAL","scenario":"Reweighted input is an exact monotonic transform of the rejected comparator. The published study already audited that family.","prior":"DUPLICATE","expected":["REJECT","DUPLICATE"]},
+    {"id":"T05","kind":"POLICY","scenario":"After-cost paired results are positive on an exposed replay, same risk and capital. Independent trial and human approval are still missing.","gates":{"matched_ledger":true},"metric":["net_vs_best_control",0.04,0.01,0.08],"expected":["HOLD","PROMISING_UNAPPROVED"]},
+    {"id":"T06","kind":"INVESTMENT","scenario":"A return series and a discussion of exit delays exist. There are no dated orders, fills or same exposure controls.","expected":["HOLD","UNDETERMINED"]},
+    {"id":"T07","kind":"POLICY","scenario":"Lower net results could come from less market exposure or turnover. Same-window gross attribution is missing; historical window misses a market regime.","facts":{"competing_causes":["exposure","execution cost"]},"expected":["HOLD","UNDETERMINED"]},
+    {"id":"T08","kind":"SIGNAL","scenario":"On mature, matched label windows the rank increment is negative and its whole interval is negative. No robustness evidence elsewhere.","metric":["increment",-0.12,-0.19,-0.05],"expected":["REJECT","NO_INCREMENTAL_SIGNAL"]},
+    {"id":"T09","kind":"SOURCE","scenario":"A predeclared numeric filing worker and first-filed source receipts are available. Analyst surprise and financial forecasting efficacy are still unknown.","route":"DISCLOSURE_PROVENANCE","expected":["PROPOSE","UNDETERMINED"]},
+    {"id":"T10","kind":"SIGNAL","scenario":"A promising point estimate is confined to a single issuer and the interval spans zero. No independent approval.","metric":["increment",0.08,-0.11,0.21],"facts":{"concentration":"E"},"expected":["HOLD","UNDETERMINED"]}
+  ]
+}

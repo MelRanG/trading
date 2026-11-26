@@ -1,0 +1,2 @@
+# Optional SEC filing parsing; base pipeline records SEC failures without it.
+edgartools==6.0.0

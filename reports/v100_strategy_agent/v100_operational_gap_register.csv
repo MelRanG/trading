@@ -1,9 +1,0 @@
-issue,severity,current_state,v100_action
-FIXED_WEIGHTS_IGNORE_SELECTION_UNCERTAINTY,HIGH,V69 always 80 percent when a leader exists; V79 fixed 70/30,tested uncertainty budget; no automatic promotion
-HIDDEN_COMPONENT_OVERLAP,HIGH,V79 base and sleeve may select the same ticker or semantic sector,explicit overlap ledger and 70 percent semantic-sector cap candidate
-NO_EXPLICIT_TARGET_CONTRACT,HIGH,target map existed but lacked policy/version/reason/hash,daily deterministic target ledger with hash and reason
-STATIC_TAXONOMY_PROXY,MEDIUM,semantic sector mapping has no effective dates or holdings overlap,documented; cap candidate remains research only
-NO_HOLDINGS_LEVEL_LOOKTHROUGH,HIGH,core ETF and theme ETFs may share constituents,external ETF holdings history required before live
-NO_ACCOUNT_CAPACITY_AWARE_TARGET,MEDIUM,target weights do not shrink with account size or market capacity,deferred to RiskExecutionAgent with ADV and broker constraints
-NO_PORTFOLIO_LEVEL_RISK_BUDGET,MEDIUM,MarketRegime is binary and allocation is fixed,dynamic candidate tested without parent mutation
-TARGET_REBALANCE_OWNERSHIP_AMBIGUITY,MEDIUM,V69 daily exact and V79 5 percent band,target generation separated; execution cadence deferred to RiskExecutionAgent

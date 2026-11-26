@@ -1,8 +1,0 @@
-gate,passed,detail
-ACTIVE_D1_EXPLICIT_PARENT_PARITY,True,"nav_errors={'V69': 0.0, 'V79': 0.0} signal_diffs={'V69': 0, 'V79': 0}"
-D1_ONLY_REGIME_EVIDENCE,True,all executable regime fields are lagged one session
-FUTURE_MUTATION_INVARIANT,True,policy=D1_MA120_EXPLICIT cutoff=2024-12-31 compared_rows=1719; policy=MA120_HYSTERESIS_1PCT cutoff=2024-12-31 compared_rows=1719; policy=MA120_BREADTH_CONFIRM_40PCT cutoff=2024-12-31 compared_rows=1719; policy=MA120_VOLATILITY_GUARD_35PCT cutoff=2024-12-31 compared_rows=1719
-CANDIDATES_CHANGE_ONLY_REGIME_GATE,True,"universe, ranking, sizing, sleeve and execution code are shared"
-SHARED_PARENT_PROMOTION_REQUIRED,True,candidate must pass V69 and V79 gates
-AUTOMATIC_LIVE_AUTHORITY_BLOCKED,True,research-only; no live authority
-RESEARCH_CANDIDATE_PROMOTION,False,promoted=[]; forward_shadow_only=['MA120_VOLATILITY_GUARD_35PCT']; failure is allowed and keeps active parent

@@ -1,0 +1,11 @@
+"""Explicit next-step decision; does not register, trade or launch research."""
+from pathlib import Path
+import json,datetime
+R=Path(__file__).resolve().parents[2];B=R/'runtime/task14';v=json.loads((B/'validation.json').read_text());assert not any(x['pass05'] for x in v['primary_tests'])
+rows=[]
+for x in v['primary_tests']:
+ cid,market=x['test'].rsplit('_',1);state='INSUFFICIENT_EVIDENCE';why='No positive corrected primary; wide uncertainty and exposed S history.'
+ if cid in ['Q1','RD_SMALL'] or (cid=='Q0' and market=='US'):state='REJECTED';why='Reject current incremental Task15 recommendation: duplicate/incumbent-like or adverse residual/loss; not proof no alpha and not engine-wide rejection.'
+ rows.append({'id':cid,'market':market,'Task14_state':state,'primary_holm18_p':x['holm18_p'],'reason':why,'scope':'Current candidate/increment claim only; immutable Task13 status not overwritten','Task15_recommended':False})
+out={'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'decision':'RETURN_TO_TASK13','reason':'No primary passes (none even unadjusted0.05); Quanta incremental partial rank not positive robust, US_RD nearlyRidge and KR_RD worse. B/PIT/episode limits reinforce uncertainty, not the sole reason.','candidate_market_verdicts':rows,'independent_alpha_confirmed':False,'no_alpha_proven_absent':True,'next_minimum':['Before further calls: explicit candidate/hash/target attribution receipt; strict mask; one-output slot and failed-output accounting','A separate bounded Task13 can evaluate at most1~2 different mechanisms, optionally original pending overnight-vs-intraday hypothesis with fresh preregistration; no new calls or Q2 evaluation in Task14','Model route: inspect existing coefficients/scaler/optimization divergence between KR RD and same-feature ridge before larger network/retraining','Targeted provenance check for extreme066570/009150 open endpoints and actions before economic use, no wholemarketDB','Use same-condition simple controls and preserve current history as development; independent Forward remains necessary'],'forbidden_actions_performed':False,'Task15_or_new_research_started':False}
+(B/'verdict.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(out['decision'])

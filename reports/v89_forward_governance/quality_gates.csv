@@ -1,9 +1,0 @@
-gate,passed
-frozen_hashes_written,True
-two_runtime_strategies_frozen,True
-strategy_mutation_blocked,True
-forward_trial_not_faked,True
-v88_reconciliation_ready,True
-v85_operational_ready,True
-automatic_live_promotion_blocked,True
-live_blocked,True

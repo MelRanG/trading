@@ -1,0 +1,20 @@
+{
+  "contract_id": "TASK3_PAIRED_RESEARCH_V1",
+  "mode": "SHADOW_RESEARCH_ONLY",
+  "live_execution_allowed": false,
+  "automatic_promotion": false,
+  "initial_capital": 10000000,
+  "gross_cap": 0.8,
+  "single_name_cap": 0.8,
+  "momentum_sessions": 63,
+  "trend_sessions": 120,
+  "rebalance": "DAILY_EXACT",
+  "period": ["2021-10-13", "2026-07-03"],
+  "splits": {"development": ["2021-10-13", "2022-12-31"], "validation": ["2023-01-01", "2024-12-31"], "reused_observed": ["2025-01-01", "2026-07-03"]},
+  "candidates": ["V69_PARENT", "V79_PARENT", "MOM63_ROTATION", "DEFENSIVE_TREND120"],
+  "benchmarks": ["ETF_BUY_HOLD", "ETF_RISK_MATCHED", "KOSPI_PRICE_INDEX"],
+  "candidate_origin": {"MOM63_ROTATION": "FinRL rotation logic / simple momentum diagnostic; independent implementation, not upstream replication", "DEFENSIVE_TREND120": "market trend and cash protection research hypothesis"},
+  "selection": "No automatic winner. All historical results are screening only; require independent forward and human review.",
+  "bias": "Existing ETF universe is an observed-first-bar proxy; not complete PIT listings/delistings. All periods have been reused in research.",
+  "paper": {"initial_capital": 10000000, "gross_cap": 0.8, "single_name_cap": 0.4, "minimum_order": 100000, "max_participation": 0.01, "maximum_event_age_seconds": 60, "decision_lifetime_hours": 72, "max_session_turnover": 1.6, "stop_loss": "NONE_DAILY_POLICY_ONLY", "take_profit": "NONE_DAILY_POLICY_ONLY", "long_only": true, "scope": "ISOLATED_RESEARCH_PAPER", "strategies": ["MOM63_ROTATION", "DEFENSIVE_TREND120", "CATALYST_SHADOW"]}
+}

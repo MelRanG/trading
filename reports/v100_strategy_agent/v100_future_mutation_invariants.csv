@@ -1,5 +1,0 @@
-policy,passed,detail
-FIXED_PARENT_ALLOCATIONS,True,cutoff=2024-12-31 v69=True v79=True
-FULL_LEADER_100,True,cutoff=2024-12-31 v69=True v79=True
-UNCERTAINTY_BUDGET_60_80,True,cutoff=2024-12-31 v69=True v79=True
-V79_SEMANTIC_SECTOR_CAP_70,True,cutoff=2024-12-31 v69=True v79=True

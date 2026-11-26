@@ -1,0 +1,11 @@
+{
+  "version": "TASK8B_VALUATION_PREFLIGHT_V1",
+  "methods": [
+    "FCFE_EXIT_MULTIPLE",
+    "FCFF_EV_BRIDGE",
+    "BANK_BOOK_VALUE_ROE"
+  ],
+  "equity_bridge": "EV minus projected net debt/other claims then divide projected diluted shares; no EBITDA-as-FCF",
+  "scenario_assumptions": "Explicit analyst hypotheses, 1/2/3-year horizons; no calibrated probabilities required",
+  "forward_selection": "No past result optimization"
+}

@@ -1,0 +1,4 @@
+from pathlib import Path
+import subprocess,sys
+R=Path(__file__).resolve().parents[2];B=R/'runtime/task13';E=Path('/home/ansy/app/quant-diligence');m=sys.argv[1];work=B/'models'/m;work.mkdir(parents=True,exist_ok=True)
+cmd=['docker','run','--rm','--network=none','--cap-drop=ALL','--security-opt','no-new-privileges','--cpus=2','--memory=4g','--pids-limit=256','--user','1000:1000','-e','HOME=/work','-e','OMP_NUM_THREADS=2','-e','PYTHONDONTWRITEBYTECODE=1','-e','LITELLM_LOCAL_MODEL_COST_MAP=True','-v',str(E/'task6-rd-env')+':/venv:ro','-v',str(work)+':/work','-v',str(B/'adjusted_calculation_inputs'/m/'panel.csv')+':/input/panel.csv:ro','-v',str(B/'native/rd')+':/candidate:ro','-v',str(R/'experiments/task13')+':/code:ro','-w','/work','quant-research-task6:local','/venv/bin/python','/code/model_worker.py'];p=subprocess.run(cmd,capture_output=True,text=True,timeout=900);(work/'execution.log').write_text(p.stdout+p.stderr);raise SystemExit(p.returncode)

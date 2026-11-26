@@ -1,9 +1,0 @@
-gate,passed
-parent_nav_parity_under_1krw,True
-parent_negative_cash_zero,True
-intent_final_qty_never_exceeds_requested,True
-participation_never_exceeds_policy,True
-all_target_tracking_finite,True
-broker_contract_unverified_blocks_live,True
-candidate_auto_promotion_blocked,True
-live_blocked,True

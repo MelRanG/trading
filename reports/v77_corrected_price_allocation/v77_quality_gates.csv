@@ -1,9 +1,0 @@
-gate,passed,detail
-ADJUSTED_OHLC_SINGLE_SCALE,True,all tradable ETF OHLC loaded from toss_openapi_1d_adjusted; no raw/adjusted mixing
-NO_OPEN_TO_CLOSE_FALLBACK,True,missing executable open raises instead of substituting close
-INDEPENDENT_NAV_RECONSTRUCTION,True,max_error=0.0000000000
-OBSERVED_2025_2026_EXCLUDED_FROM_SELECTION,True,selected candidate uses development and validation columns only
-STRESS_EXECUTION_POSITIVE,True,stress_return_pct=779.73
-SHADOW_BEATS_FIXED80_BOOTSTRAP_90PCT,False,p=0.8792
-ALLOCATION_PROMOTION,False,"requires validation non-inferiority, stress outperformance, and >=90% block probability vs fixed80"
-LIVE_AND_AUTO_PROMOTION_BLOCKED,True,V77 is research-only; V72 runtime remains unchanged

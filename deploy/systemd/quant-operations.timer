@@ -1,0 +1,12 @@
+[Unit]
+Description=Single Quant Harness operating timer
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=5min
+AccuracySec=20s
+Persistent=true
+Unit=quant-operations.service
+
+[Install]
+WantedBy=timers.target

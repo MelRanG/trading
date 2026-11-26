@@ -1,0 +1,53 @@
+{
+  "version": "TASK9_COMPLETION_BOUNDED_PILOT_V2",
+  "user_scope": "No full-market bulk download required; discover from dated limited original-report cohort, then use public search/collectors to qualify selected securities",
+  "cohort_accessions": [
+    "20211101000064",
+    "20211101000083",
+    "20211101000287"
+  ],
+  "not_a_survivor_screen": true,
+  "information_cutoff": "2021-11-30T23:00:00Z",
+  "entry": "Next verified session open after information cutoff; no current receipt time backdating claim",
+  "holding_sessions": 63,
+  "exit": "Open of the next verified session after63 holding sessions",
+  "mode": "EXPLORATORY_HISTORICAL_RESEARCH_SHADOW_NOT_OFFICIAL_STRATEGY",
+  "stock_selection": "Dated source-backed falsifiable operating thesis; no forced buy. Data mismatch or missing relevant actions blocks that name, not unrelated qualified names.",
+  "maximum_weight_per_name": 0.025,
+  "maximum_gross": 0.075,
+  "minimum_order": "Existing QH replay minimum notional",
+  "A_B_C": "Same fixed eligible cohort/facts/cost/risk; A company thesis, B adds known macro/catalysts, C relative alternatives, preserve every prior decision",
+  "benchmark": "KOSPI price index, plus entry-exposure-matched KOSPI/cash gross control; not TR or ETF",
+  "control": "Single equal-weight buy/hold/sell of all qualified cohort names, capped20% per name and same initial capital/costs; diagnostic control independent of LLM selection",
+  "source_qualification": "Original DART listing identity and disclosed actions, dated corroborating ticker evidence, two-source raw-price consistency, explicit unresolved limitations. Whole-market PIT completeness not asserted.",
+  "corporate_actions": "No zero-imputation of missing dividends; issuer original declaration/annual statement and action register required for held names. Read future source for accounting audit only, never pass its operating performance into research.",
+  "research_budget": {
+    "calls": 3,
+    "tokens": 250000
+  },
+  "selection_outcome_feedback": false,
+  "history_memory_confounded": true,
+  "automatic_promotion": false,
+  "live": false,
+  "cutoff_reason": "Both Nov30 market closes are public; next KR open Dec1 00Z is still after cutoff. Never expose US Nov30 closing data to an earlier KR cutoff.",
+  "costs": {
+    "KR": {
+      "buy_fee_bps": 1.5,
+      "sell_fee_bps": 24.5,
+      "sell_components": "1.5 assumed commission+23 historic2021/2022 tax",
+      "half_spread_bps": 5,
+      "impact_bps_at_1pct_adv": 10,
+      "max_impact_bps": 50,
+      "max_participation": 0.01
+    },
+    "US": {
+      "buy_fee_bps": 1,
+      "sell_fee_bps": 1,
+      "half_spread_bps": 5,
+      "impact_bps_at_1pct_adv": 10,
+      "max_impact_bps": 50,
+      "max_participation": 0.01
+    },
+    "scope": "Historical experiment assumptions only, not real broker cost measurement; no operating config changes"
+  }
+}

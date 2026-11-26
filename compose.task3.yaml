@@ -1,0 +1,25 @@
+# Explicit development/research-only PostgreSQL; separate from operational DBs.
+# Local trust is confined to loopback; do not expose this port remotely.
+services:
+  task3-postgres:
+    image: pgvector/pgvector:pg16
+    container_name: quant-task3-postgres
+    restart: unless-stopped
+    labels:
+      quant-harness.scope: task3-isolated
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: quant_task3
+      POSTGRES_DB: quant_task3_test
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - quant_task3_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U quant_task3"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  quant_task3_pgdata:
+    external: true

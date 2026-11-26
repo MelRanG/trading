@@ -1,0 +1,12 @@
+{
+  "version": "USER_REQUESTED_SIZE_SCREEN_V1",
+  "reason": "User explicitly requested a market-cap/quality floor and US inclusion before new investment research",
+  "KR_min_market_cap_KRW": 500000000000,
+  "US_min_market_cap_USD": 2000000000,
+  "capitalization_basis": "As-of raw price times original disclosed issued ordinary shares; proxies and uncertainty explicit",
+  "KR_cohort": "Previously fixed original2021 three operating-company accessions, no full-market download",
+  "US_cohort": "Bounded discovery from official dated2021-11-01 results releases; deterministic public query order, maximum4 issuers after identity/size checks, not current watchlist or later winners",
+  "max_selected_price_series_per_market": 4,
+  "economic_quality": "Exclude non-operating/SPAC or no source-backed operating investment thesis; uncertainty does not automatically mean permanent rejection",
+  "selection_before_return_evaluation": true
+}

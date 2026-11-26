@@ -1,0 +1,8 @@
+{
+ "provider_contract": {"required_source_tag":"YAHOO_CHART_RAW_OBSERVED","require_adjusted_ohlc_verified":false,"canonical_price_scale":"RAW_OBSERVED","timezone":"MARKET_SPECIFIC"},
+ "quality":{"allow_duplicate_date_ticker":false,"allow_nonpositive_prices":false,"allow_negative_volume":false,"allow_ohlc_geometry_violation":false},
+ "revision_gate":{"overlap_coverage_min":0.99,"same_provider_median_abs_close_diff_bps_max":2.0,"same_provider_p99_abs_close_diff_bps_max":20.0,"changed_row_ratio_max":0.01,"changed_row_threshold_bps":5.0},
+ "historical_observation_authority":false,
+ "legacy_canonical_replacement_allowed":false,
+ "adjusted_prices":"Derived for historical screening only; dividends and corporate actions not independently certified. Raw quote/ledger scale remains distinct."
+}

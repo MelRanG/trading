@@ -1,5 +1,6 @@
 services:
   quant-control-plane:
+    profiles: ["legacy-reference"]
     build:
       context: .
       dockerfile: Dockerfile
@@ -17,6 +18,7 @@ services:
       V86_ALLOW_REMOTE_CONTROL_PLANE: "true"
     restart: unless-stopped
   quant-orchestrator:
+    profiles: ["legacy-reference"]
     build:
       context: .
       dockerfile: Dockerfile

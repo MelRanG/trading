@@ -1,0 +1,17 @@
+{
+ "version":"TASK9_VALUE_RESEARCH_V1", "dates":["2021-11-30","2022-11-30","2023-11-30"],
+ "cutoff":"23:00:00Z, after both local closes; next observed regular session open entry",
+ "cohort":"US dated2020/2021 Dow30 broad seed, KR dated2021-11-01 broker industry table24 seeds; independent as-of ranking per date; no current-watchlist or future-return selection",
+ "candidate_count_per_market":{"US":30,"KR":24}, "size_floors":{"US_USD":2000000000,"KR_KRW":500000000000},
+ "deep_per_market_per_date":3,"minimum_price_covered_candidates_per_market":20,
+ "LLM":{"screen_calls":3,"deep_calls":3,"feedback_calls":1,"known_tokens_ceiling":350000,"model":"gpt-6.1-terra","no_calls_until_breadth_gate":true},
+ "source_budget":{"candidate_price_GET":56,"deep_Toss_GET":36,"DART_GET":70,"primary_IR_GET":30},
+ "horizons_calendar_months":[3,6,12],"exit":"first observed regular session open on or after entry plus calendar months; no extrapolation",
+ "policy":"AI may BUY/HOLD/WAIT/REJECT, long-only <=20% per name <=60% gross per market. Cash0 interest. Initial policy frozen before outcomes. No forced purchase.",
+ "quality_portfolio":"Ranked research names separate from policy; equal-weight100% gross, max3 names, fixed normalized units, no outcome-dependent substitutions; missing selected outcomes blocks aggregate, no survivor renormalization",
+ "comparators":"S&P500/KOSPI price index, all-covered-cohort equal-weight, matched initial exposure index+cash. Split-adjusted price returns and provider adjusted-return diagnostic separate",
+ "cost_bps_roundtrip":{"US":12,"KR":36},"cost_interpretation":"US commission2+spread10, KR commission3+spread10+selltax23 assumption; same for all dates to avoid tuning; actual broker/spread not measured",
+ "quality":"Historical research tiers VERIFIED/PARTIAL/UNVERIFIED independent of official Paper/Live gates; incomplete data never interpreted as0 returns",
+ "future_separation":"Worker mounts only date-masked sources/statistics; outcomes collected and evaluated separately after sealed decisions; LLM historical memory remains uncontrolled",
+ "no_promotion":true,"operating_changes":false,"new_infrastructure":false
+}

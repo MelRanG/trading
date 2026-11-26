@@ -1,0 +1,23 @@
+{
+ "version":"TASK8B_EXPLORATION_V1",
+ "enabled":true,
+ "mode":"EXPLORATORY_SHADOW_ONLY",
+ "live_execution_allowed":false,
+ "automatic_promotion":false,
+ "gross_cap":0.3,
+ "single_name_cap":0.05,
+ "sector_cap":0.1,
+ "initial_probe_weight":0.025,
+ "maximum_names":6,
+ "holding_checkpoints_sessions":[21,63,126],
+ "benchmarks":{"US":"SPY","KR":"069500.KS"},
+ "exit_rule":"Exit at first eligible observed quote after126 verified completed sessions, or a separately evidenced preregistered thesis invalidation; no retrospective stop fitting",
+ "entry_rule":"Next eligible regular-session observed quote AFTER the immutable seal; conditional wait cases cannot be filled",
+ "daily_provider_calls":12,
+ "maximum_entry_attempts_per_market_day":2,
+ "research_database":"quant_task3_task8b_research",
+ "market_accounts":{"US":"quant_task3_task8b_explore_us","KR":"quant_task3_task8b_explore_kr"},
+ "source_record":"runtime/task8b/final_opportunities.json",
+ "strict_paper_policy":"config/task8_portfolio.json",
+ "notes":"Research permission does not assert positive alpha. Existing approved Paper accounts/policies never modified. Separate paper-code simulation only."
+}

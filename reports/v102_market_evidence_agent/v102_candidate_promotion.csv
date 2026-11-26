@@ -1,8 +1,0 @@
-strategy,policy,status,promoted,return_delta_pp,validation_delta_pp,purged_validation_delta_pp,recent_1y_delta_pp,stress_delta_pp,validation_changed_days,bootstrap_positive_probability,familywise_probability,gate_development_noninferior,gate_validation_improves,gate_purged_validation_improves,gate_recent_noninferior,gate_stress_noninferior,gate_mdd_noninferior,gate_enough_validation_changes,gate_familywise_bootstrap
-V69,FLOW_ENTRY_BLOCK_PERSISTENT_5D,BACKTEST_REJECTED,False,4.383658656056014,5.495938883761809,4.421471028250168,0.1486024723800199,2.8535994308487034,1,0.98,0.94,False,True,True,True,True,True,False,True
-V79,FLOW_ENTRY_BLOCK_PERSISTENT_5D,BACKTEST_REJECTED,False,-0.26712292951958716,3.8639496475479262,2.9664943223032036,0.369046037723308,4.82422610276933,5,0.93,0.7900000000000001,False,True,True,True,True,True,True,False
-V69,DART_HARD_VETO_PERSISTENT_LOSS,BACKTEST_REJECTED,False,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,True,False,False,True,True,True,False,False
-V79,DART_HARD_VETO_PERSISTENT_LOSS,BACKTEST_REJECTED,False,-29.375890277278472,0.0,0.0,0.36810188649829456,-30.381049606793226,0,0.0,0.0,True,False,False,True,False,True,False,False
-V69,FLOW_DART_CONSENSUS_HARD_VETO,BACKTEST_REJECTED,False,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,True,False,False,True,True,True,False,False
-V79,FLOW_DART_CONSENSUS_HARD_VETO,BACKTEST_REJECTED,False,0.0,0.0,0.0,0.0,0.0,0,0.0,0.0,True,False,False,True,True,True,False,False
-ALL,NEWS_OFFICIAL_SEVERE_EVENT_VETO,DATA_BLOCKED_NO_HISTORICAL_PIT_NEWS,False,,,,,,0,,,,,,,,,,

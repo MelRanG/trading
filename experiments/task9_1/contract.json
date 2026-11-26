@@ -1,0 +1,21 @@
+{
+  "version": "TASK9_1_RESEARCH_V1", "created_utc": "2026-11-14",
+  "dates": ["2024-11-29", "2025-06-30"], "cutoff_time_utc": "23:00:00",
+  "reason_dates": "New historical regimes; 2025 source published June13 cannot be used for May research. Dates chosen before prices/outcomes.",
+  "us_cohort": "2024 named R1000 additions11 + largest10 + first9 distinct style additions; 2025 named additions12 + largest10 + WMT ABBV PG. Dated FTSE summaries, not whole membership.",
+  "kr_cohort": "First40 unique ordinary listed issuers in ascending receipt order from bounded 4pages of Nov14 2024 / May15 2025 periodic reports. Original public accession anchors. Current catalog mapping only. No SPAC/REIT/funds. Size floor500bn KRW where dated shares available; unknown size not a pass.",
+  "candidate_budget_per_market_date": 40, "deep_budget_per_market_date": 5,
+  "screen": "Eligible finite63day momentum/volatility; take first company of each distinct reported sector by source order then highest63momentum until5. KR sector unknown: source-order diversity not verified industry diversity. Common five for every selection arm; no future ranking.",
+  "selection_arms": ["VIBE_VALUE", "VIBE_MARKET_RELATIVE", "MOM63_CAUSAL_RECONSTRUCTION", "SIMPLE_EQUAL_DEEP"],
+  "no_native_historical_quanta_rd": "No sealed2024/25 native signals; unavailable arm, do not impute.",
+  "allocation_fixed_basket": "First3 deep candidates in frozen screening order, same basket for every allocation arm",
+  "allocation_arms": ["EQUAL100", "FIXED60", "VIBE_INVERSE_VARIANCE60", "AI_CONDITIONAL"],
+  "AI_limits": {"gross": 0.6, "single_name": 0.2},
+  "horizons_months": [3,6,12], "initial_capital": {"US":100000,"KR":100000000},
+  "cost_bps": {"US":{"buy":6,"sell":6},"KR":{"buy":6.5,"sell":29.5}},
+  "prices": "Raw OHLC plus explicit split adjustment; no interpolation. Price-only stocks and indices, dividend-inclusive return diagnostic separate. Next observed eligible session open entry and first session at/after calendar horizon open exit. Partial calendar reconstruction, no claim official calendar verified.",
+  "LLM": {"model":"gpt-6.1-terra","calls":4,"tokens":360000,"per_call_guard":90000,"tools":false,"money_cost":null,"subscription":true,"stage_reservation_tokens":90000},
+  "review": "Outcome-blinded process review first. 2024 cause readout creates predefined FIXED60 vs AI followup on same basket; evaluate separately on2025 after followup seal, no outcome-selected parameters. Historical diagnostic not independent Forward alpha.",
+  "budgets": {"Yahoo_max_GET":70,"DART_max_GET":70,"Toss_max_GET":80,"external_paid":false},
+  "promotion": "FORBIDDEN", "operational_mutation": false
+}

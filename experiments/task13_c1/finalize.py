@@ -1,0 +1,91 @@
+"""Finalize existing outputs only; never calculates another target or evaluates a candidate."""
+from pathlib import Path
+import hashlib,json
+import pandas as pd
+R=Path(__file__).resolve().parents[2];B=R/'runtime/task13_c1'
+sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+v=json.loads((B/'evaluation.json').read_text());u=v['US'];s=u['summary'];gate=json.loads((B/'phase_a_gate.json').read_text());seal=json.loads((B/'seal.json').read_text());checks=json.loads((B/'post_evaluation_integrity.json').read_text());assert checks['sealed_input_code_artifacts_unchanged'] and not checks['protected_changes']
+resources=json.loads((B/'resources.json').read_text());costs={}
+for f in ['initial_prepare_execution.json','preflight_tests.json','prepare_execution.json','safety_validation.json']:
+ d=json.loads((B/f).read_text());costs[f]=d['CPU_seconds']
+costs['evaluation']=resources['evaluation_CPU_seconds'];total=sum(costs.values())
+coverage=pd.read_csv(B/'coverage.csv',index_col='date',parse_dates=True).loc['2023-04-03':'2024-12-31'];excluded=coverage[coverage.diagnostic_names<50]
+exclusions={'excluded_signal_dates':[{'date':d.date().isoformat(),'names':int(row.diagnostic_names),'reason':'H5_EXIT_AFTER_2024_CUTOFF' if d>=pd.Timestamp('2024-12-23') else 'INHERITED_MARKET_MASK_AND_NO_BRIDGING_PROPAGATION'} for d,row in excluded.iterrows()],'shared_mask_fact':'R0 ^GSPC2023-05-24 hasZERO_VOLUME_UNCLASSIFIED=true, eligible=false; preceding6 label-path days and following shock/return-boundary days excluded. Source price/volume/mask not repaired or dropped based on returns.','calendar_na_slots':18,'actual_nonoverlap_intervals':85,'legacy_bootstrap_field':'stats_eval reports n//H=84 as nonoverlap_blocks_upper_bound. It is retained as its legacy mechanical floor calculation, NOT the counted intervals, effective independent sample size or a general statistical upper bound. Actual presealed greedy interval count85; resampling uses440 calendar slots, not this field.'}
+(B/'exclusion_audit.json').write_text(json.dumps(exclusions,ensure_ascii=False,indent=2)+'\n')
+final={'decision':v['decision'],'technical':'EXECUTION_VERIFIED_US_ONLY','research_classification':'HISTORICAL_EXPLORATORY_SURVIVOR_RESEARCH','data_quality':'PARTIAL','research_outcome_queries':1,'research_LLM_calls':0,'research_LLM_tokens':0,'external_HTTP':0,'model_training':0,'new_installs':0,'measured_CPU_seconds':total,'measured_CPU_components':costs,'CPU_metering_limit':'Early interactive source inspection, initial shell test run and rounding-diagnosis commands not all metered; measured total is a lower bound, not the entire Codex session. No zero-cost claim for Codex.','tests':{'C1_preflight':11,'mandatory_regression':24,'compileall':'PASS_SHA_MATCHED_SNAPSHOT'},'initial_preparation_failure':'Recorded before H5 query; machine-precision geometry check fixed with explicit rounding proof. No prices, masks, formula or horizon changed.','preserved_protected_files':checks['protected_files'],'protected_changes':0,'automatic_follow_on':False,'portfolio_or_cost_backtest':False,'KR_transfer':'BLOCKED_HISTORICAL_BOARD_MAPPING_UNVERIFIED'}
+(B/'final_audit.json').write_text(json.dumps(final,ensure_ascii=False,indent=2)+'\n')
+rows=[]
+for label,k in [('C1 일반 RankIC','signal_RankIC'),('C1 primary partial RankIC','partial_RankIC'),('REV5 RankIC','REV5_RankIC'),('MOM20 RankIC','MOM20_RankIC'),('LOWVOL20 RankIC','LOWVOL20_RankIC'),('시장 beta RankIC(설명용)','beta_RankIC')]:
+ x=s[k];rows.append(f"| {label} | {x['mean']:+.5f} | [{x['CI95'][0]:+.5f}, {x['CI95'][1]:+.5f}] |")
+sens=u['sensitivity'];yrs=u['year_stability'];rr=s['partial_REV5_only'];bb=s['partial_with_beta'];spread=s['spread'];base_spread=s['baseline_REV5_spread']
+report=f'''# Task13-C1 — 개별 종목 잔차 충격의 단기 반전
+
+**연구 판정: `{v['decision']}` · 기술 실행: `EXECUTION_VERIFIED_US_ONLY`**  
+분류: **HISTORICAL_EXPLORATORY / PARTIAL_SURVIVOR_RESEARCH**. 독립 알파·실행 가능한 투자수익을 입증하지 못했다. 현재 C1을 Task15 후보로 추천하지 않으며, 방향·horizon·유니버스를 바꾸는 추가 탐색은 하지 않았다.
+
+## 계약·중복·실행
+
+R0의 **미국 CORE176종목** 조정 OHLCV와 ^GSPC, 원 native 적격성/기본 품질 마스크를 그대로 사용했다. B3의4종목 복구 overlay는 가져오지 않았다. 알려진 이상 점프·분할·zero-volume·결측을 기존 규칙대로 제외하고 보간하지 않았다. 2017~2022년은 특징량 계산 적격성만 확인했으며, label fitting·성과 기반 선택·모델 학습은0이다. **2025~2026년 수치는 신호·평가에 사용하지 않았다**(원파일 전체 SHA 확인은 별도 무결성 처리).
+
+기존 R1 Q0/Q3의 야간−장중20일, R1 Q1의 조건부 회복, Task14 Q1의 모멘텀 중복, R1.2 하방분산 비중, R2 유동성/상호작용 수식과 대조했다. 같은120세션 시장-beta 잔차5일/잔차sigma 수식은 확인되지 않았다. B2의 독립 사건 부족, B3의 증분 미확인 및 정체성/마스크 오류, RD 전체 controller 미완료·일관된 증분 부재, Task6~7 비용/기간 불일치와 Task10 역사적 피드백의 한계를 [campaign.json](../../runtime/task13_c1/campaign.json)에 연결했다. **엔진을 다시 실행하거나 동일 실패 팩터의 이름만 바꾸지는 않았다.**
+
+사전 지정: t-125~t-6의120세션에서 유효한 paired 로그수익률110개 이상으로 OLS beta(절편 포함)와 잔차 표본표준편차(ddof=1)를 추정했다. 최근 t-4~t의 잔차합은 요청대로 **종목수익−beta×시장수익**이며 fitted 절편을 차감하지 않았다. 신호는 그 합의 음수를 sqrt(5)×sigma로 나눈 값이다. beta/sigma에 충격 구간을 넣지 않았다. 기존63개 연속 적격 과거 세션·20일 기준선·5일 충격 경로를 만족하며, 결측 수익을0으로 채우거나 세션을 연결하지 않는다.
+
+**H5: t종가 이후 신호 → t+1시가 → t+6시가.** Task12 `readiness.labels`/R0의 next-open 정의와 같고,6개 forward 세션 모두 품질 마스크를 통과해야 한다. 원 데이터는 실제 체결 명목가격이 아닌 공급자 조정 연구 track이다.
+
+봉인 시각 **{seal['at']}**, [사전 계약](../../runtime/task13_c1/contract.json), [코드·입력·신호 봉인](../../runtime/task13_c1/seal.json), [마스크/가격 SHA](../../runtime/task13_c1/input_hashes.json). 원자적 배타 예약 후 **미국 역사 평가1회**를 실행했다. 봉인 파일 변경0이며, [단일 평가 기록](../../runtime/task13_c1/evaluation_attempt.json)에 결과 SHA를 보존했다.
+
+## 표본·데이터 gate
+
+- 진단 신호일 **2023-04-03~2024-12-20**, 종료 시가2024-12-31 이내. 유효 **422일·71,916종목×날짜**, 일별167~174종목(중앙170). 신호·REV5·MOM20·LOWVOL20·beta와 target 모두 동일 표본이다.
+- 세션 위치로 센 겹치지 않는 H5 구간 **85개**다. 독립 경제 episode나71,916개의 독립 표본이라는 뜻이 아니다. 학습기간의 적격 특징량 날짜는1,379일이며 모델을 fit하지 않았다.
+- 평가 달력440칸 중18칸은 NaN 그대로 유지했다. 마지막6칸은 미성숙 label, 나머지12일은 **2023-05-24 ^GSPC zero-volume 기존 마스크**가 forward label/최근 충격 경로에 전파된 결과다. 수익률을 보고 제외하지 않았다. [제외 사유](../../runtime/task13_c1/exclusion_audit.json).
+- bootstrap helper의 기존 `n//H=84` 출력은 단순 환산치이며 실제 비중첩 구간 수85와 구분했다. 독립 유효 표본량이나 엄밀한 상한으로 해석하지 않는다. 실제 bootstrap은 날짜440칸을 사용했다.
+- **한국 전이 진단은 차단**했다. R0에는 현재 board와 불완전한 역사 정체성 정보만 있어 과거 KOSPI/KOSDAQ 매핑을 인증할 수 없었다. 현재 거래소를 소급하거나 임의 지수를 배정하지 않았다.
+
+현재 생존 종목·현재 선정 패널, 불완전한 상장/상폐/기업행사 이력, 공급자 관측 지수 달력, 부분 검증된 조정가격이라는 한계는 남는다. 기존 native의 보수적 상장/이전 경계가 잘라낸 구간도 복원하지 않았다. **완전한 PIT 시장 인증은 아니며 B3 수정의 일반화도 아니다.**
+
+## 순수 예측력·증분
+
+primary는 날짜별 candidate와 H5 target을 각각 평균 동률 순위로 바꾼 뒤, 절편+REV5/MOM20/LOWVOL20 순위에 각각 OLS 잔차화해 Pearson 상관한 값의 일평균이다. 학습된 결합 전략이나 거래 가중치가 아니다.
+
+| 동일 표본 지표 | 일별 평균 | H5 block95% 구간 |
+|---|---:|---:|
+{chr(10).join(rows)}
+
+기존 [Task14 통계 함수](../../experiments/task14/stats_eval.py)의 **5,000회 circular block bootstrap, 길이5, seed130301**을 재사용했다. primary의 양의 효과 단측 centered-null p는 **{s['partial_RankIC']['p_positive']:.6f}**, 사전 **Holm39 보정 p={u['Holm39_primary_p']:.1f}**다. 로컬 가설1개로 보정하지 않아도 통과하지 않는다.
+
+39슬롯은 Task14의18개 예약 슬롯, R1 8, R1.2 2, R2 8, B2 1, B3 1, C1 1을 사전에 고정했다. Task14의 기존10개 primary p를 재사용하고 미실행/별도 p 미확보 슬롯은 보수적으로1로 예약했다. 이는 모든 Task6 이후의 숨은 선택·적응형 탐색을 소급 보정한 완전한 campaign family가 아니다. 이미 노출된 역사 연구이므로 이 검정만으로 독립 확증을 주장하지 않는다.
+
+**단순 REV5와 중복이 크다.** 일별 순위 상관 평균 **{u['baseline_overlap']['REV5']['mean_daily_rank_correlation']:.4f}**, 중앙 **{u['baseline_overlap']['REV5']['median_daily_rank_correlation']:.4f}**다. MOM20/LOWVOL20/beta와 평균 순위 상관은 각각 {u['baseline_overlap']['MOM20']['mean_daily_rank_correlation']:+.4f}/{u['baseline_overlap']['LOWVOL20']['mean_daily_rank_correlation']:+.4f}/{u['baseline_overlap']['beta']['mean_daily_rank_correlation']:+.4f}. 세 기본 통제를 제거한 후보 순위 잔차 분산은 평균 **{u['mean_signal_residual_variance_fraction']*100:.2f}%**만 남았다.
+
+REV5만 통제한 partial은 **{rr['mean']:+.5f} [{rr['CI95'][0]:+.5f},{rr['CI95'][1]:+.5f}]**다. 세 기본 통제에 beta를 추가한 보조 partial도 **{bb['mean']:+.5f} [{bb['CI95'][0]:+.5f},{bb['CI95'][1]:+.5f}]**로 추가 정보의 근거가 약하다. 같은 날짜의 시장수익을 차감해도 횡단면 순위는 동일함을 확인했다. beta 자체의 양의 점추정을 새로운 알파로 채택하지 않았다.
+
+상하위20%의 H5 평균수익 차이는 **{spread['mean']*100:+.4f}%p**,95%구간 **[{spread['CI95'][0]*100:+.4f},{spread['CI95'][1]*100:+.4f}]%p**다. 같은 표본 REV5의 차이는 {base_spread['mean']*100:+.4f}%p다. 이는 **중첩된 비용 전 횡단면 진단**이며 계좌 누적수익·실현 long-short 성과가 아니다. 거래비용·회전율·체결·보유 계좌를 계산하지 않았고 연율화하지 않았다.
+
+## 안정성·집중
+
+2023년 primary는 **{yrs['2023']['partial_RankIC']['mean']:+.5f}**(176일),2024년은 **{yrs['2024']['partial_RankIC']['mean']:+.5f}**(246일)로 둘 다95%구간이0을 포함한다. 양의 부호가 반복돼도 통계적 증거가 충분하지 않다.
+
+176종목 각각을 제외한 primary 범위는 **[{sens['LOO_range'][0]:+.5f},{sens['LOO_range'][1]:+.5f}]**다. 절대 spread 순기여 상위 LSCC/TSLA/NXST를 제외하면 **{sens['drop_top3_spread_names']['mean_partial_RankIC']:+.5f}**, 절대 partialIC 최대5일을 제외하면 **{sens['drop_top5_abs_partialIC_days']['mean_partial_RankIC']:+.5f}**다. 특정 한 종목이나5일 때문에만 양수가 된 형태는 아니지만 작은 효과·넓은 불확실성은 해결되지 않는다. 제거된 표본을 새 성공 전략으로 쓰지 않았다. 상위3종목은 전체 종목별 절대 순 spread기여합의 **{sens['top3_absolute_net_symbol_contribution_share']*100:.2f}%**이며 거래 노출 비중을 뜻하지 않는다.
+
+R0의 기존 AS_OF/EX_POST 국면을 사후 분석에만 재사용했다. AS_OF 상승87일 partial−.01222, 횡보169일+.01052, 전환165일+.00824, 하락1일−.26568이다. 급락·반등을 포함한 여러 국면의 일반화는 **INSUFFICIENT_EVIDENCE**다. EX_POST 분류는 신호·선택에 사용하지 않았다. 한국 성과는 없다.
+
+## 검증·비용·경계
+
+평가 전에 수식 oracle/실제 fit 샘플3종목, 과거 신호의 prefix·미래 가격 교란 불변성,120세션 경계·최근 충격 제외·최소110관측, 결측/63세션 경계, H5 진입/종료/전체 경로, partial rank 정의, 예약 멱등성과 bootstrap 재현 시험 **11개 통과**. AGENTS 필수 시험 **24개**와 compileall도 현재 src/scripts/config/data/reports의 SHA가 같은 임시 snapshot에서 통과했다. 원본 테스트를 변경하지 않았으며 runtime/.venv 재귀 복사만 피했다. [시험](../../runtime/task13_c1/preflight_tests.json), [안전 회귀](../../runtime/task13_c1/safety_validation.json).
+
+초기 준비1회는 WELL 조정 high/close의 약7e-15 차이에 대한 엄격 부동소수점 비교에서 실패했다. **봉인·평가 전**에 원 quote와 조정 배율을 대사하고 표현 오차8×machine-epsilon×가격만 허용하는 검사를 추가했다(해당39행 기록). 원가격·마스크·가설·기간을 수정한 것이 아니며, 큰 OHLC 위반은 계속 차단한다. 실패 로그와 [수정 기록](../../runtime/task13_c1/pre_evaluation_fixes.json)을 보존했다. 봉인 후 수정/재평가는0이다.
+
+내부 연구 LLM **0회/0토큰**, HTTP·추가 가격·설치·학습·Quanta/RD 호출 **모두0**. 계측 단계 CPU 합계 **{total:.1f}초**, 그중 단일 평가 {resources['evaluation_CPU_seconds']:.1f}초다. 초기 대화형 조사·최초 시험·반올림 진단의 CPU가 모두 계측된 것은 아니므로 전체 세션 CPU/비용을0 또는 정확한 합계로 주장하지 않는다. Codex 본 세션 토큰/비용도 미계측이다. 신규 산출물은 약10MiB이며 원자료를 복사하지 않고 참조했다.
+
+[봉인 후 무결성](../../runtime/task13_c1/post_evaluation_integrity.json): 입력/코드/신호 변경0, 운영 소스·설정·Forward·Factory 및 기존 B3/R2 등 보호 파일 **{checks['protected_files']}개 변경0**. 기존 Paper·Champion·Live hardlock·Team2와 운영 원장을 변경하지 않았다. 테스트 기록을 실제 Forward 성과로 세지 않았다.
+
+**결론:** 계산과 미국의 제한적 역사 평가는 완료했으나, 시장 잔차 단기 충격이 단순 반전보다 유의하게 나은 예측 정보를 준다는 근거는 부족하다. 알파가 없다는 증명은 아니다. **C1의 추가 탐색은 종료하며 Task14/15·다른 가설·엔진·Forward 변경을 자동 실행하지 않았다.**
+
+재현 경로: [단일 신호](../../experiments/task13_c1/factor.py), [봉인 준비](../../experiments/task13_c1/prepare.py), [평가 코드](../../experiments/task13_c1/evaluate.py), [일별 결과](../../runtime/task13_c1/daily_diagnostics.csv), [평가 JSON](../../runtime/task13_c1/evaluation.json), [실행 원장](../../runtime/task13_c1/attempt_ledger.json). 실제 실행은 `prepare.py`→`evaluate.py` 각 승인 범위 내에서 수행했으며, **이미 완료된 evaluate.py는 재호출을 차단**한다. `finalize.py`는 저장된 결과만 읽어 문서/manifest를 만든다.
+'''
+p=R/'docs/development/13_C1_idiosyncratic_reversal.md';p.write_text(report)
+files=[f for f in B.rglob('*') if f.is_file() and f.name!='artifact_manifest.json' and '__pycache__' not in f.parts]+[f for f in (R/'experiments/task13_c1').glob('*.py')]+[p]
+manifest={'files':{str(f.relative_to(R)):sha(f) for f in sorted(files)},'classification':'C1 single exposed historical evaluation; not independent alpha','performance_evaluation_count':1}
+(B/'artifact_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n');print(v['decision'],len(files),'files',sum(f.stat().st_size for f in files),'bytes');print('measured CPU',total)

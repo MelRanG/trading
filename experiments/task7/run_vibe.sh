@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+stage="$1"; scope="$2"; rounds="${3:-3}";work=/home/ansy/app/quant-diligence/task7-vibe-work
+if [ -f "$work/$stage.exit" ] && [ "$(cat "$work/$stage.exit")" = 0 ]; then cat "$work/$stage.log";exit 0;fi
+if [ ! -S /tmp/quant-task7.sock ]; then exit 2;fi
+docker run --rm --network=none --name "quant-task7-vibe-$stage" --cap-drop=ALL --security-opt no-new-privileges --memory=4g --cpus=2 --pids-limit=256 --user 1000:1000 -e HOME=/work/home -e PATH=/venv/bin:/usr/local/bin:/usr/bin:/bin -e PYTHONDONTWRITEBYTECODE=1 -e LANGCHAIN_PROVIDER=openai -e LANGCHAIN_MODEL_NAME=gpt-4o -e OPENAI_API_KEY="task6-$scope" -e OPENAI_BASE_URL=http://127.0.0.1:18080/v1 -e VIBE_TRADING_ALLOWED_FILE_ROOTS=/work -e VIBE_TRADING_ALLOWED_RUN_ROOTS=/work -v /home/ansy/app/quant-diligence/vibe-env:/venv:ro -v "$work:/work" -v /tmp/quant-task7.sock:/relay/model.sock:ro -v /home/ansy/app/trading/experiments/task6:/oldcode:ro -w /work quant-research-task6:local sh -c '/venv/bin/python /oldcode/unix_forward.py > /work/forward.log 2>&1 & timeout 650 /venv/bin/vibe-trading -f /work/"$1"_prompt.txt --json --max-iter "$2" > /work/"$1".log 2>&1; result=$?; echo "$result" > /work/"$1".exit; exit "$result"' sh "$stage" "$rounds"

@@ -18,7 +18,7 @@ from quant_harness.v104_end_to_end_causal_challenger_audit.receipts import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
-REPORT = ROOT / "reports/v104_end_to_end_causal_challenger_audit"
+REPORT = ROOT / "tests/fixtures/archived_release_reports/v104_end_to_end_causal_challenger_audit"
 
 
 def test_v104_quality_gates_all_pass() -> None:

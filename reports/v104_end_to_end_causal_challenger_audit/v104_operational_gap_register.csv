@@ -1,7 +1,0 @@
-item,severity,status,required
-NEW_FORWARD_SESSIONS,BLOCK_PROMOTION,ZERO,sessions after V104 freeze with identical parent/candidate input hashes
-BROKER_EXECUTION_CONTRACT,BLOCK_LIVE,UNVERIFIED_EXTERNAL,"actual order, fill, fee, tax, reject and reconciliation data"
-NEWS_PIT_HISTORY,BLOCK_NEWS_ALPHA,DATA_BLOCKED,"published_at, first_seen_at, source document and correction lineage"
-ETF_EFFECTIVE_DATED_HOLDINGS,WARN_PAPER,STATIC_PROXY,daily constituent weights for overlap and fundamental evidence
-P2_PLUS_P3_EXECUTABLE_DEFINITION,BLOCK_SAME_ENGINE_COMPARISON,ARCHIVED_NAV_ONLY,sealed signal and allocation rules
-CAPITAL_CAPACITY,WARN_PAPER,V101_DIAGNOSED,account-size-specific ADV and realized participation validation
